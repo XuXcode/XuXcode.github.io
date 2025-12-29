@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>GUI界面编程</title>
+      <link href="/2025/12/29/GUI%E7%95%8C%E9%9D%A2%E7%BC%96%E7%A8%8B/"/>
+      <url>/2025/12/29/GUI%E7%95%8C%E9%9D%A2%E7%BC%96%E7%A8%8B/</url>
+      
+        <content type="html"><![CDATA[<h1 id="GUI界面编程（了解）"><a href="#GUI界面编程（了解）" class="headerlink" title="GUI界面编程（了解）"></a>GUI界面编程（了解）</h1><h2 id="Swing"><a href="#Swing" class="headerlink" title="Swing"></a>Swing</h2><ul><li>JFrame:窗口</li><li>JPanel:用于组织其他组件的容器</li><li>JButton:按钮组件</li><li>JTextField:输入框</li><li>JTable:表格</li></ul><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> javax.swing.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">JFrameDemo1</span> &#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">JFrame</span> <span class="variable">jf</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">JFrame</span>(<span class="string">&quot;登录窗口&quot;</span>); <span class="comment">// 创建一个标题为&quot;登录窗口&quot;的 JFrame 窗口对象</span></span><br><span class="line">        jf.setSize(<span class="number">400</span>, <span class="number">300</span>);</span><br><span class="line">        jf.setLocationRelativeTo(<span class="literal">null</span>); <span class="comment">//设置窗口居中</span></span><br><span class="line">        jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);<span class="comment">//关闭窗口退出程序</span></span><br><span class="line"></span><br><span class="line">        <span class="type">JPanel</span> <span class="variable">jp</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">JPanel</span>(); <span class="comment">// 创建一个面板容器对象，用于放置组件</span></span><br><span class="line">        jf.add(jp);  <span class="comment">// 将面板添加到主窗口中</span></span><br><span class="line"></span><br><span class="line">        <span class="type">JButton</span> <span class="variable">jb</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">JButton</span>(<span class="string">&quot;登录&quot;</span>); <span class="comment">// 创建一个文本为&quot;登录&quot;的按钮组件</span></span><br><span class="line">        jb.setBounds(<span class="number">100</span>, <span class="number">100</span>, <span class="number">10</span>, <span class="number">50</span>);</span><br><span class="line">        jp.add(jb); <span class="comment">// 将按钮添加到面板中</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 设置窗口可见，这是显示窗口的关键步骤</span></span><br><span class="line">        jf.setVisible(<span class="literal">true</span>); <span class="comment">// 添加这行来显示窗口</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="常见的布局管理器"><a href="#常见的布局管理器" class="headerlink" title="常见的布局管理器"></a>常见的布局管理器</h2><ul><li>FlowLayout</li><li>BorderLatout</li><li>GridLayout</li><li>BoxLayout</li></ul><h2 id="事件处理"><a href="#事件处理" class="headerlink" title="事件处理"></a>事件处理</h2><ul><li>GUI编程中，事件的处理时通过事件监听器来完成的。</li><li>例如：<ul><li>点击监听器 ActionListener</li><li>按键事件监听器 KeyListener</li><li>鼠标行为监听器 MouseListener</li><li>……</li></ul></li></ul><h2 id="事件的几种常见写法"><a href="#事件的几种常见写法" class="headerlink" title="事件的几种常见写法"></a>事件的几种常见写法</h2><ul><li>第1种：直接提供实现类，用于创建事件监听对象</li><li>第2种：直接使用匿名内部类的对象，代表事件的监听对象</li><li>第3种：自定义窗口，让窗口实现对象接口</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> Java </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>面向对象高级2</title>
       <link href="/2025/12/27/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E9%AB%98%E7%BA%A72/"/>
       <url>/2025/12/27/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E9%AB%98%E7%BA%A72/</url>
