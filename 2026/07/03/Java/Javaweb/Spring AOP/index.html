@@ -1,0 +1,334 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Spring AOP | XuX的博客</title><meta name="author" content="XuX"><meta name="copyright" content="XuX"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Spring AOP什么是AOP AOP：面向切面编程&#x2F;面向方面编程，可简单理解为就是面向特定方法编程  场景：  记录系统的操作日志 事务管理 权限控制   优点： 1、减少重复代码 2、代码无侵入 3、提高开发效率 4、维护方便  AOP是一种思想，Spring AOP则为该思想在Spring框架中对这种思想进行的实现   AOP快速入门 需求：统计所有业务方法的执行耗时  1、导入">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spring AOP">
+<meta property="og:url" content="http://example.com/2026/07/03/Java/Javaweb/Spring%20AOP/index.html">
+<meta property="og:site_name" content="XuX的博客">
+<meta property="og:description" content="Spring AOP什么是AOP AOP：面向切面编程&#x2F;面向方面编程，可简单理解为就是面向特定方法编程  场景：  记录系统的操作日志 事务管理 权限控制   优点： 1、减少重复代码 2、代码无侵入 3、提高开发效率 4、维护方便  AOP是一种思想，Spring AOP则为该思想在Spring框架中对这种思想进行的实现   AOP快速入门 需求：统计所有业务方法的执行耗时  1、导入">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/avatar.jpg">
+<meta property="article:published_time" content="2026-07-02T16:00:00.000Z">
+<meta property="article:modified_time" content="2026-07-05T07:08:17.002Z">
+<meta property="article:author" content="XuX">
+<meta property="article:tag" content="web&#x2F;springboot">
+<meta property="article:tag" content="AOP">
+<meta property="article:tag" content="切面">
+<meta property="article:tag" content="切入点">
+<meta property="article:tag" content="ThreadLocal">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/avatar.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Spring AOP",
+  "url": "http://example.com/2026/07/03/Java/Javaweb/Spring%20AOP/",
+  "image": "http://example.com/img/avatar.jpg",
+  "datePublished": "2026-07-02T16:00:00.000Z",
+  "dateModified": "2026-07-05T07:08:17.002Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "XuX",
+      "url": "http://example.com"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2026/07/03/Java/Javaweb/Spring%20AOP/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Spring AOP',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">46</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">119</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">13</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fa fa-graduation-cap"></i><span> 博文</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-list"></i><span> 生活</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/shuoshuo/"><i class="fa-fw fa fa-comments-o"></i><span> 分享</span></a></li><li><a class="site-page child" href="/photos/"><i class="fa-fw fa fa-camera-retro"></i><span> 相册</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 影视</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/comment/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">XuX的博客</span></a><a class="nav-page-title" href="/"><span class="site-name">Spring AOP</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fa fa-graduation-cap"></i><span> 博文</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-list"></i><span> 生活</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/shuoshuo/"><i class="fa-fw fa fa-comments-o"></i><span> 分享</span></a></li><li><a class="site-page child" href="/photos/"><i class="fa-fw fa fa-camera-retro"></i><span> 相册</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 影视</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/comment/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">Spring AOP</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-07-02T16:00:00.000Z" title="发表于 2026-07-03 00:00:00">2026-07-03</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-07-05T07:08:17.002Z" title="更新于 2026-07-05 15:08:17">2026-07-05</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Java/">Java</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Java/Javaweb/">Javaweb</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="Spring-AOP"><a href="#Spring-AOP" class="headerlink" title="Spring AOP"></a>Spring AOP</h1><h2 id="什么是AOP"><a href="#什么是AOP" class="headerlink" title="什么是AOP"></a>什么是AOP</h2><ul>
+<li><p><strong>AOP</strong>：面向切面编程&#x2F;面向方面编程，可简单理解为就是面向特定方法编程</p>
+</li>
+<li><p>场景：</p>
+<ul>
+<li>记录系统的操作日志</li>
+<li>事务管理</li>
+<li>权限控制</li>
+</ul>
+</li>
+<li><p>优点：</p>
+<p>1、减少重复代码</p>
+<p>2、代码无侵入</p>
+<p>3、提高开发效率</p>
+<p>4、维护方便</p>
+</li>
+<li><p>AOP是一种思想，Spring AOP则为该思想在Spring框架中对这种思想进行的实现</p>
+</li>
+</ul>
+<h2 id="AOP快速入门"><a href="#AOP快速入门" class="headerlink" title="AOP快速入门"></a>AOP快速入门</h2><ul>
+<li>需求：统计所有业务方法的执行耗时</li>
+</ul>
+<p>1、导入依赖</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-aop<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>2、编写AOP程序：针对于特点的方法根据业务需要进行编程</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Aspect</span> <span class="comment">//标识当前是一个切面类</span></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="comment">//切面类</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">RecordTimeApsect</span> &#123;</span><br><span class="line">    		<span class="comment">//表示拦截某包下任意类的任意方法</span></span><br><span class="line">    <span class="meta">@Around(&quot;execution(* com.hut.service.impl.*.*(..))&quot;)</span><span class="comment">//切入点表达式</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">//通知</span></span><br><span class="line">    <span class="keyword">public</span> Object <span class="title function_">recordTime</span><span class="params">(ProceedingJoinPoint pjp)</span> <span class="keyword">throws</span> Throwable &#123;</span><br><span class="line">        <span class="type">long</span> <span class="variable">beginTime</span> <span class="operator">=</span> System.currentTimeMillis();</span><br><span class="line">       <span class="comment">//执行目标方法(即被拦截的业务方法)</span></span><br><span class="line">        <span class="type">Object</span> <span class="variable">result</span> <span class="operator">=</span> pjp.proceed();</span><br><span class="line">        </span><br><span class="line">        <span class="type">long</span> <span class="variable">endTime</span> <span class="operator">=</span> System.currentTimeMillis();</span><br><span class="line">        log.info(<span class="string">&quot;执行耗时: &#123;&#125; ms&quot;</span>, endTime - beginTime);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="AOP核心概念"><a href="#AOP核心概念" class="headerlink" title="AOP核心概念"></a>AOP核心概念</h2><ul>
+<li><strong>连接点：JoinPoint</strong>，可以被AOP控制的方法(暗含方法执行时的相关信息)</li>
+<li><strong>通知：Advice</strong>，指那些重复的逻辑，也就是共性功能(最终体现为一个方法)</li>
+<li><strong>切入点：PointCut</strong>，匹配连接点的条件，通知仅会在切入点方法执行时被应用</li>
+<li><strong>切面：Aspect</strong>，描述通知与切入点的对应关系(通知+切入点)</li>
+<li><strong>目标对象：Target</strong>，通知所应用的对象</li>
+</ul>
+<h2 id="AOP进阶"><a href="#AOP进阶" class="headerlink" title="AOP进阶"></a>AOP进阶</h2><h3 id="通知类型"><a href="#通知类型" class="headerlink" title="通知类型"></a>通知类型</h3><ul>
+<li>根据通知方法执行时机的类型不同，将通知类型分为一下常见的五类：</li>
+</ul>
+<p>1、<code>@Around</code>：环绕通知，此注解标注的通知方法在目标方法前、后都被执行</p>
+<blockquote>
+<p>注意：</p>
+<p>1、<code>@Around</code>环绕通知需要自己调用<code>ProceedingJoinPoint.proceed()</code>来让原始方法执行，其他通知不需要考虑目标方法执行。</p>
+<p>2、<code>@Around</code>环绕通知方法的返回值，必须指定为<code>Object</code>，来接收原始方法的返回值。</p>
+</blockquote>
+<p>2、<code>@Before</code>：前置通知，此注解标注的通知方法在目标方法前被执行</p>
+<p>3、<code>@After</code>：后置通知，此注解标注的通知方法在目标方法后被执行，无论是否有异常都会执行</p>
+<p>4、<code>@AfterReturning</code>:返回后通知，此注解标注的通知方法在目标方法后执行，有异常不会执行</p>
+<p>5、<code>@AfterThrowing</code>：异常后通知，此注解标注的通知方法发生异常后执行</p>
+<h4 id="PointCut"><a href="#PointCut" class="headerlink" title="@PointCut"></a>@PointCut</h4><ul>
+<li>该注解的作用是将公共的切点表达式抽取出来，需要用到时引用该切点表达式即可。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Pointcut(&quot;execution(* com.itheima.service.impl.DeptServiceImpl.*(..))&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">pt</span><span class="params">()</span> &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Around(&quot;pt()&quot;)</span></span><br><span class="line"><span class="keyword">public</span> Object <span class="title function_">recordTime</span><span class="params">(ProceedingJoinPoint joinPoint)</span> <span class="keyword">throws</span> Throwable &#123;</span><br><span class="line">    <span class="comment">// 方法体待补充</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>private：仅能在当前切面类中引用该表达式</li>
+<li>public：在其他外部切面类中也可以引用该表达式</li>
+</ul>
+<h3 id="通知顺序"><a href="#通知顺序" class="headerlink" title="通知顺序"></a>通知顺序</h3><ul>
+<li><p>当有多个切面的切入点都匹配到了目标方法，目标方法运行时，多个通知方法都会被执行。</p>
+</li>
+<li><p>执行顺序：</p>
+<p>不同切面类中，默认按照切面类的类名字母排序：</p>
+<ul>
+<li>目标方法前的通知方法：字母排名靠前的先执行；</li>
+<li>目标方法后的通知方法：字母排名靠前的后执行。</li>
+</ul>
+</li>
+<li><p>用<code>@Order(数字)</code>加在切面类上来控制顺序</p>
+<ul>
+<li>目标方法前的通知方法：数字小的先执行</li>
+<li>目标方法后的通知方法：数字小的后执行</li>
+</ul>
+</li>
+</ul>
+<h3 id="切入点表达式"><a href="#切入点表达式" class="headerlink" title="切入点表达式"></a>切入点表达式</h3><ul>
+<li><p>介绍：描述切入点方法的一种表达式。</p>
+</li>
+<li><p>作用：用来决定项目中的哪些方法需要加入通知</p>
+</li>
+<li><p>常见形式：</p>
+<p>1、<code>execution(...)</code>：根据方法的签名来匹配</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Before(&quot;execution(public void com.hut.service.impl.DeptServiceImpl.delete(java.lang.Integer))&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">before</span><span class="params">(JoinPoint joinPoint)</span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>2、<code>@annotation(...)</code>：根据注解匹配</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Before(&quot;@annotation(com.hut.anno.Log)&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">before</span><span class="params">()</span>&#123;&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="execution"><a href="#execution" class="headerlink" title="execution"></a>execution</h4><ul>
+<li><p><code>execution</code>主要根据方法的返回值、包名、类名、方法名、方法参数等信息来匹配，语法为：</p>
+<p><code>execution(访问修饰符?  返回值	包名.类名.?方法名(方法参数) throws	异常?)</code></p>
+</li>
+<li><p>其中带 ? 的表示可以省略的部分</p>
+<p>1、访问修饰符：可省略（比如：public、protected）</p>
+<p>2、包名.类名：可省略（不建议）</p>
+<p>3、throw 异常：可省略（注意是方法上声明抛出的异常，不是实际抛出的异常）</p>
+</li>
+<li><p>可以使用通配符描述切入点</p>
+<p>1、<code>*</code>：单个独立的任意符号，可以通配任意返回值、包名、类名、方法名、任意类型的一个参数，也可以通配包、类、方法名的一部分</p>
+<p><code>execution(* com.*.service.*.update*(*))</code></p>
+<p>2、<code>..</code> ：多个连续的任意符号，可以通配任意层级的包，或任意类型、任意个数的参数</p>
+<p><code>execution(* com.hut..DeptService.*(..))</code></p>
+</li>
+<li><p>注意：根据业务需要，可以使用 且 (&amp;&amp;) 、或(||)、非(!) 来组合比较复杂的切入点表达式。</p>
+</li>
+<li><p>书写建议：</p>
+<p>a. 所有业务方法名在命名时尽量规范，方便切入点表达式快速匹配。如：findXxx、updateXxx。</p>
+<p>b. 描述切入点方法通常基于接口描述，而不是直接描述实现类，增强扩展性。</p>
+<p>c. 在满足业务需要的前提下，尽量缩小切入点的匹配范围。如：包名尽量不使用<code>..</code>，使用<code>*</code>匹配单个包。</p>
+</li>
+</ul>
+<h4 id="annotation"><a href="#annotation" class="headerlink" title="@annotation"></a>@annotation</h4><ul>
+<li><code>@annotation</code>切入点表达式，用于匹配标识特有注解的方法</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.hut.anno;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Target(ElementType.METHOD)</span></span><br><span class="line"><span class="meta">@Retention(RetentionPolicy.RUNTIME)</span></span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> LogOperation &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="连接点"><a href="#连接点" class="headerlink" title="连接点"></a>连接点</h3><ul>
+<li><p>在Spring中用<code>JoinPoint</code>抽象了连接点，用它可以获取方法执行时的相关信息，如目标类名、方法名、方法参数等。</p>
+<ul>
+<li>对于<code>@Around</code>通知，获取连接点信息只能使用<code>ProceedingJoinPoint</code></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Around(&quot;execution(* com.hut.service.DeptService.*(..))&quot;)</span></span><br><span class="line"><span class="keyword">public</span> Object <span class="title function_">around</span><span class="params">(ProceedingJoinPoint joinPoint)</span> <span class="keyword">throws</span> Throwable &#123;</span><br><span class="line">    <span class="type">String</span> <span class="variable">className</span> <span class="operator">=</span> joinPoint.getTarget().getClass().getName(); <span class="comment">// 获取目标类名</span></span><br><span class="line">    <span class="type">Signature</span> <span class="variable">signature</span> <span class="operator">=</span> joinPoint.getSignature(); <span class="comment">// 获取目标方法签名</span></span><br><span class="line">    <span class="type">String</span> <span class="variable">methodName</span> <span class="operator">=</span> joinPoint.getSignature().getName(); <span class="comment">// 获取目标方法名</span></span><br><span class="line">    Object[] args = joinPoint.getArgs(); <span class="comment">// 获取目标方法运行参数</span></span><br><span class="line">    <span class="type">Object</span> <span class="variable">res</span> <span class="operator">=</span> joinPoint.proceed(); <span class="comment">// 执行原始方法，获取返回值（环绕通知）</span></span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>对于其它四种通知，获取连接点信息只能使用<code>JoinPoint</code>，它是<code>ProceedingJoinPoint</code>的父类型。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Before(&quot;execution(* com.hut.service.DeptService.*(..))&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">before</span><span class="params">(JoinPoint joinPoint)</span> &#123;</span><br><span class="line">    <span class="type">String</span> <span class="variable">className</span> <span class="operator">=</span> joinPoint.getTarget().getClass().getName(); <span class="comment">// 获取目标类名</span></span><br><span class="line">    <span class="type">Signature</span> <span class="variable">signature</span> <span class="operator">=</span> joinPoint.getSignature(); <span class="comment">// 获取目标方法签名</span></span><br><span class="line">    <span class="type">String</span> <span class="variable">methodName</span> <span class="operator">=</span> joinPoint.getSignature().getName(); <span class="comment">// 获取目标方法名</span></span><br><span class="line">    Object[] args = joinPoint.getArgs(); <span class="comment">// 获取目标方法运行参数</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="ThreadLocal"><a href="#ThreadLocal" class="headerlink" title="ThreadLocal"></a>ThreadLocal</h2><ul>
+<li><p>ThreadLocal并不是一个Thread，而是Thread的局部变量。</p>
+</li>
+<li><p>TreadLocal为每一个线程提供一份单独的存储空间，具有线程隔离的效果，不同的线程之间不会相互干扰。</p>
+</li>
+<li><p>应用场景：在同一个线程&#x2F;同一个请求中，进行数据共享。</p>
+</li>
+<li><p>TreadLocal的常用方法：</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>public void set(T value)</code></td>
+<td>设置当前线程的线程局部变量的值</td>
+</tr>
+<tr>
+<td><code>public T get()</code></td>
+<td>返回当前线程所对应的线程局部变量的值</td>
+</tr>
+<tr>
+<td><code>public void remove()</code></td>
+<td>移除当前线程的线程局部变量</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<p>具体操作步骤：</p>
+<p>1、定义ThreadLocal操作的工具类，用于操作当前员工的ID</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.hut.utils;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">CurrentHolder</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> ThreadLocal&lt;Integer&gt; CURRENT_LOCAL = <span class="keyword">new</span> <span class="title class_">ThreadLocal</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">setCurrentId</span><span class="params">(Integer employeeId)</span> &#123;</span><br><span class="line">        CURRENT_LOCAL.set(employeeId);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Integer <span class="title function_">getCurrentId</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> CURRENT_LOCAL.get();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">remove</span><span class="params">()</span> &#123;</span><br><span class="line">        CURRENT_LOCAL.remove();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>2、在TokenFilter中，解析完当前登录员工ID，将其存入ThreadLocal(用完之后需将其删除)。</p>
+<p>3、在AOP程序中，从ThreadLocal中获取当前登录员工的ID。</p>
+<h3 id="用一句话总结AOP：将与核心业务无关的代码独立的抽取出来，形成一个独立的组件，然后以横向交叉的方式应用到业务流程当中的过程"><a href="#用一句话总结AOP：将与核心业务无关的代码独立的抽取出来，形成一个独立的组件，然后以横向交叉的方式应用到业务流程当中的过程" class="headerlink" title="用一句话总结AOP：将与核心业务无关的代码独立的抽取出来，形成一个独立的组件，然后以横向交叉的方式应用到业务流程当中的过程"></a>用一句话总结AOP：将与核心业务无关的代码独立的抽取出来，形成一个独立的组件，然后以横向交叉的方式应用到业务流程当中的过程</h3><h2 id="🔗-相关链接"><a href="#🔗-相关链接" class="headerlink" title="🔗 相关链接"></a>🔗 相关链接</h2><ul>
+<li>[[Java&#x2F;Javase&#x2F;动态代理|动态代理]] — AOP 底层实现原理（JDK 动态代理）</li>
+<li>[[Java&#x2F;Javase&#x2F;多线程&amp;JUC|多线程 &amp; JUC]] — ThreadLocal 与线程安全</li>
+<li>[[Java&#x2F;Javaweb&#x2F;Web基础|Web 基础]] — SpringBoot IOC &amp; DI</li>
+<li>[[Java&#x2F;Javaweb&#x2F;Web后端实战|Web 后端实战]] — AOP 日志实战</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://example.com">XuX</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2026/07/03/Java/Javaweb/Spring%20AOP/">http://example.com/2026/07/03/Java/Javaweb/Spring%20AOP/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="http://example.com" target="_blank">XuX的博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/web-springboot/">web/springboot</a><a class="post-meta__tags" href="/tags/AOP/">AOP</a><a class="post-meta__tags" href="/tags/%E5%88%87%E9%9D%A2/">切面</a><a class="post-meta__tags" href="/tags/%E5%88%87%E5%85%A5%E7%82%B9/">切入点</a><a class="post-meta__tags" href="/tags/ThreadLocal/">ThreadLocal</a></div><div class="post-share"><div class="social-share" data-image="/img/avatar.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2026/07/03/Java/Javaweb/SpringBoot%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/" title="SpringBoot配置文件"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">SpringBoot配置文件</div></div><div class="info-2"><div class="info-item-1">SpringBoot配置文件配置文件格式 SpringBoot项目提供了多种属性配置方式(properties、yaml、yml)  yml配置文件 格式： 数值前边必须有空格，作为分隔符 使用缩进表示层级关系，缩进时，不允许使用Tab键，只能用空格(idea中会自动将Tab转换成空格) 缩进的空格数目不重要，只要相同层级的元素左侧对齐即可 #表示注释，从这个字符一直到行尾，都会被解析器忽略    1234#配置服务器相关信息server:  port: 8080  address: 127.0.0.1   定义对象&#x2F;Map集合： 1234user:  name: 张三  age: 18  password: 123456  定义数组&#x2F;List&#x2F;Set集合 1234hobby:  - java  - game  - sport   注意：在yml格式的配置文件中，如果配置项的值是以 0 开头的，值需要使用 ‘ ‘ 引起来，因为以0开头在yml中表示8进制的数据  🔗 相关链接 [[Java&#x2F;Javaweb&#x2F;SpringBoot原...</div></div></div></a><a class="pagination-related" href="/2026/07/03/Java/Javaweb/Mybatis/" title="Mybatis"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">Mybatis</div></div><div class="info-2"><div class="info-item-1">Mybatis MyBatis 是一款优秀的 持久层(dao) 框架，用于 简化JDBC 的开发  入门程序—使用Mybatis查询所有用户数据 准备工作： 1、创建springboot工程、引入Mybatis相关依赖 2、准备数据库表user、实体类User 3、配置Mybatis(在application.properties中数据库连接信息) 12345spring.datasource.url=jdbc:mysql://localhost:3306/webspring.datasource.driver-class-name=com.mysql.cj.jdbc.Driverspring.datasource.username=rootspring.datasource.password=1234mybatis.configuration.log-impl=org.apache.ibatis.logging.stdout.StdOutImpl  编写Mybatis程序：编写Mybatis的持久层接口，定义SQL(注解&#x2F;XML) 12345@Mapper //应用程...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2026/07/03/Java/Javaweb/Web%E5%90%8E%E7%AB%AF%E5%AE%9E%E6%88%98/" title="Web后端实战"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-07-03</div><div class="info-item-2">Web后端实战</div></div><div class="info-2"><div class="info-item-1">Web后端实战 Tlias智能学习辅助系统  准备工作需求 部门管理 查询、新增、修改、删除   员工管理 查询、新增、修改、删除 文件上传   报表统计 登录认证 日志管理 班级、学员管理(实战内容)  开发规范-开发模式 主流开发模式：前后端分离  开发流程：需求分析-&gt;接口设计-&gt;前后端并行开发-&gt;测试-&gt;联调   开发规范-Restful风格Restful Rest，表述性状态转化，它是一种软件架构风格。     REST 风格 URL 请求方式 含义    http://localhost:8080/users/1 GET 查询 id 为 1 的用户   http://localhost:8080/users/1 DELETE 删除 id 为 1 的用户   http://localhost:8080/users POST 新增用户   http://localhost:8080/users PUT 修改用户    注意： 1、Rest是风格，是约定方式，约定不是规定，可以打破 2、描述功能模块通常使用复数形式(加s)，表示此类资源，而非单个资源...</div></div></div></a><a class="pagination-related" href="/2026/07/03/Java/Javaweb/SpringBoot%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/" title="SpringBoot配置文件"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-07-03</div><div class="info-item-2">SpringBoot配置文件</div></div><div class="info-2"><div class="info-item-1">SpringBoot配置文件配置文件格式 SpringBoot项目提供了多种属性配置方式(properties、yaml、yml)  yml配置文件 格式： 数值前边必须有空格，作为分隔符 使用缩进表示层级关系，缩进时，不允许使用Tab键，只能用空格(idea中会自动将Tab转换成空格) 缩进的空格数目不重要，只要相同层级的元素左侧对齐即可 #表示注释，从这个字符一直到行尾，都会被解析器忽略    1234#配置服务器相关信息server:  port: 8080  address: 127.0.0.1   定义对象&#x2F;Map集合： 1234user:  name: 张三  age: 18  password: 123456  定义数组&#x2F;List&#x2F;Set集合 1234hobby:  - java  - game  - sport   注意：在yml格式的配置文件中，如果配置项的值是以 0 开头的，值需要使用 ‘ ‘ 引起来，因为以0开头在yml中表示8进制的数据  🔗 相关链接 [[Java&#x2F;Javaweb&#x2F;SpringBoot原...</div></div></div></a><a class="pagination-related" href="/2026/07/03/Java/Javaweb/SpringBoot%E5%8E%9F%E7%90%86/" title="SpringBoot原理"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-07-03</div><div class="info-item-2">SpringBoot原理</div></div><div class="info-2"><div class="info-item-1">SpringBoot原理配置优先级 支持三种格式的配置文件： .properties、.yml、.yaml （也是优先级顺序）  注意：虽然springboot支持多种格式配置文件，但是在项目开发时，推荐使用一种格式的配置(yml是主流)   配置 SpringBoot 除了支持配置文件属性配置，还支持Java系统属性和命令行参数的方式进行属性配置。  Java系统属性（第二 -Dserver.port=9000  命令行参数（最高 --server.port=10010     Bean管理Bean的作用域 Spring支持五种作用域，后三种在web环境才生效     作用域 说明    singleton 容器内同名称的 bean 只有一个实例（单例）（默认）   prototype 每次使用该 bean 时会创建新的实例（非单例&#x2F;多例）   request 每个请求范围内会创建新的实例（web环境中，了解）   session 每个会话范围内会创建新的实例（web环境中，了解）   application 每个应用范围内会创建新的实例（web环境中，了解）   第...</div></div></div></a><a class="pagination-related" href="/2026/07/03/Java/Javaweb/Web%E5%9F%BA%E7%A1%80/" title="Web基础"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-07-03</div><div class="info-item-2">Web基础</div></div><div class="info-2"><div class="info-item-1">Web基础SpringBootWeb入门程序 创建springboot工程，并勾选web开发相关依赖 定义请求处理类HelloController，添加方法hello，并添加注解  12345678@RestController //表示当前类是一个请求处理类public class HelloController &#123;    @RequestMapping(&quot;/hello&quot;) //表示该方法处理/hello请求    public String hello(String name)&#123;        System.out.println(&quot;name:&quot;+name);        return &quot;hello &quot;+name+&quot;~&quot;;    &#125;&#125;  SpringBoot官方脚手架连接不上解决方案 魔法科学上网 镜像：start.aliyun.com(版本较旧)  HTTP协议认识HTTP协议 超文本传输协议，规定了浏览器和服务器之间数据传输的规则  特点：  1、基于...</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">XuX</div><div class="author-info-description">Stay hungry,stay foolish.</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">46</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">119</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">13</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/XuXcode"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/XuXcode" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:841130121@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到我的博客！</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Spring-AOP"><span class="toc-number">1.</span> <span class="toc-text">Spring AOP</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFAOP"><span class="toc-number">1.1.</span> <span class="toc-text">什么是AOP</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AOP%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8"><span class="toc-number">1.2.</span> <span class="toc-text">AOP快速入门</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AOP%E6%A0%B8%E5%BF%83%E6%A6%82%E5%BF%B5"><span class="toc-number">1.3.</span> <span class="toc-text">AOP核心概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AOP%E8%BF%9B%E9%98%B6"><span class="toc-number">1.4.</span> <span class="toc-text">AOP进阶</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%9A%E7%9F%A5%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.4.1.</span> <span class="toc-text">通知类型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#PointCut"><span class="toc-number">1.4.1.1.</span> <span class="toc-text">@PointCut</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%9A%E7%9F%A5%E9%A1%BA%E5%BA%8F"><span class="toc-number">1.4.2.</span> <span class="toc-text">通知顺序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%87%E5%85%A5%E7%82%B9%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-number">1.4.3.</span> <span class="toc-text">切入点表达式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#execution"><span class="toc-number">1.4.3.1.</span> <span class="toc-text">execution</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#annotation"><span class="toc-number">1.4.3.2.</span> <span class="toc-text">@annotation</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9E%E6%8E%A5%E7%82%B9"><span class="toc-number">1.4.4.</span> <span class="toc-text">连接点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ThreadLocal"><span class="toc-number">1.5.</span> <span class="toc-text">ThreadLocal</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%A8%E4%B8%80%E5%8F%A5%E8%AF%9D%E6%80%BB%E7%BB%93AOP%EF%BC%9A%E5%B0%86%E4%B8%8E%E6%A0%B8%E5%BF%83%E4%B8%9A%E5%8A%A1%E6%97%A0%E5%85%B3%E7%9A%84%E4%BB%A3%E7%A0%81%E7%8B%AC%E7%AB%8B%E7%9A%84%E6%8A%BD%E5%8F%96%E5%87%BA%E6%9D%A5%EF%BC%8C%E5%BD%A2%E6%88%90%E4%B8%80%E4%B8%AA%E7%8B%AC%E7%AB%8B%E7%9A%84%E7%BB%84%E4%BB%B6%EF%BC%8C%E7%84%B6%E5%90%8E%E4%BB%A5%E6%A8%AA%E5%90%91%E4%BA%A4%E5%8F%89%E7%9A%84%E6%96%B9%E5%BC%8F%E5%BA%94%E7%94%A8%E5%88%B0%E4%B8%9A%E5%8A%A1%E6%B5%81%E7%A8%8B%E5%BD%93%E4%B8%AD%E7%9A%84%E8%BF%87%E7%A8%8B"><span class="toc-number">1.5.1.</span> <span class="toc-text">用一句话总结AOP：将与核心业务无关的代码独立的抽取出来，形成一个独立的组件，然后以横向交叉的方式应用到业务流程当中的过程</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%94%97-%E7%9B%B8%E5%85%B3%E9%93%BE%E6%8E%A5"><span class="toc-number">1.6.</span> <span class="toc-text">🔗 相关链接</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/03/Java/Java%20AI/Spring%20AI/" title="Spring AI">Spring AI</a><time datetime="2026-07-02T16:00:00.000Z" title="发表于 2026-07-03 00:00:00">2026-07-03</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/03/Java/Javase/API(%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F)/" title="API(正则表达式)">API(正则表达式)</a><time datetime="2026-07-02T16:00:00.000Z" title="发表于 2026-07-03 00:00:00">2026-07-03</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/03/Java/Java%20Web%E5%BC%80%E5%8F%91%E7%9F%A5%E8%AF%86%E5%BA%93/" title="Java Web开发知识库">Java Web开发知识库</a><time datetime="2026-07-02T16:00:00.000Z" title="发表于 2026-07-03 00:00:00">2026-07-03</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/03/Java/Javase/%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/" title="动态代理">动态代理</a><time datetime="2026-07-02T16:00:00.000Z" title="发表于 2026-07-03 00:00:00">2026-07-03</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/03/Java/Javase/GUI%E7%95%8C%E9%9D%A2%E7%BC%96%E7%A8%8B/" title="GUI界面编程">GUI界面编程</a><time datetime="2026-07-02T16:00:00.000Z" title="发表于 2026-07-03 00:00:00">2026-07-03</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By XuX</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.3</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

@@ -1,0 +1,735 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>存储&amp;读写数据的方案 | XuX的博客</title><meta name="author" content="XuX"><meta name="copyright" content="XuX"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="存储&amp;读写数据的方案 File、IO流  File File是java.io.包下的类，File类的对象，用于代表当前操作系统的文件(可以是文件或文件夹) 注意：File类只能对文件本身进行操作，不能读写文件里面存储的数据 File类的对象可以代表文件&#x2F;文件夹，并可以调用其提供的方法对象文件进行操作。  创建File类的对象    构造器 说明    public File(St">
+<meta property="og:type" content="article">
+<meta property="og:title" content="存储&amp;读写数据的方案">
+<meta property="og:url" content="http://example.com/2026/07/03/Java/Javase/%E5%AD%98%E5%82%A8&%E8%AF%BB%E5%86%99%E6%95%B0%E6%8D%AE%E7%9A%84%E6%96%B9%E6%A1%88/index.html">
+<meta property="og:site_name" content="XuX的博客">
+<meta property="og:description" content="存储&amp;读写数据的方案 File、IO流  File File是java.io.包下的类，File类的对象，用于代表当前操作系统的文件(可以是文件或文件夹) 注意：File类只能对文件本身进行操作，不能读写文件里面存储的数据 File类的对象可以代表文件&#x2F;文件夹，并可以调用其提供的方法对象文件进行操作。  创建File类的对象    构造器 说明    public File(St">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/avatar.jpg">
+<meta property="article:published_time" content="2026-07-02T16:00:00.000Z">
+<meta property="article:modified_time" content="2026-07-05T07:08:16.990Z">
+<meta property="article:author" content="XuX">
+<meta property="article:tag" content="java&#x2F;io">
+<meta property="article:tag" content="File">
+<meta property="article:tag" content="IO流">
+<meta property="article:tag" content="序列化">
+<meta property="article:tag" content="反序列化">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/avatar.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "存储&读写数据的方案",
+  "url": "http://example.com/2026/07/03/Java/Javase/%E5%AD%98%E5%82%A8&%E8%AF%BB%E5%86%99%E6%95%B0%E6%8D%AE%E7%9A%84%E6%96%B9%E6%A1%88/",
+  "image": "http://example.com/img/avatar.jpg",
+  "datePublished": "2026-07-02T16:00:00.000Z",
+  "dateModified": "2026-07-05T07:08:16.990Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "XuX",
+      "url": "http://example.com"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2026/07/03/Java/Javase/%E5%AD%98%E5%82%A8&amp;%E8%AF%BB%E5%86%99%E6%95%B0%E6%8D%AE%E7%9A%84%E6%96%B9%E6%A1%88/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '存储&读写数据的方案',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">46</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">119</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">13</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fa fa-graduation-cap"></i><span> 博文</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-list"></i><span> 生活</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/shuoshuo/"><i class="fa-fw fa fa-comments-o"></i><span> 分享</span></a></li><li><a class="site-page child" href="/photos/"><i class="fa-fw fa fa-camera-retro"></i><span> 相册</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 影视</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/comment/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">XuX的博客</span></a><a class="nav-page-title" href="/"><span class="site-name">存储&amp;读写数据的方案</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fa fa-graduation-cap"></i><span> 博文</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-list"></i><span> 生活</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/shuoshuo/"><i class="fa-fw fa fa-comments-o"></i><span> 分享</span></a></li><li><a class="site-page child" href="/photos/"><i class="fa-fw fa fa-camera-retro"></i><span> 相册</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 影视</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/comment/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">存储&amp;读写数据的方案</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-07-02T16:00:00.000Z" title="发表于 2026-07-03 00:00:00">2026-07-03</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-07-05T07:08:16.990Z" title="更新于 2026-07-05 15:08:16">2026-07-05</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Java/">Java</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Java/Javase/">Javase</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="存储-读写数据的方案"><a href="#存储-读写数据的方案" class="headerlink" title="存储&amp;读写数据的方案"></a>存储&amp;读写数据的方案</h1><blockquote>
+<p>File、IO流</p>
+</blockquote>
+<h2 id="File"><a href="#File" class="headerlink" title="File"></a>File</h2><ul>
+<li>File是java.io.包下的类，File类的对象，用于代表当前操作系统的文件(可以是文件或文件夹)</li>
+<li>注意：File类只能对文件本身进行操作，<strong>不能读写文件里面存储的数据</strong></li>
+<li>File类的对象可以代表文件&#x2F;文件夹，并可以调用其提供的方法对象文件进行操作。</li>
+</ul>
+<p>创建File类的对象</p>
+<table>
+<thead>
+<tr>
+<th>构造器</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>public File(String pathname)</code></td>
+<td>根据文件路径创建文件对象</td>
+</tr>
+<tr>
+<td><code>public File(String parent, String child)</code></td>
+<td>根据父路径和子路径名字创建文件对象</td>
+</tr>
+<tr>
+<td><code>public File(File parent, String child)</code></td>
+<td>根据父路径对应文件对象和子路径名字创建文件对象</td>
+</tr>
+</tbody></table>
+<p> 注意：</p>
+<ul>
+<li>File对象既可以代表文件、也可以代表文件夹</li>
+<li>File封装的对象仅仅是一个路径名，这个路径可以是存在的，也允许是不存在的。</li>
+</ul>
+<h3 id="File提供的判断文件类型、获取文件信息的方法"><a href="#File提供的判断文件类型、获取文件信息的方法" class="headerlink" title="File提供的判断文件类型、获取文件信息的方法"></a>File提供的判断文件类型、获取文件信息的方法</h3><table>
+<thead>
+<tr>
+<th>方法名称</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>public boolean exists()</code></td>
+<td>判断当前文件对象对应的文件路径是否存在，存在返回 <code>true</code>，反之返回 <code>false</code></td>
+</tr>
+<tr>
+<td><code>public boolean isFile()</code></td>
+<td>判断当前文件对象指代的是否是文件，是文件返回 <code>true</code>，反之返回 <code>false</code></td>
+</tr>
+<tr>
+<td><code>public boolean isDirectory()</code></td>
+<td>判断当前文件对象指代的是否是文件夹，是文件夹返回 <code>true</code>，反之返回 <code>false</code></td>
+</tr>
+<tr>
+<td><code>public String getName()</code></td>
+<td>获取文件的名称（包含后缀）</td>
+</tr>
+<tr>
+<td><code>public long length()</code></td>
+<td>获取文件的大小，返回字节个数</td>
+</tr>
+<tr>
+<td><code>public long lastModified()</code></td>
+<td>获取文件的最后修改时间</td>
+</tr>
+<tr>
+<td><code>public String getPath()</code></td>
+<td>获取创建文件对象时使用的路径</td>
+</tr>
+<tr>
+<td><code>public String getAbsolutePath()</code></td>
+<td>获取绝对路径</td>
+</tr>
+</tbody></table>
+<p>注意：</p>
+<ul>
+<li>绝对路径：带盘符的路径</li>
+<li>绝对路径：不带盘符，默认是idea工程下直接寻找文件的，一般用来找工程下的相对文件</li>
+</ul>
+<h4 id="File-类创建文件的功能"><a href="#File-类创建文件的功能" class="headerlink" title="File 类创建文件的功能"></a><strong>File 类创建文件的功能</strong></h4><table>
+<thead>
+<tr>
+<th>方法名称</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>public boolean createNewFile()</code></td>
+<td>创建一个新的空文件</td>
+</tr>
+<tr>
+<td><code>public boolean mkdir()</code></td>
+<td>只能创建一级文件夹</td>
+</tr>
+<tr>
+<td><code>public boolean mkdirs()</code></td>
+<td>可以创建多级文件夹</td>
+</tr>
+</tbody></table>
+<h4 id="File-类删除文件的功能"><a href="#File-类删除文件的功能" class="headerlink" title="File 类删除文件的功能"></a><strong>File 类删除文件的功能</strong></h4><table>
+<thead>
+<tr>
+<th>方法名称</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>public boolean delete()</code></td>
+<td>删除文件、空文件夹</td>
+</tr>
+</tbody></table>
+<ul>
+<li>注意：<mark>delete方法默认只能删除文件和空文件夹</mark>，删除后的文件不会进入回收站。</li>
+</ul>
+<h4 id="File-类提供的遍历文件夹的方法"><a href="#File-类提供的遍历文件夹的方法" class="headerlink" title="File 类提供的遍历文件夹的方法"></a><strong>File 类提供的遍历文件夹的方法</strong></h4><table>
+<thead>
+<tr>
+<th>方法名称</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>public String[] list()</code></td>
+<td>获取当前目录下所有的“一级文件名称”到一个字符串数组中返回。</td>
+</tr>
+<tr>
+<td><code>public File[] listFiles()</code></td>
+<td>获取当前目录下所有的“一级文件对象”到一个文件对象数组中返回（重点）。</td>
+</tr>
+</tbody></table>
+<p><strong>使用 listFiles 方法时的注意事项：</strong></p>
+<ul>
+<li>当主调是文件，或者路径不存在时，返回 <code>null</code>  </li>
+<li>当主调是空文件夹时，返回一个长度为 0 的数组  </li>
+<li>当主调是一个有内容的文件夹时，将里面所有一级文件和文件夹的路径放在 File 数组中返回  </li>
+<li>当主调是一个文件夹，且里面有隐藏文件时，将里面所有文件和文件夹的路径放在 File 数组中返回，包含隐藏文件  </li>
+<li>当主调是一个文件夹，但是没有权限访问该文件夹时，返回 <code>null</code></li>
+</ul>
+<h2 id="文件搜索"><a href="#文件搜索" class="headerlink" title="文件搜索"></a>文件搜索</h2><ul>
+<li>递归＋搜索算法</li>
+</ul>
+<h2 id="字符集"><a href="#字符集" class="headerlink" title="字符集"></a>字符集</h2><ul>
+<li>Unicode字符集，可以容纳世界上所有文字、符号的字符集</li>
+</ul>
+<h3 id="UTF-8字符集"><a href="#UTF-8字符集" class="headerlink" title="UTF-8字符集"></a>UTF-8字符集</h3><ul>
+<li>是Unicode字符集的一种编码方案，采取<strong>可变长编码方案</strong>，共分为四个长度去：1个字节，2个字节，3个字节，4个字节</li>
+<li>英文字符、数字等只占用1个字符(兼容标准的ASCII编码)，汉字字符占用3个字节</li>
+</ul>
+<h3 id="使用程序对字符进行编码和解码操作（String类提供的）"><a href="#使用程序对字符进行编码和解码操作（String类提供的）" class="headerlink" title="使用程序对字符进行编码和解码操作（String类提供的）"></a>使用程序对字符进行编码和解码操作（String类提供的）</h3><p><strong>对字符的编码</strong></p>
+<table>
+<thead>
+<tr>
+<th>方法名称</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>byte[] getBytes()</code></td>
+<td>使用平台的默认字符集将该 String 编码为一系列字节，将结果存储到新的字节数组中。</td>
+</tr>
+<tr>
+<td><code>byte[] getBytes(String charsetName)</code></td>
+<td>使用指定的字符集将该 String 编码为一系列字节，将结果存储到新的字节数组中。</td>
+</tr>
+</tbody></table>
+<p><strong>对字符的解码</strong></p>
+<table>
+<thead>
+<tr>
+<th>方法名称</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>String(byte[] bytes)</code></td>
+<td>通过使用平台的默认字符集解码指定的字节数组来构造新的 String</td>
+</tr>
+<tr>
+<td><code>String(byte[] bytes, String charsetName)</code></td>
+<td>通过指定的字符集解码指定的字节数组来构造新的 String</td>
+</tr>
+</tbody></table>
+<h2 id="IO流"><a href="#IO流" class="headerlink" title="IO流"></a>IO流</h2><h3 id="认识IO流"><a href="#认识IO流" class="headerlink" title="认识IO流"></a>认识IO流</h3><ul>
+<li><p>用于读写数据的(可以读写文件，或网络种的数据)</p>
+</li>
+<li><p>I称为输入流：负责把数据读到内存中去</p>
+</li>
+<li><p>O称为输出流：负责写数据出去。</p>
+</li>
+<li><p>按照流的方向分为：输入流、输出流。</p>
+</li>
+<li><p>按照流的内容分为：字节流(适合操作所有类型的文件)、字符流(只适合操作纯文本文件)。</p>
+</li>
+</ul>
+<h3 id="字节流"><a href="#字节流" class="headerlink" title="字节流"></a>字节流</h3><blockquote>
+<p>一切文件数据(文本、图片、视频等)在存储时，都是以二进制数字的形式保存，都一个一个的字节，那么传输时一样如此。所以，字节流可以传输任意文件数据。在操作流的时候，我们要时刻明确，无论使用什么样的流对象，底层传输的始终为二进制数据。</p>
+</blockquote>
+<h4 id="文件字节输入流【FileInputStream】"><a href="#文件字节输入流【FileInputStream】" class="headerlink" title="文件字节输入流【FileInputStream】"></a>文件字节输入流【FileInputStream】</h4><ul>
+<li>作用： 以内存为基准，可以把磁盘文件中的数据以字节的形式读入到内存里去。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>构造器</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>public FileInputStream(File file)</code></td>
+<td>创建字节输入流管道与源文件接通</td>
+</tr>
+<tr>
+<td><code>public FileInputStream(String pathname)</code></td>
+<td>创建字节输入流管道与源文件接通</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>方法名称</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>public int read()</code></td>
+<td>每次读取一个字节返回，如果发现没有数据可读会返回 -1。</td>
+</tr>
+<tr>
+<td><code>public int read(byte[] buffer)</code></td>
+<td>每次用一个字节数组去读取数据，返回字节数组读取了多少个字节，如果发现没有数据可读会返回 -1。</td>
+</tr>
+</tbody></table>
+<p>注意事项：</p>
+<ul>
+<li>使用FileInputStream每次读取一个字节，读取性能较差，并且读取汉字输出会乱码。</li>
+<li>使用FilInputStream每次读取多个字节，读取性能得到了提升，但读取汉字输出还会乱码。</li>
+</ul>
+<p>Q：使用字节流读取中文，如何保证输出不乱码，字母解决？</p>
+<ul>
+<li>定义一个与文件一样大的字节数组，一次性读取完文件的全部字节。（只适合读取小文件）</li>
+</ul>
+<h5 id="一次读取完全部字节"><a href="#一次读取完全部字节" class="headerlink" title="一次读取完全部字节"></a>一次读取完全部字节</h5><ul>
+<li>Java为InputStream提供了如下方法，可以直接把文件的全部字节读取到一个字节数组中返回。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>方法名称</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>public byte[] readAllBytes() throws IOException</td>
+<td>直接将当前字节输入流对应的文件对象的字节数据装到一个字节数组返回</td>
+</tr>
+</tbody></table>
+<p><strong>注意事项</strong>：直接把文件数据全部读取到一个字节数组可以避免乱码，是否存在问题？</p>
+<ul>
+<li><p>如果文件过大，创建的字节数组过大，可能引出内存溢出。</p>
+<p><code>读取文本适合用字符流；字节流适合做数据的转移，比如：文件复制</code></p>
+</li>
+</ul>
+<h4 id="文件字节输出流【FileOutputStream】"><a href="#文件字节输出流【FileOutputStream】" class="headerlink" title="文件字节输出流【FileOutputStream】"></a>文件字节输出流【FileOutputStream】</h4><ul>
+<li>作用：以内存为基准，把内存中的数据以字节的形式写出到文件中去。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>构造器</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>public FileOutputStream(File file)</code></td>
+<td>创建字节输出流管道与源文件对象接通</td>
+</tr>
+<tr>
+<td><code>public FileOutputStream(String filepath)</code></td>
+<td>创建字节输出流管道与源文件路径接通</td>
+</tr>
+<tr>
+<td><code>public FileOutputStream(File file, boolean append)</code></td>
+<td>创建字节输出流管道与源文件对象接通，可追加数据</td>
+</tr>
+<tr>
+<td><code>public FileOutputStream(String filepath, boolean append)</code></td>
+<td>创建字节输出流管道与源文件路径接通，可追加数据</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>方法名称</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>public void write(int a)</code></td>
+<td>写一个字节出去</td>
+</tr>
+<tr>
+<td><code>public void write(byte[] buffer)</code></td>
+<td>写一个字节数组出去</td>
+</tr>
+<tr>
+<td><code>public void write(byte[] buffer, int pos, int len)</code></td>
+<td>写一个字节数组的一部分出去</td>
+</tr>
+<tr>
+<td><code>public void close() throws IOException</code></td>
+<td>关闭流</td>
+</tr>
+</tbody></table>
+<h4 id="文件复制"><a href="#文件复制" class="headerlink" title="文件复制"></a>文件复制</h4><ul>
+<li>字节流非常适合做文件的复制操作</li>
+<li>任何文件的底层都是字节，字节流做复制，是一字不漏的转移完全部字节，只要复制后的文件格式没问题就行。</li>
+<li>图片复制：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Copy</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">        <span class="comment">// 1.创建流对象</span></span><br><span class="line">        <span class="comment">// 1.1 指定数据源</span></span><br><span class="line">        <span class="type">FileInputStream</span> <span class="variable">fis</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileInputStream</span>(<span class="string">&quot;D:\\test.jpg&quot;</span>);</span><br><span class="line">        <span class="comment">// 1.2 指定目的地</span></span><br><span class="line">        <span class="type">FileOutputStream</span> <span class="variable">fos</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileOutputStream</span>(<span class="string">&quot;test_copy.jpg&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 2.读写数据</span></span><br><span class="line">        <span class="comment">// 2.1 定义数组</span></span><br><span class="line">        <span class="type">byte</span>[] b = <span class="keyword">new</span> <span class="title class_">byte</span>[<span class="number">1024</span>];</span><br><span class="line">        <span class="comment">// 2.2 定义长度</span></span><br><span class="line">        <span class="type">int</span> len;</span><br><span class="line">        <span class="comment">// 2.3 循环读取</span></span><br><span class="line">        <span class="keyword">while</span> ((len = fis.read(b))!=-<span class="number">1</span>) &#123;</span><br><span class="line">            <span class="comment">// 2.4 写出数据</span></span><br><span class="line">            fos.write(b, <span class="number">0</span> , len);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 3.关闭资源</span></span><br><span class="line">        fos.close();</span><br><span class="line">        fis.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="字符流"><a href="#字符流" class="headerlink" title="字符流"></a>字符流</h3><blockquote>
+<p>当使用字节流读取文本文件时，可能会有一个小问题。就是遇到中文字符时，可能不会显示完整的字符，那是因为一个中文字符可能占用多个字节存储。所以Java提供一些字符流类，以字符为单位读写数据，专门用于处理文本文件</p>
+</blockquote>
+<h4 id="字符输入流【Reader】"><a href="#字符输入流【Reader】" class="headerlink" title="字符输入流【Reader】"></a>字符输入流【Reader】</h4><p><code>java.io.Reader</code>抽象类是表示用于读取字符流的所有类的超类，可以读取字符信息到内存中。它定义了字符输入流的基本共性功能方法。</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>public void close()</td>
+<td>关闭此流并释放与此流相关联的任何系统资源</td>
+</tr>
+<tr>
+<td>public int read()</td>
+<td>从输入流读取一个字符</td>
+</tr>
+<tr>
+<td>public int read(char[] cbuf)</td>
+<td>从输入流中读取一些字符，并将它们存储到字符数组 cbuf中</td>
+</tr>
+</tbody></table>
+<h4 id="FileReader类"><a href="#FileReader类" class="headerlink" title="FileReader类"></a>FileReader类</h4><p><code>java.io.FileReader</code>类是读取字符文件的便利类。构造时使用系统默认的字符编码和默认字节缓冲区。</p>
+<blockquote>
+<p>注意：1、Windows系统的中文编码默认是GBK编码表</p>
+<p>2、idea中是UTF-8</p>
+<p>3、字节缓冲区：一个字节数组，用来临时储存字节数据。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>构造方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>FileReader(File file)</td>
+<td>创建一个新的 FileReader ，给定要读取的File对象</td>
+</tr>
+<tr>
+<td>FileReader(String fileName)</td>
+<td>创建一个新的 FileReader ，给定要读取的文件的名</td>
+</tr>
+</tbody></table>
+<ul>
+<li>当你创建一个流对象时，必须传入一个文件路径。类似于FileInputStream</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//读取字符</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">FISRead</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">              <span class="comment">// 使用文件名称创建流对象</span></span><br><span class="line">               <span class="type">FileReader</span> <span class="variable">fr</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileReader</span>(<span class="string">&quot;read.txt&quot;</span>);</span><br><span class="line">              <span class="comment">// 定义变量，保存有效字符个数</span></span><br><span class="line">        <span class="type">int</span> len ；</span><br><span class="line">        <span class="comment">// 定义字符数组，作为装字符数据的容器</span></span><br><span class="line">        <span class="type">char</span>[] cbuf = <span class="keyword">new</span> <span class="title class_">char</span>[<span class="number">2</span>];</span><br><span class="line">        <span class="comment">// 循环读取</span></span><br><span class="line">        <span class="keyword">while</span> ((len = fr.read(cbuf))!=-<span class="number">1</span>) &#123;</span><br><span class="line">            System.out.println(<span class="keyword">new</span> <span class="title class_">String</span>(cbuf,<span class="number">0</span>,len));</span><br><span class="line">        &#125;</span><br><span class="line">            <span class="comment">// 关闭资源</span></span><br><span class="line">        fr.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="字符输出流【Writer】"><a href="#字符输出流【Writer】" class="headerlink" title="字符输出流【Writer】"></a>字符输出流【Writer】</h4><p><code>java.io.Writer</code>抽象类是表示用于写出字符流的所有类的超类，将指定的字符信息写出到目的地。它定义了字节输出流的基本共性功能方法</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>void write(int c)</td>
+<td>写入单个字符</td>
+</tr>
+<tr>
+<td>void write(char[] cbuf)</td>
+<td>写入字符数组</td>
+</tr>
+<tr>
+<td>abstract  void write(char[] cbuf, int off, int len)</td>
+<td>写入字符数组的某一部分,off数组的开始索引,len写的字符个数</td>
+</tr>
+<tr>
+<td>void write(String str)</td>
+<td>写入字符串</td>
+</tr>
+<tr>
+<td>void write(String str, int off, int len)</td>
+<td>写入字符串的某一部分,off字符串的开始索引,len写的字符个数</td>
+</tr>
+<tr>
+<td>void flush()</td>
+<td>刷新该流的缓冲</td>
+</tr>
+<tr>
+<td>void close()</td>
+<td>关闭此流，但要先刷新它</td>
+</tr>
+</tbody></table>
+<h4 id="FileWriter类"><a href="#FileWriter类" class="headerlink" title="FileWriter类"></a>FileWriter类</h4><p><code>java.io.FileWriter</code>类是写出字符到文件的便利类。构造时使用系统默认的字符编码和默认字节缓冲区</p>
+<table>
+<thead>
+<tr>
+<th>构造方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>FileWriter(File file)</td>
+<td>创建一个新的 FileWriter，给定要读取的File对象</td>
+</tr>
+<tr>
+<td>FileWriter(String fileName)</td>
+<td>创建一个新的 FileWriter，给定要读取的文件的名称</td>
+</tr>
+</tbody></table>
+<ul>
+<li>当你创建一个流对象时，必须传入一个文件路径，类似于FileOutputStream。</li>
+</ul>
+<h3 id="缓冲流"><a href="#缓冲流" class="headerlink" title="缓冲流"></a>缓冲流</h3><ul>
+<li><strong>字节缓冲流</strong>：<code>BufferedInputStream</code>，<code>BufferedOutputStream</code> </li>
+<li><strong>字符缓冲流</strong>：<code>BufferedReader</code>，<code>BufferedWriter</code></li>
+</ul>
+<p>缓冲流的基本原理，是在创建流对象时，会创建一个内置的默认大小的缓冲区数组，通过缓冲区读写，减少系统IO次数，从而提高读写的效率</p>
+<h4 id="字节缓冲流"><a href="#字节缓冲流" class="headerlink" title="字节缓冲流"></a>字节缓冲流</h4><table>
+<thead>
+<tr>
+<th>构造方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>public BufferedInputStream(InputStream in)</td>
+<td>创建一个 新的缓冲输入流</td>
+</tr>
+<tr>
+<td>public BufferedOutputStream(OutputStream out)</td>
+<td>创建一个新的缓冲输出流</td>
+</tr>
+</tbody></table>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建字节缓冲输入流</span></span><br><span class="line"><span class="type">BufferedInputStream</span> <span class="variable">bis</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BufferedInputStream</span>(<span class="keyword">new</span> <span class="title class_">FileInputStream</span>(<span class="string">&quot;bis.txt&quot;</span>));</span><br><span class="line"><span class="comment">// 创建字节缓冲输出流</span></span><br><span class="line"><span class="type">BufferedOutputStream</span> <span class="variable">bos</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BufferedOutputStream</span>(<span class="keyword">new</span> <span class="title class_">FileOutputStream</span>(<span class="string">&quot;bos.txt&quot;</span>));</span><br></pre></td></tr></table></figure>
+
+<h4 id="字符缓冲流"><a href="#字符缓冲流" class="headerlink" title="字符缓冲流"></a>字符缓冲流</h4><table>
+<thead>
+<tr>
+<th>构造方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>public BufferedReader(Reader in)</td>
+<td>创建一个 新的缓冲输入流</td>
+</tr>
+<tr>
+<td>public BufferedWriter(Writer out)</td>
+<td>创建一个新的缓冲输出流</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>所属类</th>
+<th>特有方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>BufferedReader</td>
+<td>public String readLine()</td>
+<td>读一行文字</td>
+</tr>
+<tr>
+<td>BufferedWriter</td>
+<td>public void newLine()</td>
+<td>写一行行分隔符,由系统属性定义符号</td>
+</tr>
+</tbody></table>
+<h3 id="转换流"><a href="#转换流" class="headerlink" title="转换流"></a>转换流</h3><h4 id="InputStreamReader类"><a href="#InputStreamReader类" class="headerlink" title="InputStreamReader类"></a>InputStreamReader类</h4><p>转换流<code>java.io.InputStreamReader</code>，是Reader的子类，是从字节流到字符流的桥梁。它读取字节，并使用指定的字符集将其解码为字符。它的字符集可以由名称指定，也可以接受平台的默认字符集</p>
+<table>
+<thead>
+<tr>
+<th>构造方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>InputStreamReader(InputStream in)</td>
+<td>创建一个使用默认字符集的字符流</td>
+</tr>
+<tr>
+<td>InputStreamReader(InputStream in, String charsetName)</td>
+<td>创建一个指定字符集的字符流</td>
+</tr>
+</tbody></table>
+<h4 id="OutputStreamWriter类"><a href="#OutputStreamWriter类" class="headerlink" title="OutputStreamWriter类"></a><strong>OutputStreamWriter类</strong></h4><p>转换流<code>java.io.OutputStreamWriter</code> ，是Writer的子类，是从字符流到字节流的桥梁。使用指定的字符集将字符编码为字节。它的字符集可以由名称指定，也可以接受平台的默认字符集</p>
+<table>
+<thead>
+<tr>
+<th>构造方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>OutputStreamWriter(OutputStream in)</td>
+<td>创建一个使用默认字符集的字符流</td>
+</tr>
+<tr>
+<td>OutputStreamWriter(OutputStream in, String charsetName)</td>
+<td>创建一个指定字符集的字符流</td>
+</tr>
+</tbody></table>
+<h3 id="序列化"><a href="#序列化" class="headerlink" title="序列化"></a>序列化</h3><p>Java 提供了一种对象<strong>序列化</strong>的机制。用一个字节序列可以表示一个对象，该字节序列包含该<code>对象的数据</code>、<code>对象的类型</code>和<code>对象中存储的属性</code>等信息。字节序列写出到文件之后，相当于文件中<strong>持久保存</strong>了一个对象的信息</p>
+<p>反之，该字节序列还可以从文件中读取回来，重构对象，对它进行<strong>反序列化</strong>。<code>对象的数据</code>、<code>对象的类型</code>和<code>对象中存储的数据</code>信息，都可以用来在内存中创建对象</p>
+<h4 id="ObjectOutputStream类"><a href="#ObjectOutputStream类" class="headerlink" title="ObjectOutputStream类"></a><strong>ObjectOutputStream类</strong></h4><p><code>java.io.ObjectOutputStream</code> 类，将Java对象的原始数据类型写出到文件,实现对象的持久存储</p>
+<table>
+<thead>
+<tr>
+<th>构造方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>public ObjectOutputStream(OutputStream out)</td>
+<td>创建一个指定OutputStream的ObjectOutputStream</td>
+</tr>
+</tbody></table>
+<h4 id="序列化操作"><a href="#序列化操作" class="headerlink" title="序列化操作"></a>序列化操作</h4><ul>
+<li>该类必须实现<code>java.io.Serializable</code> 接口，<code>Serializable</code> 是一个标记接口，不实现此接口的类将不会使任何状态序列化或反序列化，会抛出<code>NotSerializableException</code></li>
+<li>该类的所有属性必须是可序列化的。如果有一个属性不需要可序列化的，则该属性必须注明是瞬态的，使用<code>transient</code> 关键字修饰</li>
+<li>写出对象的方法：<code>public final void writeObject (Object obj)</code> : 将指定的对象写出</li>
+</ul>
+<h4 id="ObjectInputStream类"><a href="#ObjectInputStream类" class="headerlink" title="ObjectInputStream类"></a>ObjectInputStream类</h4><p>ObjectInputStream反序列化流，将之前使用ObjectOutputStream序列化的原始数据恢复为对象</p>
+<table>
+<thead>
+<tr>
+<th>构造方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>public ObjectInputStream(InputStream in)</td>
+<td>创建一个指定InputStream的ObjectInputStream</td>
+</tr>
+</tbody></table>
+<h5 id="反序列化操作1"><a href="#反序列化操作1" class="headerlink" title="反序列化操作1"></a><strong>反序列化操作1</strong></h5><p>如果能找到一个对象的class文件，我们可以进行反序列化操作，调用<code>ObjectInputStream</code>读取对象的方法</p>
+<ul>
+<li><code>public final Object readObject ()</code> : 读取一个对象</li>
+</ul>
+<h5 id="反序列化操作2"><a href="#反序列化操作2" class="headerlink" title="反序列化操作2"></a><strong>反序列化操作2</strong></h5><p><strong>当JVM反序列化对象时，能找到class文件，但是class文件在序列化对象之后发生了修改，那么反序列化操作也会失败，抛出一个</strong><code>InvalidClassException</code><strong>异常。</strong>发生这个异常的原因如下：</p>
+<ul>
+<li>该类的序列版本号与从流中读取的类描述符的版本号不匹配</li>
+<li>该类包含未知数据类型</li>
+<li>该类没有可访问的无参数构造方法</li>
+</ul>
+<p><code>Serializable</code> 接口给需要序列化的类，提供了一个序列版本号。</p>
+<p><code>serialVersionUID</code> 该版本号的目的在于验证序列化的对象和对应类是否版本匹配。</p>
+<h3 id="压缩流和解压缩流"><a href="#压缩流和解压缩流" class="headerlink" title="压缩流和解压缩流"></a>压缩流和解压缩流</h3><h2 id="🔗-相关链接"><a href="#🔗-相关链接" class="headerlink" title="🔗 相关链接"></a>🔗 相关链接</h2><ul>
+<li>[[Java&#x2F;Javase&#x2F;网络编程|网络编程]] — TCP&#x2F;UDP Socket 通信</li>
+<li>[[Java&#x2F;Javase&#x2F;多线程&amp;JUC|多线程 &amp; JUC]] — I&#x2F;O 密集型线程池</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://example.com">XuX</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2026/07/03/Java/Javase/%E5%AD%98%E5%82%A8&amp;%E8%AF%BB%E5%86%99%E6%95%B0%E6%8D%AE%E7%9A%84%E6%96%B9%E6%A1%88/">http://example.com/2026/07/03/Java/Javase/%E5%AD%98%E5%82%A8&amp;%E8%AF%BB%E5%86%99%E6%95%B0%E6%8D%AE%E7%9A%84%E6%96%B9%E6%A1%88/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="http://example.com" target="_blank">XuX的博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/java-io/">java/io</a><a class="post-meta__tags" href="/tags/File/">File</a><a class="post-meta__tags" href="/tags/IO%E6%B5%81/">IO流</a><a class="post-meta__tags" href="/tags/%E5%BA%8F%E5%88%97%E5%8C%96/">序列化</a><a class="post-meta__tags" href="/tags/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/">反序列化</a></div><div class="post-share"><div class="social-share" data-image="/img/avatar.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2026/07/03/Java/Javase/%E7%BB%A7%E6%89%BF/" title="继承"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">继承</div></div><div class="info-2"><div class="info-item-1">继承1.认识继承为什么要有继承？ 提高代码的重用性，减少一点重复代码的书写  什么是继承？ Java中提供了一个关键字extends，用这个关键字，可以让一个类与另一个类建立起父子关系。  1234public class B extends A&#123;    //A类称为父类（基类或超类）    //B类称为子类（派生类）&#125;  子类能继承啥？ 子类能继承父类的非私有成员变量（成员变量、成员方法）  继承后对象的创建 子类的对象是由子类、父类共同完成的。   2.权限修饰符什么是权限修饰符？ 就是用来限制类中的成员（成员变量、成员方法、构造器）能够访问的范围。 private：只能本类 缺省(不写任何权限修饰符，默认权限)：本类、同一个包中的类 protected：本类，同一个包的类，子孙类中 public：任意位置    3.继承的特点1)单继承 Java是单继承模式：一个类只能继承一个直接父类  2)多层继承 Java不支持多继承，但支持多层继承  3)祖宗类 Java中所有的类都是Object的子类，Object是所有类的祖宗类 Java中所有类，要么直接继承...</div></div></div></a><a class="pagination-related" href="/2026/07/03/Java/Javase/%E5%B8%B8%E7%94%A8%E7%9A%84API/" title="常用的API"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">常用的API</div></div><div class="info-2"><div class="info-item-1">常用的API1、Math类 Math类包含执行基本数字运算的方法，我们可以使用Math类完成基本的数学运算  常见方法   代码片段 功能描述    public static int abs(int a) 获取参数的绝对值   public static double ceil(double a) 获取大于或等于参数的最小整数   public static double floor(double a) 获取小于或等于参数的最大整数   public static int round(float a) 按照四舍五入返回最接近参数的int类型值   public static int max(int a, int b) 获取两个int值中的较大值   public static int min(int a, int b) 获取两个int值中的较小值   public static double pow(double a, double b) 计算a的b次幂的值   public static double random() 获取一个[0.0,1.0)范围内的随机值    2、Sy...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2026/07/03/Java/Javase/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/" title="网络编程"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-07-03</div><div class="info-item-2">网络编程</div></div><div class="info-2"><div class="info-item-1">网络编程认识网络编程 在网络通信协议下，不同计算机上运行的程序，进行的数据传输  网络编程三要素IP 设备在网络中的地址，是唯一的标识，是分配给上网设备的数字标签  IPv4 互联网通信协议第四版 采用32位地址长度，分成4组  IPv4的地址分类形式 公网地址(万维网使用)和私有地址(局域网使用) 192.168.开头的就是私有地址，范围几位192.168.0.0—192.168.255.255，专门为组织机构内部使用，以此节省IP。  特殊IP地址 127.0.0.1，也可以是localhost：是回送地址也称本地回环地址，也称本机IP，永远只会寻找当前所在本机  IPv6 互联网通信协议第六版 采用128位地址长度，分成8组(冒分十六进制表示法)  InetAddress的使用 此类表示互联网协议(IP)地址     方法名 说明    static InetAddress getByName(String host) 确定主机名称的 IP 地址。主机名称可以是机器名称，也可以是 IP 地址   String getHostName() 获取此 IP 地址的主机名   St...</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">XuX</div><div class="author-info-description">Stay hungry,stay foolish.</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">46</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">119</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">13</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/XuXcode"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/XuXcode" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:841130121@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到我的博客！</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AD%98%E5%82%A8-%E8%AF%BB%E5%86%99%E6%95%B0%E6%8D%AE%E7%9A%84%E6%96%B9%E6%A1%88"><span class="toc-number">1.</span> <span class="toc-text">存储&amp;读写数据的方案</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#File"><span class="toc-number">1.1.</span> <span class="toc-text">File</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#File%E6%8F%90%E4%BE%9B%E7%9A%84%E5%88%A4%E6%96%AD%E6%96%87%E4%BB%B6%E7%B1%BB%E5%9E%8B%E3%80%81%E8%8E%B7%E5%8F%96%E6%96%87%E4%BB%B6%E4%BF%A1%E6%81%AF%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-number">1.1.1.</span> <span class="toc-text">File提供的判断文件类型、获取文件信息的方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#File-%E7%B1%BB%E5%88%9B%E5%BB%BA%E6%96%87%E4%BB%B6%E7%9A%84%E5%8A%9F%E8%83%BD"><span class="toc-number">1.1.1.1.</span> <span class="toc-text">File 类创建文件的功能</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#File-%E7%B1%BB%E5%88%A0%E9%99%A4%E6%96%87%E4%BB%B6%E7%9A%84%E5%8A%9F%E8%83%BD"><span class="toc-number">1.1.1.2.</span> <span class="toc-text">File 类删除文件的功能</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#File-%E7%B1%BB%E6%8F%90%E4%BE%9B%E7%9A%84%E9%81%8D%E5%8E%86%E6%96%87%E4%BB%B6%E5%A4%B9%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-number">1.1.1.3.</span> <span class="toc-text">File 类提供的遍历文件夹的方法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E6%90%9C%E7%B4%A2"><span class="toc-number">1.2.</span> <span class="toc-text">文件搜索</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E9%9B%86"><span class="toc-number">1.3.</span> <span class="toc-text">字符集</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#UTF-8%E5%AD%97%E7%AC%A6%E9%9B%86"><span class="toc-number">1.3.1.</span> <span class="toc-text">UTF-8字符集</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E7%A8%8B%E5%BA%8F%E5%AF%B9%E5%AD%97%E7%AC%A6%E8%BF%9B%E8%A1%8C%E7%BC%96%E7%A0%81%E5%92%8C%E8%A7%A3%E7%A0%81%E6%93%8D%E4%BD%9C%EF%BC%88String%E7%B1%BB%E6%8F%90%E4%BE%9B%E7%9A%84%EF%BC%89"><span class="toc-number">1.3.2.</span> <span class="toc-text">使用程序对字符进行编码和解码操作（String类提供的）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IO%E6%B5%81"><span class="toc-number">1.4.</span> <span class="toc-text">IO流</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%A4%E8%AF%86IO%E6%B5%81"><span class="toc-number">1.4.1.</span> <span class="toc-text">认识IO流</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E8%8A%82%E6%B5%81"><span class="toc-number">1.4.2.</span> <span class="toc-text">字节流</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E5%AD%97%E8%8A%82%E8%BE%93%E5%85%A5%E6%B5%81%E3%80%90FileInputStream%E3%80%91"><span class="toc-number">1.4.2.1.</span> <span class="toc-text">文件字节输入流【FileInputStream】</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%80%E6%AC%A1%E8%AF%BB%E5%8F%96%E5%AE%8C%E5%85%A8%E9%83%A8%E5%AD%97%E8%8A%82"><span class="toc-number">1.4.2.1.1.</span> <span class="toc-text">一次读取完全部字节</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E5%AD%97%E8%8A%82%E8%BE%93%E5%87%BA%E6%B5%81%E3%80%90FileOutputStream%E3%80%91"><span class="toc-number">1.4.2.2.</span> <span class="toc-text">文件字节输出流【FileOutputStream】</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E5%A4%8D%E5%88%B6"><span class="toc-number">1.4.2.3.</span> <span class="toc-text">文件复制</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E6%B5%81"><span class="toc-number">1.4.3.</span> <span class="toc-text">字符流</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E8%BE%93%E5%85%A5%E6%B5%81%E3%80%90Reader%E3%80%91"><span class="toc-number">1.4.3.1.</span> <span class="toc-text">字符输入流【Reader】</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#FileReader%E7%B1%BB"><span class="toc-number">1.4.3.2.</span> <span class="toc-text">FileReader类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E8%BE%93%E5%87%BA%E6%B5%81%E3%80%90Writer%E3%80%91"><span class="toc-number">1.4.3.3.</span> <span class="toc-text">字符输出流【Writer】</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#FileWriter%E7%B1%BB"><span class="toc-number">1.4.3.4.</span> <span class="toc-text">FileWriter类</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%93%E5%86%B2%E6%B5%81"><span class="toc-number">1.4.4.</span> <span class="toc-text">缓冲流</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%97%E8%8A%82%E7%BC%93%E5%86%B2%E6%B5%81"><span class="toc-number">1.4.4.1.</span> <span class="toc-text">字节缓冲流</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E7%BC%93%E5%86%B2%E6%B5%81"><span class="toc-number">1.4.4.2.</span> <span class="toc-text">字符缓冲流</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BD%AC%E6%8D%A2%E6%B5%81"><span class="toc-number">1.4.5.</span> <span class="toc-text">转换流</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#InputStreamReader%E7%B1%BB"><span class="toc-number">1.4.5.1.</span> <span class="toc-text">InputStreamReader类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#OutputStreamWriter%E7%B1%BB"><span class="toc-number">1.4.5.2.</span> <span class="toc-text">OutputStreamWriter类</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BA%8F%E5%88%97%E5%8C%96"><span class="toc-number">1.4.6.</span> <span class="toc-text">序列化</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#ObjectOutputStream%E7%B1%BB"><span class="toc-number">1.4.6.1.</span> <span class="toc-text">ObjectOutputStream类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BA%8F%E5%88%97%E5%8C%96%E6%93%8D%E4%BD%9C"><span class="toc-number">1.4.6.2.</span> <span class="toc-text">序列化操作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ObjectInputStream%E7%B1%BB"><span class="toc-number">1.4.6.3.</span> <span class="toc-text">ObjectInputStream类</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%93%8D%E4%BD%9C1"><span class="toc-number">1.4.6.3.1.</span> <span class="toc-text">反序列化操作1</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%93%8D%E4%BD%9C2"><span class="toc-number">1.4.6.3.2.</span> <span class="toc-text">反序列化操作2</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8E%8B%E7%BC%A9%E6%B5%81%E5%92%8C%E8%A7%A3%E5%8E%8B%E7%BC%A9%E6%B5%81"><span class="toc-number">1.4.7.</span> <span class="toc-text">压缩流和解压缩流</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%94%97-%E7%9B%B8%E5%85%B3%E9%93%BE%E6%8E%A5"><span class="toc-number">1.5.</span> <span class="toc-text">🔗 相关链接</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/03/Java/Java%20AI/Spring%20AI/" title="Spring AI">Spring AI</a><time datetime="2026-07-02T16:00:00.000Z" title="发表于 2026-07-03 00:00:00">2026-07-03</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/03/Java/Javase/API(%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F)/" title="API(正则表达式)">API(正则表达式)</a><time datetime="2026-07-02T16:00:00.000Z" title="发表于 2026-07-03 00:00:00">2026-07-03</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/03/Java/Java%20Web%E5%BC%80%E5%8F%91%E7%9F%A5%E8%AF%86%E5%BA%93/" title="Java Web开发知识库">Java Web开发知识库</a><time datetime="2026-07-02T16:00:00.000Z" title="发表于 2026-07-03 00:00:00">2026-07-03</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/03/Java/Javase/%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/" title="动态代理">动态代理</a><time datetime="2026-07-02T16:00:00.000Z" title="发表于 2026-07-03 00:00:00">2026-07-03</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/03/Java/Javase/GUI%E7%95%8C%E9%9D%A2%E7%BC%96%E7%A8%8B/" title="GUI界面编程">GUI界面编程</a><time datetime="2026-07-02T16:00:00.000Z" title="发表于 2026-07-03 00:00:00">2026-07-03</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By XuX</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.3</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
