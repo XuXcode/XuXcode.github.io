@@ -7,7 +7,6 @@ categories:
 tags:
   - web/linux
   - Linux
-  - 常用命令
   - JDK部署
 ---
 # Linux

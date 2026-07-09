@@ -7,7 +7,6 @@ categories:
 tags:
   - java/collection
   - java/api
-  - 集合框架
   - Collection
   - List
   - Set

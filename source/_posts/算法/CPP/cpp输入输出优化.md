@@ -7,7 +7,6 @@ categories:
 tags:
   - 算法
   - CPP
-  - 输入输出
   - ACM
 
 ---

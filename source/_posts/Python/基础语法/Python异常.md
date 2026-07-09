@@ -6,8 +6,6 @@ categories:
   - 基础语法
 tags:
   - Python
-  - 基础语法
-  - 异常处理
 
 ---
 # Python异常

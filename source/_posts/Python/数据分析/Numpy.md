@@ -6,7 +6,6 @@ categories:
   - 数据分析
 tags:
   - Python
-  - 数据分析
   - NumPy
 
 ---

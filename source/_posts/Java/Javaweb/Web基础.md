@@ -11,7 +11,6 @@ tags:
   - HTTP
   - IOC
   - DI
-  - 三层架构
 ---
 # Web基础
 

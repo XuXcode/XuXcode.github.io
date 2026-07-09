@@ -7,7 +7,6 @@ categories:
 tags:
   - web/maven
   - Maven
-  - 依赖管理
   - JUnit
 ---
 # Maven

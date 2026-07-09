@@ -8,7 +8,6 @@ tags:
   - web/project
   - web/springboot
   - web/mybatis
-  - Web后端实战
   - Tlias
   - Restful
 ---

@@ -8,7 +8,6 @@ tags:
   - web/mysql
   - MySQL
   - SQL
-  - 多表查询
   - 事务
 ---
 # MySQL

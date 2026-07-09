@@ -8,7 +8,6 @@ tags:
   - java/basic
   - GUI
   - Swing
-  - 事件监听
 ---
 # GUI界面编程（了解）
 

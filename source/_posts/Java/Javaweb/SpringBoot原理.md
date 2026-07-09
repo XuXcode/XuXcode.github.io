@@ -8,7 +8,6 @@ tags:
   - web/springboot
   - SpringBoot原理
   - Bean作用域
-  - 配置优先级
 ---
 # SpringBoot原理
 
