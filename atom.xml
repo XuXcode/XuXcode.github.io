@@ -269,27 +269,6 @@
     <author>
       <name>XuX</name>
     </author>
-    <category term="数据结构与算法" scheme="https://xuxcode.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/"/>
-    <category term="Java" scheme="https://xuxcode.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/Java/"/>
-    <category term="algorithm" scheme="https://xuxcode.github.io/tags/algorithm/"/>
-    <category term="时间复杂度" scheme="https://xuxcode.github.io/tags/%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/"/>
-    <category term="大O" scheme="https://xuxcode.github.io/tags/%E5%A4%A7O/"/>
-    <content>
-      <![CDATA[<h1 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h1><p>很好，这个是很多做Data Structures和Algorithms题目时常用的 “3秒判断循环时间复杂度口诀”。掌握后很多选择题基本可以秒做。⚡</p><hr><p>一、第一步：先看 n 在哪里出现</p><p>核心原则：</p><p>情况时间复杂度</p><p>没有 nO(1)<br>一层 n 循环O(n)<br>两层 n 循环O(n²)<br>三层 n 循环O(n³)</p><p>例如：</p><p>for(i&#x3D;0;i&lt;n;i++)</p><p>就是：</p><p>O(n)</p><p>如果是：</p><p>for(i&#x3D;0;i&lt;n;i++)<br>   for(j&#x3D;0;j&lt;n;j++)</p><p>就是：</p><p>O(n²)</p><hr><p>二、第二步：看变量是“常数”还是“规模”</p><p>考试最容易错的是这个。</p><p>情况1：变量是常数</p><p>x &#x3D; 90;<br>y &#x3D; 100;</p><p>while(y &gt; 0)<br>    y–;</p><p>循环次数：</p><p>100 次</p><p>所以：</p><p>O(1)</p><p>因为 100 是常数，不是规模 n。</p><hr><p>情况2：变量来自输入</p><p>如果是：</p><p>y &#x3D; n;</p><p>while(y &gt; 0)<br>    y–;</p><p>循环次数：</p><p>n 次</p><p>所以：</p><p>O(n)</p><hr><p>三、第三步：看变量增长方式</p><p>① 每次 +1 或 -1</p><p>i++<br>i–</p><p>复杂度：</p><p>O(n)</p><p>例子：</p><p>for(i&#x3D;0;i&lt;n;i++)</p><hr><p>② 每次乘或除</p><p>i &#x3D; i * 2<br>i &#x3D; i &#x2F; 2</p><p>复杂度：</p><p>O(log n)</p><p>例子：</p><p>for(i&#x3D;1;i&lt;n;i&#x3D;i*2)</p><p>循环次数：</p><p>1 → 2 → 4 → 8 → … → n</p><p>所以：</p><p>O(log n)</p><hr><p>四、第四步：嵌套循环看乘法</p><p>例子：</p><p>for(i&#x3D;0;i&lt;n;i++)<br>   for(j&#x3D;0;j&lt;n;j++)</p><p>复杂度：</p><p>n × n &#x3D; O(n²)</p><p>如果是：</p><p>for(i&#x3D;1;i&lt;n;i&#x3D;i*2)<br>   for(j&#x3D;0;j&lt;n;j++)</p><p>复杂度：</p><p>log n × n &#x3D; O(n log n)</p><hr><p>五、一个考试最爱出的陷阱题</p><p>for(i&#x3D;0;i&lt;n;i++)<br>   for(j&#x3D;0;j&lt;i;j++)</p><p>很多人以为：</p><p>O(n²)</p><p>其实严格是：</p><p>1 + 2 + 3 + … + n</p><p>结果：</p><p>n(n+1)&#x2F;2</p><p>所以仍然是：</p><p>O(n²)</p><p>（常数忽略）</p><hr><p>六、再看你刚才那题为什么是 O(1)</p><p>因为：</p><p>x &#x3D; 90<br>y &#x3D; 100</p><p>都是：</p><p>常数</p><p>循环次数：</p><p>≈1000</p><p>仍然是：</p><p>常数</p><p>所以：</p><p>O(1)</p><hr><p>七、考试最常见复杂度总结（一定要背）</p><p>复杂度常见代码</p><p>O(1)常数次操作<br>O(log n)i*&#x3D;2<br>O(n)单循环<br>O(n log n)log循环嵌套n<br>O(n²)双循环<br>O(n³)三循环</p><hr><p>如果你愿意，我可以再给你 5道数据结构时间复杂度经典选择题（考研&#x2F;期末常见那种），很多人第一次都会错，我可以教你 10秒秒杀的方法。🚀</p>]]>
-    </content>
-    <id>https://xuxcode.github.io/2025/12/19/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/Java/%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/</id>
-    <link href="https://xuxcode.github.io/2025/12/19/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/Java/%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/"/>
-    <published>2025-12-18T16:00:00.000Z</published>
-    <summary>
-      <![CDATA[<h1 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h1><p>很好，这个是很多做Data Structures和Algorithms题目时常用的 “3秒判断循环时间复杂度口诀”。]]>
-    </summary>
-    <title>时间复杂度</title>
-    <updated>2026-07-05T07:25:40.647Z</updated>
-  </entry>
-  <entry>
-    <author>
-      <name>XuX</name>
-    </author>
     <category term="Java" scheme="https://xuxcode.github.io/categories/Java/"/>
     <category term="Java AI" scheme="https://xuxcode.github.io/categories/Java/Java-AI/"/>
     <category term="ai/spring-ai" scheme="https://xuxcode.github.io/tags/ai-spring-ai/"/>
@@ -442,5 +421,27 @@
     </summary>
     <title>反射</title>
     <updated>2026-07-05T07:25:40.615Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>XuX</name>
+    </author>
+    <category term="Java" scheme="https://xuxcode.github.io/categories/Java/"/>
+    <category term="Javase" scheme="https://xuxcode.github.io/categories/Java/Javase/"/>
+    <category term="java/basic" scheme="https://xuxcode.github.io/tags/java-basic/"/>
+    <category term="java/oop" scheme="https://xuxcode.github.io/tags/java-oop/"/>
+    <category term="多态" scheme="https://xuxcode.github.io/tags/%E5%A4%9A%E6%80%81/"/>
+    <category term="instanceof" scheme="https://xuxcode.github.io/tags/instanceof/"/>
+    <content>
+      <![CDATA[<h1 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h1><h2 id="1-认识多态"><a href="#1-认识多态" class="headerlink" title="1.认识多态"></a>1.认识多态</h2><h3 id="什么是多态？"><a href="#什么是多态？" class="headerlink" title="什么是多态？"></a>什么是多态？</h3><ul><li>多态是在<font color=red>继承&#x2F;实现</font>情况下的一种现象，表现为：对象多态、行为多态。</li></ul><h4 id="多态的具体代码体现："><a href="#多态的具体代码体现：" class="headerlink" title="多态的具体代码体现："></a><strong>多态的具体代码体现：</strong></h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">People p1= <span class="keyword">new</span> <span class="title class_">Student</span>();</span><br><span class="line">r1.run();</span><br><span class="line"></span><br><span class="line">People p2=<span class="keyword">new</span> <span class="title class_">Teacher</span>();</span><br><span class="line">p2.run();</span><br></pre></td></tr></table></figure><h3 id="多态的前提："><a href="#多态的前提：" class="headerlink" title="多态的前提："></a>多态的前提：</h3><ul><li>有<font color=red>继承&#x2F;实现</font>关系；</li><li>存在父类引用子类对象；</li><li><font color=red>存在方法重写</font>。&#x2F;&#x2F;导致每个对象的行为不一样</li></ul><h3 id="多态的一个注意事项"><a href="#多态的一个注意事项" class="headerlink" title="多态的一个注意事项"></a>多态的一个注意事项</h3><ul><li>多态是对象、行为的多态</li><li>Java中的属性(成员变量)不谈多态。<ul><li>对于方法：编译看左边，运行看右边；</li><li>对于成员变量：编译看左边，运行也看左边。</li></ul></li></ul><hr><h2 id="2-多态的好处"><a href="#2-多态的好处" class="headerlink" title="2.多态的好处"></a>2.多态的好处</h2><h3 id="使用多态的好处"><a href="#使用多态的好处" class="headerlink" title="使用多态的好处"></a>使用多态的好处</h3><ul><li><p>在多态形式下，右边对象是解耦合(模块化)的，更便于扩展和维护</p></li><li><p>定义方法时，使用父亲类型的形参，可以接收一切子类对象，扩展性更强、更便利。</p></li></ul><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Test</span> &#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        Animal a1=<span class="keyword">new</span> <span class="title class_">Sheep</span>();</span><br><span class="line">        a1.run();</span><br><span class="line">        go(a1);</span><br><span class="line">        Animal a2=<span class="keyword">new</span> <span class="title class_">Wolf</span>();</span><br><span class="line">        a2.run();</span><br><span class="line">        go(a2);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">go</span><span class="params">(Animal a)</span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;开始。。。&quot;</span>);</span><br><span class="line">        a.run();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="多态下会产生的一个问题"><a href="#多态下会产生的一个问题" class="headerlink" title="多态下会产生的一个问题"></a>多态下会产生的一个问题</h3><ul><li>多态下不能使用子类的独有功能。</li></ul><hr><h2 id="3-多态下的类型转换"><a href="#3-多态下的类型转换" class="headerlink" title="3.多态下的类型转换"></a>3.多态下的类型转换</h2><h3 id="转换形式："><a href="#转换形式：" class="headerlink" title="转换形式："></a>转换形式：</h3><ul><li>自动类型转换：父类 变量名 &#x3D;new 子类();</li></ul><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">People p=<span class="keyword">new</span> <span class="title class_">Teacher</span>();</span><br></pre></td></tr></table></figure><ul><li>强制类型转换：<font color=red>子类 变量名&#x3D;(子类)父类变量</font><ul><li>解决多态下调用子类独有功能。</li></ul></li></ul><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Teacher t=(Teacher)p;</span><br></pre></td></tr></table></figure><h3 id="强制转换的一个注意事项："><a href="#强制转换的一个注意事项：" class="headerlink" title="强制转换的一个注意事项："></a>强制转换的一个注意事项：</h3><ul><li>存在继承&#x2F;实现关系就可以在编译阶段进行强制类型转换，编译阶段不会报错。</li><li>运行时，如果发现对象的真实类型与强转后的类型不同，就会类型转换异常(ClassCastException)的错误出来。</li></ul><h5 id="强转前，Java建议："><a href="#强转前，Java建议：" class="headerlink" title="强转前，Java建议："></a>强转前，Java建议：</h5><ul><li>使用 <strong>instanceof</strong> 关键字，判断当前对象的真实类型，在进行强转。</li></ul><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">p <span class="keyword">instanceof</span> Student</span><br><span class="line"><span class="comment">//对象 instanceif 类型</span></span><br></pre></td></tr></table></figure><h2 id="🔗-相关链接"><a href="#🔗-相关链接" class="headerlink" title="🔗 相关链接"></a>🔗 相关链接</h2><ul><li>[[Java&#x2F;Javase&#x2F;类的基本语法|类的基本语法]] — Java 面向对象基础</li><li>[[Java&#x2F;Javase&#x2F;继承|继承]] — 多态的前提：继承关系</li><li>[[Java&#x2F;Javase&#x2F;面向对象高级1|面向对象高级1]] — 抽象类、接口与多态</li></ul><hr>]]>
+    </content>
+    <id>https://xuxcode.github.io/2025/12/19/Java/Javase/%E5%A4%9A%E6%80%81/</id>
+    <link href="https://xuxcode.github.io/2025/12/19/Java/Javase/%E5%A4%9A%E6%80%81/"/>
+    <published>2025-12-18T16:00:00.000Z</published>
+    <summary>
+      <![CDATA[<h1 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h1><h2 id="1-认识多态"><a href="#1-认识多态" class="headerlink" title="1.认识多态"></a>1]]>
+    </summary>
+    <title>多态</title>
+    <updated>2026-07-05T07:25:40.616Z</updated>
   </entry>
 </feed>
