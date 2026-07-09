@@ -11,7 +11,7 @@
   <rights>All rights reserved 2026, XuX</rights>
   <subtitle>欢迎来到我的博客</subtitle>
   <title>XuX的博客</title>
-  <updated>2026-07-05T07:08:16.977Z</updated>
+  <updated>2026-07-09T12:20:36.865Z</updated>
   <entry>
     <author>
       <name>XuX</name>
@@ -28,12 +28,9 @@
     <id>https://xuxcode.github.io/2026/07/03/Java/Java%20Web%E5%BC%80%E5%8F%91%E7%9F%A5%E8%AF%86%E5%BA%93/</id>
     <link href="https://xuxcode.github.io/2026/07/03/Java/Java%20Web%E5%BC%80%E5%8F%91%E7%9F%A5%E8%AF%86%E5%BA%93/"/>
     <published>2026-07-02T16:00:00.000Z</published>
-    <summary>
-      <![CDATA[<h1 id="Java-Web-开发知识库"><a href="#Java-Web-开发知识库" class="headerlink" title="Java Web 开发知识库"></a>Java Web 开发知识库</h1><blockquote>
-<p>🎯 这是一个完整]]>
-    </summary>
+    <summary>完整的 Java Web 开发知识体系，从 Java 基础到框架实战，按学习路径系统整理。</summary>
     <title>Java Web开发知识库</title>
-    <updated>2026-07-05T07:08:16.977Z</updated>
+    <updated>2026-07-09T12:20:36.865Z</updated>
   </entry>
   <entry>
     <author>
@@ -48,12 +45,9 @@
     <id>https://xuxcode.github.io/2026/07/03/Java/Java%E9%A1%B9%E7%9B%AE/%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96/%E3%80%90%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96%E9%A1%B9%E7%9B%AE%E6%97%A5%E8%AE%B0%E3%80%91Day1/</id>
     <link href="https://xuxcode.github.io/2026/07/03/Java/Java%E9%A1%B9%E7%9B%AE/%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96/%E3%80%90%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96%E9%A1%B9%E7%9B%AE%E6%97%A5%E8%AE%B0%E3%80%91Day1/"/>
     <published>2026-07-02T16:00:00.000Z</published>
-    <summary>
-      <![CDATA[<h1 id="【苍穹外卖-项目日记】Day1"><a href="#【苍穹外卖-项目日记】Day1" class="headerlink" title="【苍穹外卖|项目日记】Day1"></a>【苍穹外卖|项目日记】Day1</h1><blockquote>
-<p>完成了Ja]]>
-    </summary>
+    <summary>苍穹外卖项目实战日记第一天，记录项目初始化、环境搭建与基础配置过程。</summary>
     <title>【苍穹外卖项目日记】Day1</title>
-    <updated>2026-07-05T07:08:17.008Z</updated>
+    <updated>2026-07-09T12:20:36.900Z</updated>
   </entry>
   <entry>
     <author>
@@ -68,11 +62,9 @@
     <id>https://xuxcode.github.io/2026/07/03/Java/Java%E9%A1%B9%E7%9B%AE/%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96/%E3%80%90%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96%E9%A1%B9%E7%9B%AE%E6%97%A5%E8%AE%B0%E3%80%91Day2/</id>
     <link href="https://xuxcode.github.io/2026/07/03/Java/Java%E9%A1%B9%E7%9B%AE/%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96/%E3%80%90%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96%E9%A1%B9%E7%9B%AE%E6%97%A5%E8%AE%B0%E3%80%91Day2/"/>
     <published>2026-07-02T16:00:00.000Z</published>
-    <summary>
-      <![CDATA[<h1 id="【苍穹外卖-项目日记】Day2"><a href="#【苍穹外卖-项目日记】Day2" class="headerlink" title="【苍穹外卖|项目日记】Day2"></a>【苍穹外卖|项目日记】Day2</h1><h3 id="今日完成的任务："><a]]>
-    </summary>
+    <summary>苍穹外卖项目实战日记第二天，记录核心功能模块的开发与实现。</summary>
     <title>【苍穹外卖项目日记】Day2</title>
-    <updated>2026-07-05T07:08:17.008Z</updated>
+    <updated>2026-07-09T12:20:36.901Z</updated>
   </entry>
   <entry>
     <author>
@@ -88,11 +80,9 @@
     <id>https://xuxcode.github.io/2026/06/21/Python/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/Jupyter%E7%AC%94%E8%AE%B0%E6%9C%AC%E7%9A%84%E4%BD%BF%E7%94%A8/</id>
     <link href="https://xuxcode.github.io/2026/06/21/Python/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/Jupyter%E7%AC%94%E8%AE%B0%E6%9C%AC%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
     <published>2026-06-20T16:00:00.000Z</published>
-    <summary>
-      <![CDATA[<h1 id="Jupyter笔记本的使用"><a href="#Jupyter笔记本的使用" class="headerlink" title="Jupyter笔记本的使用"></a>Jupyter笔记本的使用</h1><h2 id="Jupyter快捷键"><a href="]]>
-    </summary>
+    <summary>本文讲解 Jupyter Notebook 的使用方法，包括单元格操作与内核管理。</summary>
     <title>Jupyter笔记本的使用</title>
-    <updated>2026-07-09T11:52:29.790Z</updated>
+    <updated>2026-07-09T12:20:36.910Z</updated>
   </entry>
   <entry>
     <author>
@@ -108,11 +98,9 @@
     <id>https://xuxcode.github.io/2026/06/21/Python/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/Numpy/</id>
     <link href="https://xuxcode.github.io/2026/06/21/Python/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/Numpy/"/>
     <published>2026-06-20T16:00:00.000Z</published>
-    <summary>
-      <![CDATA[<h1 id="Numpy"><a href="#Numpy" class="headerlink" title="Numpy"></a>Numpy</h1><h2 id="Numpy介绍"><a href="#Numpy介绍" class="headerlink" title=]]>
-    </summary>
+    <summary>本文讲解 NumPy 科学计算库，包括 ndarray、矩阵运算与广播机制。</summary>
     <title>Numpy</title>
-    <updated>2026-07-09T11:52:29.791Z</updated>
+    <updated>2026-07-09T12:20:36.911Z</updated>
   </entry>
   <entry>
     <author>
@@ -128,11 +116,9 @@
     <id>https://xuxcode.github.io/2026/06/21/Python/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/Pandas/</id>
     <link href="https://xuxcode.github.io/2026/06/21/Python/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/Pandas/"/>
     <published>2026-06-20T16:00:00.000Z</published>
-    <summary>
-      <![CDATA[<h1 id="Pandas"><a href="#Pandas" class="headerlink" title="Pandas"></a>Pandas</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"><]]>
-    </summary>
+    <summary>本文讲解 Pandas 数据分析库，包括 DataFrame、数据清洗与数据对齐。</summary>
     <title>Pandas</title>
-    <updated>2026-07-09T11:52:29.792Z</updated>
+    <updated>2026-07-09T12:20:36.912Z</updated>
   </entry>
   <entry>
     <author>
@@ -149,11 +135,9 @@
     <id>https://xuxcode.github.io/2026/06/21/Python/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/%E6%95%B0%E6%8D%AE%E7%9A%84%E5%8F%AF%E8%A7%86%E5%8C%96/</id>
     <link href="https://xuxcode.github.io/2026/06/21/Python/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/%E6%95%B0%E6%8D%AE%E7%9A%84%E5%8F%AF%E8%A7%86%E5%8C%96/"/>
     <published>2026-06-20T16:00:00.000Z</published>
-    <summary>
-      <![CDATA[<h1 id="数据的可视化"><a href="#数据的可视化" class="headerlink" title="数据的可视化"></a>数据的可视化</h1>]]>
-    </summary>
+    <summary>本文讲解 Python 数据可视化，包括 Matplotlib 绘图与图表定制。</summary>
     <title>数据的可视化</title>
-    <updated>2026-07-09T11:52:29.793Z</updated>
+    <updated>2026-07-09T12:20:36.913Z</updated>
   </entry>
   <entry>
     <author>
@@ -168,11 +152,9 @@
     <id>https://xuxcode.github.io/2026/05/13/Python/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/Python%E5%BC%82%E5%B8%B8/</id>
     <link href="https://xuxcode.github.io/2026/05/13/Python/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/Python%E5%BC%82%E5%B8%B8/"/>
     <published>2026-05-12T16:00:00.000Z</published>
-    <summary>
-      <![CDATA[<h1 id="Python异常"><a href="#Python异常" class="headerlink" title="Python异常"></a>Python异常</h1><h2 id="什么是异常"><a href="#什么是异常" class="headerlink]]>
-    </summary>
+    <summary>本文讲解 Python 异常处理机制，包括 try/except、自定义异常与异常链。</summary>
     <title>Python异常</title>
-    <updated>2026-07-09T11:52:29.784Z</updated>
+    <updated>2026-07-09T12:20:36.902Z</updated>
   </entry>
   <entry>
     <author>
@@ -187,11 +169,9 @@
     <id>https://xuxcode.github.io/2026/04/21/Python/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/</id>
     <link href="https://xuxcode.github.io/2026/04/21/Python/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/"/>
     <published>2026-04-20T16:00:00.000Z</published>
-    <summary>
-      <![CDATA[<h1 id="面向对象"><a href="#面向对象" class="headerlink" title="面向对象"></a>面向对象</h1><h2 id="类的定义"><a href="#类的定义" class="headerlink" title="类的定义"></a]]>
-    </summary>
+    <summary>本文讲解 Python 面向对象编程，包括类、继承、多态与魔术方法。</summary>
     <title>面向对象</title>
-    <updated>2026-07-09T11:52:29.789Z</updated>
+    <updated>2026-07-09T12:20:36.908Z</updated>
   </entry>
   <entry>
     <author>
@@ -207,12 +187,9 @@
     <id>https://xuxcode.github.io/2026/04/18/Python/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/Python%E6%A8%A1%E5%9D%97/</id>
     <link href="https://xuxcode.github.io/2026/04/18/Python/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/Python%E6%A8%A1%E5%9D%97/"/>
     <published>2026-04-17T16:00:00.000Z</published>
-    <summary>
-      <![CDATA[<h1 id="Python模块"><a href="#Python模块" class="headerlink" title="Python模块"></a>Python模块</h1><ul>
-<li>介绍：Python模块(module)：一个.py文件就是一个模块，模块是Pyt]]>
-    </summary>
+    <summary>本文讲解 Python 模块与包的使用，包括导入机制与包结构。</summary>
     <title>Python模块</title>
-    <updated>2026-07-09T11:52:29.785Z</updated>
+    <updated>2026-07-09T12:20:36.904Z</updated>
   </entry>
   <entry>
     <author>
@@ -228,11 +205,9 @@
     <id>https://xuxcode.github.io/2026/04/17/Python/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/%E5%87%BD%E6%95%B0/</id>
     <link href="https://xuxcode.github.io/2026/04/17/Python/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/%E5%87%BD%E6%95%B0/"/>
     <published>2026-04-16T16:00:00.000Z</published>
-    <summary>
-      <![CDATA[<h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h1><h2 id="什么是函数"><a href="#什么是函数" class="headerlink" title="什么是函数"></a>什么是函]]>
-    </summary>
+    <summary>本文讲解 Python 函数的定义与使用，包括参数、返回值、Lambda 与装饰器。</summary>
     <title>函数</title>
-    <updated>2026-07-09T11:52:29.786Z</updated>
+    <updated>2026-07-09T12:20:36.905Z</updated>
   </entry>
   <entry>
     <author>
@@ -247,11 +222,9 @@
     <id>https://xuxcode.github.io/2026/04/16/Python/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/%E6%95%B0%E6%8D%AE%E5%AE%B9%E5%99%A8/</id>
     <link href="https://xuxcode.github.io/2026/04/16/Python/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/%E6%95%B0%E6%8D%AE%E5%AE%B9%E5%99%A8/"/>
     <published>2026-04-15T16:00:00.000Z</published>
-    <summary>
-      <![CDATA[<h1 id="数据容器"><a href="#数据容器" class="headerlink" title="数据容器"></a>数据容器</h1><h2 id="列表-list"><a href="#列表-list" class="headerlink" title="列表(]]>
-    </summary>
+    <summary>本文讲解 Python 数据容器，包括列表、元组、字典与集合的特性与操作。</summary>
     <title>数据容器</title>
-    <updated>2026-07-09T11:52:29.788Z</updated>
+    <updated>2026-07-09T12:20:36.907Z</updated>
   </entry>
   <entry>
     <author>
@@ -267,11 +240,9 @@
     <id>https://xuxcode.github.io/2025/12/19/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/Java/%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/</id>
     <link href="https://xuxcode.github.io/2025/12/19/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/Java/%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/"/>
     <published>2025-12-18T16:00:00.000Z</published>
-    <summary>
-      <![CDATA[<h1 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h1><p>很好，这个是很多做Data Structures和Algorithms题目时常用的 “3秒判断循环时间复杂度口诀”。]]>
-    </summary>
+    <summary>本文讲解算法时间复杂度的概念与计算方法，包括大 O 表示法。</summary>
     <title>时间复杂度</title>
-    <updated>2026-07-09T11:52:29.795Z</updated>
+    <updated>2026-07-09T12:20:36.914Z</updated>
   </entry>
   <entry>
     <author>
@@ -290,11 +261,9 @@
     <id>https://xuxcode.github.io/2025/12/19/Java/Java%20AI/Spring%20AI/</id>
     <link href="https://xuxcode.github.io/2025/12/19/Java/Java%20AI/Spring%20AI/"/>
     <published>2025-12-18T16:00:00.000Z</published>
-    <summary>
-      <![CDATA[<h1 id="Spring-AI"><a href="#Spring-AI" class="headerlink" title="Spring AI"></a>Spring AI</h1><h2 id="AI应用开发技术架构"><a href="#AI应用开发技术架构" cla]]>
-    </summary>
+    <summary>本文讲解 Spring AI 框架的使用，涵盖 ChatClient、RAG（检索增强生成）、Agent 等核心功能。</summary>
     <title>Spring AI</title>
-    <updated>2026-07-05T07:25:40.604Z</updated>
+    <updated>2026-07-09T12:20:36.862Z</updated>
   </entry>
   <entry>
     <author>
@@ -310,11 +279,9 @@
     <id>https://xuxcode.github.io/2025/12/19/Java/Javase/API(%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F)/</id>
     <link href="https://xuxcode.github.io/2025/12/19/Java/Javase/API(%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F)/"/>
     <published>2025-12-18T16:00:00.000Z</published>
-    <summary>
-      <![CDATA[<h1 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概]]>
-    </summary>
+    <summary>本文讲解 Java 正则表达式的语法与 API 使用，包括 Pattern、Matcher 类等核心操作。</summary>
     <title>API(正则表达式)</title>
-    <updated>2026-07-09T11:52:29.760Z</updated>
+    <updated>2026-07-09T12:20:36.867Z</updated>
   </entry>
   <entry>
     <author>
@@ -335,11 +302,9 @@
     <id>https://xuxcode.github.io/2025/12/19/Java/Javase/Java%E5%8A%A0%E5%BC%BA02%E2%80%94%E2%80%94%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6/</id>
     <link href="https://xuxcode.github.io/2025/12/19/Java/Javase/Java%E5%8A%A0%E5%BC%BA02%E2%80%94%E2%80%94%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6/"/>
     <published>2025-12-18T16:00:00.000Z</published>
-    <summary>
-      <![CDATA[<h1 id="Java加强02——集合框架"><a href="#Java加强02——集合框架" class="headerlink" title="Java加强02——集合框架"></a>Java加强02——集合框架</h1><h2 id="认识集合"><a href="#认]]>
-    </summary>
+    <summary>Java 加强课程第二部分，深入讲解 Collection 集合框架，包括 List、Set、Map 与 Stream API。</summary>
     <title>Java加强02——集合框架</title>
-    <updated>2026-07-09T11:52:29.765Z</updated>
+    <updated>2026-07-09T12:20:36.870Z</updated>
   </entry>
   <entry>
     <author>
@@ -356,11 +321,9 @@
     <id>https://xuxcode.github.io/2025/12/19/Java/Javase/GUI%E7%95%8C%E9%9D%A2%E7%BC%96%E7%A8%8B/</id>
     <link href="https://xuxcode.github.io/2025/12/19/Java/Javase/GUI%E7%95%8C%E9%9D%A2%E7%BC%96%E7%A8%8B/"/>
     <published>2025-12-18T16:00:00.000Z</published>
-    <summary>
-      <![CDATA[<h1 id="GUI界面编程（了解）"><a href="#GUI界面编程（了解）" class="headerlink" title="GUI界面编程（了解）"></a>GUI界面编程（了解）</h1><h2 id="Swing"><a href="#Swing" class]]>
-    </summary>
+    <summary>本文介绍 Java GUI 界面编程，重点讲解 Swing 组件与事件监听机制。</summary>
     <title>GUI界面编程</title>
-    <updated>2026-07-09T11:52:29.763Z</updated>
+    <updated>2026-07-09T12:20:36.868Z</updated>
   </entry>
   <entry>
     <author>
@@ -378,11 +341,9 @@
     <id>https://xuxcode.github.io/2025/12/19/Java/Javase/Java%E5%8A%A0%E5%BC%BA01/</id>
     <link href="https://xuxcode.github.io/2025/12/19/Java/Javase/Java%E5%8A%A0%E5%BC%BA01/"/>
     <published>2025-12-18T16:00:00.000Z</published>
-    <summary>
-      <![CDATA[<h1 id="Java加强01"><a href="#Java加强01" class="headerlink" title="Java加强01"></a>Java加强01</h1><h2 id="异常"><a href="#异常" class="headerlink" titl]]>
-    </summary>
+    <summary>Java 加强课程第一部分，涵盖异常处理、泛型、包装类等进阶知识点。</summary>
     <title>Java加强01</title>
-    <updated>2026-07-05T07:25:40.610Z</updated>
+    <updated>2026-07-09T12:20:36.870Z</updated>
   </entry>
   <entry>
     <author>
@@ -399,11 +360,9 @@
     <id>https://xuxcode.github.io/2025/12/19/Java/Javase/%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/</id>
     <link href="https://xuxcode.github.io/2025/12/19/Java/Javase/%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/"/>
     <published>2025-12-18T16:00:00.000Z</published>
-    <summary>
-      <![CDATA[<h1 id="动态代理"><a href="#动态代理" class="headerlink" title="动态代理"></a>动态代理</h1><h2 id="什么是动态代理"><a href="#什么是动态代理" class="headerlink" title="什么是]]>
-    </summary>
+    <summary>本文讲解 Java 动态代理机制，包括 Proxy 类与 InvocationHandler 接口的使用。</summary>
     <title>动态代理</title>
-    <updated>2026-07-09T11:52:29.766Z</updated>
+    <updated>2026-07-09T12:20:36.873Z</updated>
   </entry>
   <entry>
     <author>
@@ -420,10 +379,8 @@
     <id>https://xuxcode.github.io/2025/12/19/Java/Javase/%E5%8F%8D%E5%B0%84/</id>
     <link href="https://xuxcode.github.io/2025/12/19/Java/Javase/%E5%8F%8D%E5%B0%84/"/>
     <published>2025-12-18T16:00:00.000Z</published>
-    <summary>
-      <![CDATA[<h1 id="反射"><a href="#反射" class="headerlink" title="反射"></a>反射</h1><h2 id="认识反射"><a href="#认识反射" class="headerlink" title="认识反射"></a>认识反射</h]]>
-    </summary>
+    <summary>本文深入讲解 Java 反射机制，包括 Class 类、获取成员变量、方法调用等核心操作。</summary>
     <title>反射</title>
-    <updated>2026-07-05T07:25:40.615Z</updated>
+    <updated>2026-07-09T12:20:36.874Z</updated>
   </entry>
 </feed>
