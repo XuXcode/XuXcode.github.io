@@ -1,6 +1,7 @@
 ---
 title: API(正则表达式)
 date: 2025-12-19
+description: 本文讲解 Java 正则表达式的语法与 API 使用，包括 Pattern、Matcher 类等核心操作。
 categories:
   - Java
   - Javase

@@ -1,6 +1,7 @@
 ---
 title: GUI界面编程
 date: 2025-12-19
+description: 本文介绍 Java GUI 界面编程，重点讲解 Swing 组件与事件监听机制。
 categories:
   - Java
   - Javase

@@ -1,6 +1,7 @@
 ---
 title: Maven高级
 date: 2025-12-19
+description: 本文讲解 Maven 高级用法，包括聚合、分模块、私服与依赖管理进阶。
 categories:
   - Java
   - Javaweb

@@ -1,6 +1,7 @@
 ---
 title: Numpy
 date: 2026-06-21
+description: 本文讲解 NumPy 科学计算库，包括 ndarray、矩阵运算与广播机制。
 categories:
   - Python
   - 数据分析

@@ -1,6 +1,7 @@
 ---
 title: Java加强01
 date: 2025-12-19
+description: Java 加强课程第一部分，涵盖异常处理、泛型、包装类等进阶知识点。
 categories:
   - Java
   - Javase

@@ -1,6 +1,7 @@
 ---
 title: 多线程&JUC
 date: 2025-12-19
+description: 本文讲解 Java 多线程与 JUC 并发工具，包括线程池、锁机制与并发集合。
 categories:
   - Java
   - Javase

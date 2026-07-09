@@ -1,6 +1,7 @@
 ---
 title: Python模块
 date: 2026-04-18
+description: 本文讲解 Python 模块与包的使用，包括导入机制与包结构。
 categories:
   - Python
   - 基础语法

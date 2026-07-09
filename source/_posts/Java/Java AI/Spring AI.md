@@ -1,6 +1,7 @@
 ---
 title: Spring AI
 date: 2025-12-19
+description: 本文讲解 Spring AI 框架的使用，涵盖 ChatClient、RAG（检索增强生成）、Agent 等核心功能。
 categories:
   - Java
   - Java AI

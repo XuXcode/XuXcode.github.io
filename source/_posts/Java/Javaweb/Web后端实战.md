@@ -1,6 +1,7 @@
 ---
 title: Web后端实战
 date: 2025-12-19
+description: 本文为 Web 后端实战项目笔记，涵盖三层架构、Cookie/Session、JWT 与跨域处理。
 categories:
   - Java
   - Javaweb

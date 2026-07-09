@@ -1,6 +1,7 @@
 ---
 title: SpringBoot配置文件
 date: 2025-12-19
+description: 本文讲解 Spring Boot 配置文件的使用，包括 properties 与 yml 格式、配置优先级。
 categories:
   - Java
   - Javaweb

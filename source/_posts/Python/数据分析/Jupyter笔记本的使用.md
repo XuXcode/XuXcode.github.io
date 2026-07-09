@@ -1,6 +1,7 @@
 ---
 title: Jupyter笔记本的使用
 date: 2026-06-21
+description: 本文讲解 Jupyter Notebook 的使用方法，包括单元格操作与内核管理。
 categories:
   - Python
   - 数据分析

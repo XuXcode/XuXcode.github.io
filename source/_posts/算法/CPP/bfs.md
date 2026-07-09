@@ -1,6 +1,7 @@
 ---
 title: bfs
 date: 2025-11-07
+description: 本文讲解 BFS（广度优先搜索）算法模板与应用场景。
 categories:
   - 算法
   - CPP

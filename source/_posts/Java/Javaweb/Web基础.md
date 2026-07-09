@@ -1,6 +1,7 @@
 ---
 title: Web基础
 date: 2025-12-19
+description: 本文讲解 Web 开发基础，包括 HTTP 协议、SpringBoot Web 入门与三层架构。
 categories:
   - Java
   - Javaweb

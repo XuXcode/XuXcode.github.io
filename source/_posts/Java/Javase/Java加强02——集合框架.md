@@ -1,6 +1,7 @@
 ---
 title: Java加强02——集合框架
 date: 2025-12-19
+description: Java 加强课程第二部分，深入讲解 Collection 集合框架，包括 List、Set、Map 与 Stream API。
 categories:
   - Java
   - Javase

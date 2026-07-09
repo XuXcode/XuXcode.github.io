@@ -1,6 +1,7 @@
 ---
 title: 【苍穹外卖项目日记】Day1
 date: 2026-07-03
+description: 苍穹外卖项目实战日记第一天，记录项目初始化、环境搭建与基础配置过程。
 categories:
   - Java
   - Java项目

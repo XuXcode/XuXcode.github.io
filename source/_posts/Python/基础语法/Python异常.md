@@ -1,6 +1,7 @@
 ---
 title: Python异常
 date: 2026-05-13
+description: 本文讲解 Python 异常处理机制，包括 try/except、自定义异常与异常链。
 categories:
   - Python
   - 基础语法

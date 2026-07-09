@@ -1,6 +1,7 @@
 ---
 title: Java Web开发知识库
 date: 2026-07-03
+description: 完整的 Java Web 开发知识体系，从 Java 基础到框架实战，按学习路径系统整理。
 categories:
   - Java
 tags:

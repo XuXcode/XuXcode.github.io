@@ -1,6 +1,7 @@
 ---
 title: dfs模板
 date: 2025-11-07
+description: 本文讲解 DFS（深度优先搜索）算法模板与经典应用。
 categories:
   - 算法
   - CPP

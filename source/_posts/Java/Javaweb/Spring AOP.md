@@ -1,6 +1,7 @@
 ---
 title: Spring AOP
 date: 2025-12-19
+description: 本文讲解 Spring AOP 面向切面编程，包括切入点、通知类型与底层动态代理原理。
 categories:
   - Java
   - Javaweb

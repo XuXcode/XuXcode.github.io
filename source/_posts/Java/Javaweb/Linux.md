@@ -1,6 +1,7 @@
 ---
 title: Linux
 date: 2025-12-19
+description: 本文讲解 Linux 操作系统基础，包括常用命令、目录结构与软件安装。
 categories:
   - Java
   - Javaweb

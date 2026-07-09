@@ -1,6 +1,7 @@
 ---
 title: 常用的API
 date: 2025-12-19
+description: 本文整理 Java 常用 API，包括 Math、System、Object、Date 等核心类的使用。
 categories:
   - Java
   - Javase

@@ -1,6 +1,7 @@
 ---
 title: Maven
 date: 2025-12-19
+description: 本文讲解 Maven 项目管理工具的使用，包括依赖管理、生命周期与坐标系统。
 categories:
   - Java
   - Javaweb

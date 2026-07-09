@@ -1,6 +1,7 @@
 ---
 title: MySQL
 date: 2025-12-19
+description: 本文讲解 MySQL 数据库基础，包括 SQL 语法、多表查询、事务与数据类型。
 categories:
   - Java
   - Javaweb

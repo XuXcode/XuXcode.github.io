@@ -1,6 +1,7 @@
 ---
 title: Mybatis
 date: 2025-12-19
+description: 本文讲解 MyBatis 持久层框架的使用，包括动态 SQL、CRUD 操作与配置。
 categories:
   - Java
   - Javaweb

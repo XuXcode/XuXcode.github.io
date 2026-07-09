@@ -1,6 +1,7 @@
 ---
 title: Pandas
 date: 2026-06-21
+description: 本文讲解 Pandas 数据分析库，包括 DataFrame、数据清洗与数据对齐。
 categories:
   - Python
   - 数据分析

@@ -1,6 +1,7 @@
 ---
 title: SpringBoot原理
 date: 2025-12-19
+description: 本文深入讲解 Spring Boot 核心原理，包括自动配置、Bean 作用域与配置优先级。
 categories:
   - Java
   - Javaweb
