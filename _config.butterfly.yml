@@ -190,7 +190,7 @@ subtitle:
    #1 - hitokoto.cn
    #2 - yijuzhan.com
    #3 - jinrishici.com
-  source: jinrishici.com
+  source: false
   # 如果关闭打字机效果，副标题将仅显示 sub 的第一行内容
   sub: 
     - 今日事&#44;今日毕
@@ -519,11 +519,11 @@ wordcount:
 # 不蒜子 PV / UV 统计
 busuanzi:
   # 网站 UV 统计
-  site_uv: true
+  site_uv: false
   # 网站 PV 统计
-  site_pv: true
+  site_pv: false
   # 页面 PV 统计
-  page_pv: true
+  page_pv: false
 
 # --------------------------------------
 # 数学公式设置
@@ -568,6 +568,8 @@ search:
   local_search:
     # 页面加载时预加载搜索数据
     preload: false
+    # 懒加载：用户点击搜索框时才加载搜索脚本
+    lazyload: true
     # 每篇文章显示的顶部 n 个搜索结果，设置为 -1 显示所有结果
     top_n_per_article: 1
     # 将 HTML 字符串反转义为可读内容
@@ -868,11 +870,6 @@ ad:
 # --------------------------------------
 
 site_verification:
-  # 填入你自己的验证码即可激活（去注册后获取）
-  - name: google-site-verification
-    content: 你的Google验证码
-  - name: baidu-site-verification
-    content: 你的百度验证码
 
 # --------------------------------------
 # 美化 / 效果
