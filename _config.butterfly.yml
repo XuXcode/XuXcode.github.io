@@ -1234,7 +1234,7 @@ CDN:
 
   # 自定义格式
   # 例如：https://cdn.staticfile.org/${cdnjs_name}/${version}/${min_cdnjs_file}
-  custom_format: https://cdn.staticfile.org/${cdnjs_name}/${version}/${min_cdnjs_file}
+  custom_format: https://esm.sh/${name}@${version}/${min_file}
 
   option:
 
