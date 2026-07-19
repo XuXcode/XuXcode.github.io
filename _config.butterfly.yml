@@ -16,11 +16,11 @@ menu:
 
 
 avatar:
-  img: https://s41.ax1x.com/2026/07/09/pmrW9SI.webp #图片路径
+  img: /img/avatar.webp #图片路径
   effect: false #头像会一直转圈  
 
   # The banner image of home page
-index_img: https://s41.ax1x.com/2026/07/09/pmrWmfs.webp
+index_img: /img/background.webp
 
 
 nav:
@@ -132,7 +132,7 @@ error_404:
   # 404 页面的副标题
   subtitle: '页面没有找到'
   # 404 页面的卡片背景图片
-  background: https://i.loli.net/2020/05/19/aKOcLiyPl2JQdFD.png
+  background: /img/background-opt.webp
 
 # 文章元数据设置
 post_meta:
