@@ -42,7 +42,7 @@ categories:
 
 2、学会了使用Git进行版本控制（创建Git本地仓库、创建Git远程仓库、将本地文件推送到Git远程仓库）
 
-![image-20260427145954008](C:\Users\84113\AppData\Roaming\Typora\typora-user-images\image-20260427145954008.png)
+![image-20260427145954008](/img/苍穹外卖/image-20260427145954008.png)
 
 3、了解了前后端联调中nginx反向代理的原理及操作方法
 
@@ -50,19 +50,56 @@ categories:
 
 1、学会了如何导入接口文档，并且使用Apifox调试实现的接口
 
-![image-20260427145649169](C:\Users\84113\AppData\Roaming\Typora\typora-user-images\image-20260427145649169.png)
+![image-20260427145649169](/img/苍穹外卖/image-20260427145649169.png)
 
 2、在进行接口调试的时候可以将admin账号返回的token，添加到全局参数中，保证调试功能时发送的请求不会被拦截器拦截
 
-![image-20260427150702297](C:\Users\84113\AppData\Roaming\Typora\typora-user-images\image-20260427150702297.png)
+![image-20260427150702297](/img/苍穹外卖/image-20260427150702297.png)
 
 3、定义并使用了信息提示常量类，使得代码开发更加规范、优雅。
 
-![image-20260427152113087](C:\Users\84113\AppData\Roaming\Typora\typora-user-images\image-20260427152113087.png)
+![image-20260427152113087](/img/苍穹外卖/image-20260427152113087.png)
 
 4、`//TODO`注解能够标记出还未完善的代码，便于后续的开发完善，方便在TODO列表中展示
 
-### 3、完善登录功能
+### 3、构建VO对象
+
+在VO类上加入`@Builder`注解，就可以调用`.builder()`方法构建一个新的VO对象
+例如：苍穹外卖项目中使用Builder方法构建员工登录的VO对象
+
+```java
+@Data  
+@Builder  
+@NoArgsConstructor  
+@AllArgsConstructor  
+@ApiModel(description = "员工登录返回的数据格式")  
+public class EmployeeLoginVO implements Serializable {  
+  
+    @ApiModelProperty("主键值")  
+    private Long id;  
+  
+    @ApiModelProperty("用户名")  
+    private String userName;  
+  
+    @ApiModelProperty("姓名")  
+    private String name;  
+  
+    @ApiModelProperty("jwt令牌")  
+    private String token;  
+  
+}
+```
+
+```java
+EmployeeLoginVO employeeLoginVO = EmployeeLoginVO.builder()  
+        .id(employee.getId())  
+        .userName(employee.getUsername())  
+        .name(employee.getName())  
+        .token(token)  
+        .build();
+```
+
+### 4、完善登录功能
 
 将密码直接明文存储至数据库，安全性低，使用DigestUtils工具类中的MD5加密方式对原来明文密码进行加密，前端提交的密码进行MD5加密后再跟数据库中密码比对
 
@@ -75,7 +112,66 @@ if (!password.equals(employee.getPassword())) {
 }
 ```
 
-### 4、新增员工接口
+### 5、了解Swagger的使用
+
+`Kmofe4j`是为Java MVC框架集成Swagger生成Api文档的增强解决方案
+
+1、pom文件引入依赖：
+
+```xml
+<dependency>
+    <groupId>com.github.xiaoymin</groupId>
+    <artifactId>knife4j-spring-boot-starter</artifactId>
+    <version>3.0.2</version>
+</dependency>
+```
+
+2、在配置类`WebMvcConfiguration.java`中加入`knife4j`相关配置：
+
+```java
+@Bean
+public Docket docket(){
+    ApiInfo apiInfo = new ApiInfoBuilder()
+    .title("苍穹外卖项目接口文档")
+    .version("2.0")
+    .description("苍穹外卖项目接口文档")
+    .build();
+
+    Docket docket = new Docket(DocumentationType.SWAGGER_2)
+    .apiInfo(apiInfo)
+    .select()
+    //指定生成接口需要扫描的包
+    .apis(RequestHandlerSelectors.basePackage("com.sky.controller"))
+    .paths(PathSelectors.any())
+    .build();
+
+    return docket;
+}
+```
+
+3、设置静态资源映射，否则接口文档页面无法访问:
+
+```java
+/**
+ * 设置静态资源映射
+ * @param registry
+ */
+protected void addResourceHandlers(ResourceHandlerRegistry registry) {
+    log.info("开始设置静态资源映射...");
+    registry.addResourceHandler("/doc.html").addResourceLocations("classpath:/META-INF/resources/");
+    registry.addResourceHandler("/webjars/**").addResourceLocations("classpath:/META-INF/resources/webjars/");
+}
+```
+
+4、常用注解
+
+| 注解                | 说明                                |
+| ----------------- | --------------------------------- |
+| @Api              | 用在类上，例如Controller，表示对类的说明         |
+| @ApiModel         | 用在类上，例如entity、DTO、VO              |
+| @ApiModelProperty | 用在属性上，描述属性信息                      |
+| @ApiOperation     |  用在方法上，例如Controller的方法，说明方法的用途、作用 |
+### 6、新增员工接口
 
 1、学习了接口的规范：管理端发出的请求，统一使用`/admin`作为前缀，用户端发出的请求，统一使用`/user`作为前缀
 
@@ -108,7 +204,7 @@ BeanUtils.copyProperties(employeeDTO, employee);
 **4、学习了TreadLocal局部变量**
 
 + TreadLocal为每一个线程提供一份单独的存储空间，具有线程隔离的效果，不同的线程之间不会相互干扰
-
++ 客户端发送的每一次请求都是一个单独的线程
 + 本项目定义了一个BaseContext工具类，使用TreadLocal的方法将解析后的员工id存储到TreadLocal中，并且在存储员工信息的实现类中，获取TreadLocal中的员工id并将其存储至Employee对象中。
 
 ```java
@@ -130,7 +226,7 @@ public class BaseContext {
 }
 ```
 
-### 5、员工分页查询接口
+### 6、员工分页查询接口
 
 1、学会了使用mybatis的分页插件PageHelper来简化分页代码的开发，其底层基于mybatis拦截器实现
 
@@ -155,9 +251,9 @@ PageHelper.startPage(employeePageQueryDTO.getPage(), employeePageQueryDTO.getPag
 
 3、通过前后端联调以及返回的json格式数据，发现返回的时间是数组形式的，导致前端渲染格式效果不好
 
-![image-20260427215233352](C:\Users\84113\AppData\Roaming\Typora\typora-user-images\image-20260427215233352.png)
+![image-20260427215233352](/img/苍穹外卖/image-20260427215233352.png)
 
-![image-20260427215214878](C:\Users\84113\AppData\Roaming\Typora\typora-user-images\image-20260427215214878.png)
+![image-20260427215214878](/img/苍穹外卖/image-20260427215214878.png)
 
 解决方式：
 
@@ -181,6 +277,11 @@ PageHelper.startPage(employeePageQueryDTO.getPage(), employeePageQueryDTO.getPag
       //创建一个消息转化器对象
       MappingJackson2HttpMessageConverter converter = new MappingJackson2HttpMessageConverter();
       //设置对象转换器，可以将Java对象转为json字符串
+/**  
+ * 对象映射器:基于jackson将Java对象转为json，或者将json转为Java对象  
+ * 将JSON解析为Java对象的过程称为 [从JSON反序列化Java对象]  
+ * 从Java对象生成JSON的过程称为 [序列化Java对象到JSON]  
+ */
       converter.setObjectMapper(new JacksonObjectMapper());
   
       //将我们自己的转换器放入spring MVC框架的容器中
@@ -188,7 +289,7 @@ PageHelper.startPage(employeePageQueryDTO.getPage(), employeePageQueryDTO.getPag
   }
   ```
 
-### 6、启用禁用员工账号
+### 7、启用禁用员工账号
 
 1、学习了使用构建器的方式创建对象
 
