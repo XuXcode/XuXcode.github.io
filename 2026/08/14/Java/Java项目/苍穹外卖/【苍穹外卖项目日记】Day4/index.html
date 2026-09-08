@@ -1,0 +1,363 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>【苍穹外卖项目日记】Day4 | XuX的博客</title><meta name="author" content="XuX"><meta name="copyright" content="XuX"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="苍穹外卖项目实战日记第四天，使用 Redis 缓存菜品与套餐数据，并实现添加购物车功能。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【苍穹外卖项目日记】Day4">
+<meta property="og:url" content="https://xuxcode.github.io/2026/08/14/Java/Java%E9%A1%B9%E7%9B%AE/%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96/%E3%80%90%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96%E9%A1%B9%E7%9B%AE%E6%97%A5%E8%AE%B0%E3%80%91Day4/index.html">
+<meta property="og:site_name" content="XuX的博客">
+<meta property="og:description" content="苍穹外卖项目实战日记第四天，使用 Redis 缓存菜品与套餐数据，并实现添加购物车功能。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://xuxcode.github.io/img/avatar.webp">
+<meta property="article:published_time" content="2026-08-13T16:00:00.000Z">
+<meta property="article:modified_time" content="2026-09-08T11:41:37.739Z">
+<meta property="article:author" content="XuX">
+<meta property="article:tag" content="Java,Python,算法,数据结构,Spring,编程,博客,XuX">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://xuxcode.github.io/img/avatar.webp"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "【苍穹外卖项目日记】Day4",
+  "url": "https://xuxcode.github.io/2026/08/14/Java/Java%E9%A1%B9%E7%9B%AE/%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96/%E3%80%90%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96%E9%A1%B9%E7%9B%AE%E6%97%A5%E8%AE%B0%E3%80%91Day4/",
+  "image": "https://xuxcode.github.io/img/avatar.webp",
+  "datePublished": "2026-08-13T16:00:00.000Z",
+  "dateModified": "2026-09-08T11:41:37.739Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "XuX",
+      "url": "https://xuxcode.github.io"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://xuxcode.github.io/2026/08/14/Java/Java%E9%A1%B9%E7%9B%AE/%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96/%E3%80%90%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96%E9%A1%B9%E7%9B%AE%E6%97%A5%E8%AE%B0%E3%80%91Day4/index.html"><link rel="preconnect" href="https://lib.baomitu.com"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://lib.baomitu.com/font-awesome/7.0.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          const mediaQueryDark = window.matchMedia('(prefers-color-scheme: dark)')
+          const mediaQueryLight = window.matchMedia('(prefers-color-scheme: light)')
+
+          if (theme === undefined) {
+            if (mediaQueryLight.matches) activateLightMode()
+            else if (mediaQueryDark.matches) activateDarkMode()
+            else {
+              const hour = new Date().getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            mediaQueryDark.addEventListener('change', () => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else {
+            theme === 'light' ? activateLightMode() : activateDarkMode()
+          }
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"pagination":{"enable":false,"hitsPerPage":8},"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'medium_zoom',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://lib.baomitu.com/egjs-infinitegrid/4.12.0/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '【苍穹外卖项目日记】Day4',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="XuX的博客" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/avatar.webp" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">51</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">112</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">13</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fa fa-graduation-cap"></i><span> 博文</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-list"></i><span> 生活</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/shuoshuo/"><i class="fa-fw fa fa-comments-o"></i><span> 分享</span></a></li><li><a class="site-page child" href="/photos/"><i class="fa-fw fa fa-camera-retro"></i><span> 相册</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 影视</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/comment/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div><div class="menus_item"><a class="site-page" href="/atom.xml"><i class="fa-fw fas fa-rss"></i><span> RSS</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">XuX的博客</span></a><a class="nav-page-title" href="/"><span class="site-name">【苍穹外卖项目日记】Day4</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fa fa-graduation-cap"></i><span> 博文</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-list"></i><span> 生活</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/shuoshuo/"><i class="fa-fw fa fa-comments-o"></i><span> 分享</span></a></li><li><a class="site-page child" href="/photos/"><i class="fa-fw fa fa-camera-retro"></i><span> 相册</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 影视</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/comment/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div><div class="menus_item"><a class="site-page" href="/atom.xml"><i class="fa-fw fas fa-rss"></i><span> RSS</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">【苍穹外卖项目日记】Day4</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-08-13T16:00:00.000Z" title="发表于 2026-08-14 00:00:00">2026-08-14</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-09-08T11:41:37.739Z" title="更新于 2026-09-08 19:41:37">2026-09-08</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Java/">Java</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Java/Java%E9%A1%B9%E7%9B%AE/">Java项目</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Java/Java%E9%A1%B9%E7%9B%AE/%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96/">苍穹外卖</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">2.3k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>8分钟</span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="【苍穹外卖-项目日记】Day4"><a href="#【苍穹外卖-项目日记】Day4" class="headerlink" title="【苍穹外卖|项目日记】Day4"></a>【苍穹外卖|项目日记】Day4</h1><h2 id="今日完成的任务"><a href="#今日完成的任务" class="headerlink" title="今日完成的任务"></a>今日完成的任务</h2><p>1、缓存菜品功能开发</p>
+<p>2、缓存套餐功能开发(Spring Data Cache)</p>
+<p>3、添加购物车代码实现</p>
+<h2 id="今日收获"><a href="#今日收获" class="headerlink" title="今日收获"></a>今日收获</h2><h3 id="1、学会使用Redis缓存数据"><a href="#1、学会使用Redis缓存数据" class="headerlink" title="1、学会使用Redis缓存数据"></a>1、学会使用Redis缓存数据</h3><p>通过Redis缓存数据，减少数据库查询操作 </p>
+<p><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96/image-20260808114724707.png" alt="image-20260808114724707"></p>
+<h4 id="菜品缓存"><a href="#菜品缓存" class="headerlink" title="菜品缓存"></a>菜品缓存</h4><p>缓存逻辑分析：</p>
+<ul>
+<li>每个分类下的菜品保存一份缓存数据</li>
+<li>数据库中菜品数据有变更时清理缓存数据</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">DishController</span> &#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> DishService dishService;</span><br><span class="line">	<span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> RedisTemplate redisTemplate;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 根据分类id查询菜品</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> categoryId</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@GetMapping(&quot;/list&quot;)</span></span><br><span class="line">    <span class="meta">@ApiOperation(&quot;根据分类id查询菜品&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> Result&lt;List&lt;DishVO&gt;&gt; <span class="title function_">list</span><span class="params">(Long categoryId)</span> &#123;</span><br><span class="line">        <span class="comment">//构造redis中的key，规则：dish_分类id</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">key</span> <span class="operator">=</span>  <span class="string">&quot;dish_&quot;</span> + categoryId;</span><br><span class="line">        <span class="comment">//查询Redis中是否存在菜品数据</span></span><br><span class="line">        List&lt;DishVO&gt; list = (List&lt;DishVO&gt;) redisTemplate.opsForValue().get(key);</span><br><span class="line">        <span class="keyword">if</span>(list != <span class="literal">null</span> &amp;&amp; list.size() &gt; <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="comment">//如果存在，直接返回，无须查询数据库</span></span><br><span class="line">            <span class="keyword">return</span> Result.success(list);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">Dish</span> <span class="variable">dish</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Dish</span>();</span><br><span class="line">        dish.setCategoryId(categoryId);</span><br><span class="line">        dish.setStatus(StatusConstant.ENABLE);<span class="comment">//查询起售中的菜品</span></span><br><span class="line"></span><br><span class="line">        list = dishService.listWithFlavor(dish);</span><br><span class="line">        <span class="comment">//如果不存在，查询数据库，将查询到的数据放入Redis中</span></span><br><span class="line">        redisTemplate.opsForValue().set(key,list);</span><br><span class="line">        <span class="keyword">return</span> Result.success(list);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="删除菜品缓存数据"><a href="#删除菜品缓存数据" class="headerlink" title="删除菜品缓存数据"></a>删除菜品缓存数据</h4><p>场景：</p>
+<ul>
+<li>修改菜品数据</li>
+<li>删除菜品数据</li>
+<li>菜品的起售停售</li>
+<li>新增菜品数据</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 新增菜品</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> dishDTO</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@PostMapping</span></span><br><span class="line">    <span class="keyword">public</span> Result <span class="title function_">save</span><span class="params">(<span class="meta">@RequestBody</span> DishDTO dishDTO)</span>&#123;</span><br><span class="line">        log.info(<span class="string">&quot;新增菜品：&#123;&#125;&quot;</span>,dishDTO);</span><br><span class="line">        dishService.saveWithFlavor(dishDTO);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//清理缓存数据</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">key</span> <span class="operator">=</span> <span class="string">&quot;dish_&quot;</span> + dishDTO.getCategoryId();</span><br><span class="line">        redisTemplate.delete(key);</span><br><span class="line">        <span class="keyword">return</span> Result.success();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">cleanChache</span><span class="params">(String pattern)</span>&#123;</span><br><span class="line">        <span class="type">Set</span> <span class="variable">keys</span> <span class="operator">=</span> redisTemplate.keys(pattern);</span><br><span class="line">        redisTemplate.delete(keys);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2、使用Spring-Cache缓存套餐"><a href="#2、使用Spring-Cache缓存套餐" class="headerlink" title="2、使用Spring Cache缓存套餐"></a>2、使用Spring Cache缓存套餐</h3><h4 id="实现思路"><a href="#实现思路" class="headerlink" title="实现思路"></a>实现思路</h4><p>具体的实现思路如下：</p>
+<ul>
+<li>导入<code>Spring Cache</code>和<code>Redis</code>相关maven坐标  </li>
+<li>在启动类上加入<code>@EnableCaching</code>注解，开启缓存注解功能  </li>
+<li>在用户端接口<code>SetmealController</code>的<code>list</code>方法上加入<code>@Cacheable</code>注解  </li>
+<li>在管理端接口<code>SetmealController</code>的<code>save</code>、<code>delete</code>、<code>update</code>、<code>startOrStop</code>等方法上加入<code>CacheEvict</code>注解</li>
+</ul>
+<h3 id="3、添加购物车功能实现"><a href="#3、添加购物车功能实现" class="headerlink" title="3、添加购物车功能实现"></a>3、添加购物车功能实现</h3><ul>
+<li>先通过TreadLocal获取当前线程的用户id</li>
+<li>判断购物车中的商品是否已经存在</li>
+<li>若存在，则++</li>
+<li>不存在，就判断一下是套餐的还是菜品的，然后再插入一条数量为1的购物车数据进入数据库</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="meta">@Slf4j</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ShoppingCartServiceImpl</span> <span class="keyword">implements</span> <span class="title class_">ShoppingCartService</span> &#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> ShoppingCartMapper shoppingCartMapper;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> DishMapper dishMapper;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> SetmealMapper setmealMapper;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">addShoppingCart</span><span class="params">(ShoppingCartDTO shoppingCartDTO)</span> &#123;</span><br><span class="line">        <span class="comment">//判断当前加入到购物车中的商品是否已经存在了</span></span><br><span class="line">        <span class="type">ShoppingCart</span> <span class="variable">shoppingCart</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ShoppingCart</span>();</span><br><span class="line">        BeanUtils.copyProperties(shoppingCartDTO,shoppingCart);</span><br><span class="line">        <span class="type">Long</span> <span class="variable">userId</span> <span class="operator">=</span> BaseContext.getCurrentId();</span><br><span class="line">        shoppingCart.setId(userId);</span><br><span class="line"></span><br><span class="line">        List&lt;ShoppingCart&gt; list = shoppingCartMapper.list(shoppingCart);</span><br><span class="line">        <span class="comment">//如果已经存在了，只需要将数量加一</span></span><br><span class="line">        <span class="keyword">if</span>(list != <span class="literal">null</span> &amp;&amp; list.size() &gt; <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="type">ShoppingCart</span> <span class="variable">cart</span> <span class="operator">=</span>  list.get(<span class="number">0</span>);</span><br><span class="line">            cart.setNumber(cart.getNumber() + <span class="number">1</span>);</span><br><span class="line">            shoppingCartMapper.updateNumberById(cart);</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="comment">//如果不存在，需要插入一条购物车数据1</span></span><br><span class="line">            <span class="type">Long</span> <span class="variable">dishId</span> <span class="operator">=</span> shoppingCartDTO.getDishId();</span><br><span class="line">            <span class="keyword">if</span>(dishId != <span class="literal">null</span>)&#123;</span><br><span class="line">                <span class="comment">//添加到购物车的是菜品</span></span><br><span class="line">                <span class="type">Dish</span> <span class="variable">dish</span> <span class="operator">=</span> dishMapper.getById(dishId);</span><br><span class="line">                shoppingCart.setName(dish.getName());</span><br><span class="line">                shoppingCart.setImage(dish.getImage());</span><br><span class="line">                shoppingCart.setAmount(dish.getPrice());</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="comment">//添加进来的是套餐</span></span><br><span class="line">                <span class="type">Long</span> <span class="variable">setmealId</span> <span class="operator">=</span> shoppingCartDTO.getSetmealId();</span><br><span class="line">                <span class="type">Setmeal</span> <span class="variable">setmeal</span> <span class="operator">=</span> setmealMapper.getById(setmealId);</span><br><span class="line">                shoppingCart.setName(setmeal.getName());</span><br><span class="line">                shoppingCart.setImage(setmeal.getImage());</span><br><span class="line">                shoppingCart.setAmount(setmeal.getPrice());</span><br><span class="line">            &#125;</span><br><span class="line">            shoppingCart.setNumber(<span class="number">1</span>);</span><br><span class="line">            shoppingCart.setCreateTime(LocalDateTime.now());</span><br><span class="line">            shoppingCartMapper.insert(shoppingCart);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="4、学会了如何设置默认地址"><a href="#4、学会了如何设置默认地址" class="headerlink" title="4、学会了如何设置默认地址"></a>4、学会了如何设置默认地址</h3><ul>
+<li>先将当前用户的所有地址修改成默认地址</li>
+<li>然后再将当前的地址修改成默认地址</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Transactional</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setDefault</span><span class="params">(AddressBook addressBook)</span> &#123;</span><br><span class="line">        <span class="comment">//1、将当前用户的所有地址修改为非默认地址 update address_book set is_default = ? where user_id = ?</span></span><br><span class="line">        addressBook.setIsDefault(<span class="number">0</span>);</span><br><span class="line">        addressBook.setUserId(BaseContext.getCurrentId());</span><br><span class="line">        addressBookMapper.updateIsDefaultByUserId(addressBook);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//2、将当前地址改为默认地址 update address_book set is_default = ? where id = ?</span></span><br><span class="line">        addressBook.setIsDefault(<span class="number">1</span>);</span><br><span class="line">        addressBookMapper.update(addressBook);</span><br><span class="line">    &#125; </span><br></pre></td></tr></table></figure>
+
+<h3 id="5、订单编号的生成"><a href="#5、订单编号的生成" class="headerlink" title="5、订单编号的生成"></a>5、订单编号的生成</h3><p>相较于原视频的时间戳生成订单号，在高并发场景下难免会导致有两个客户在同一ms下创建订单，导致订单号一样，视频中的时间戳方法不严谨，故使用Hutool中封装好的雪花算法方法生成订单号</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">orders.setNumber(IdUtil.getSnowflakeNextIdStr());</span><br></pre></td></tr></table></figure>
+
+<h3 id="6、微信支付功能"><a href="#6、微信支付功能" class="headerlink" title="6、微信支付功能"></a>6、微信支付功能</h3><h4 id="微信小程序支付时序图"><a href="#微信小程序支付时序图" class="headerlink" title="微信小程序支付时序图"></a>微信小程序支付时序图</h4><p><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96/image-20260814180249770.png" alt="image-20260814180249770"></p>
+<p>JSAPI下单：商户系统调用该接口在微信支付服务后台生成<strong>预支付交易单</strong></p>
+<p><strong>请求 URL:</strong> <code>https://api.mch.weixin.qq.com/v3/pay/transactions/jsapi</code><br><strong>请求方式:</strong> <code>POST</code></p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//预支付交易单</span></span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;mchid&quot;</span><span class="punctuation">:</span> <span class="string">&quot;1900006XXX&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;out_trade_no&quot;</span><span class="punctuation">:</span> <span class="string">&quot;1217752501201407033233368318&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;appid&quot;</span><span class="punctuation">:</span> <span class="string">&quot;wxdace645e0bc2cXXX&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;description&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Image形象店-深圳腾大-QQ公仔&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;notify_url&quot;</span><span class="punctuation">:</span> <span class="string">&quot;https://www.weixin.qq.com/wxpay/pay.php&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;amount&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;total&quot;</span><span class="punctuation">:</span> <span class="number">1</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;currency&quot;</span><span class="punctuation">:</span> <span class="string">&quot;CNY&quot;</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;payer&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;openid&quot;</span><span class="punctuation">:</span> <span class="string">&quot;o4GgauInH_RCEdvrrNGrntXDuXXX&quot;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="杂项知识点"><a href="#杂项知识点" class="headerlink" title="杂项知识点"></a>杂项知识点</h2><h3 id="Spring-Cache"><a href="#Spring-Cache" class="headerlink" title="Spring Cache"></a>Spring Cache</h3><p>Spring Cache 是一个框架，实现了基于注解的缓存功能，只需要简单地加一个注解，就能实现缓存功能</p>
+<p>Spring Cache提供了一层抽象，底层可以切换不同的缓存实现：</p>
+<ul>
+<li><code>EHCache</code></li>
+<li><code>Caffeine</code></li>
+<li><code>Redis</code></li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-cache<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.7.3<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="常用注解"><a href="#常用注解" class="headerlink" title="常用注解"></a>常用注解</h4><table>
+<thead>
+<tr>
+<th>注解</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>@EnableCaching</code></td>
+<td>开启缓存注解功能，通常加在启动类上</td>
+</tr>
+<tr>
+<td><code>@Cacheable</code></td>
+<td>在方法执行前先查询缓存中是否有数据，如果有数据，则直接返回缓存数据；如果没有缓存数据，调用方法并将方法返回值放到缓存中</td>
+</tr>
+<tr>
+<td><code>@CachePut</code></td>
+<td>将方法的返回值放到缓存中</td>
+</tr>
+<tr>
+<td><code>@CacheEvict</code></td>
+<td>将一条或多条数据从缓存中删除</td>
+</tr>
+</tbody></table>
+<h4 id="引导类上加-EnableCaching"><a href="#引导类上加-EnableCaching" class="headerlink" title="引导类上加@EnableCaching:"></a><strong>引导类上加@EnableCaching:</strong></h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.itheima;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> lombok.extern.slf4j.Slf4j;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.SpringApplication;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.autoconfigure.SpringBootApplication;</span><br><span class="line"><span class="keyword">import</span> org.springframework.cache.annotation.EnableCaching;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Slf4j</span></span><br><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="meta">@EnableCaching</span><span class="comment">//开启缓存注解功能</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">CacheDemoApplication</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        SpringApplication.run(CacheDemoApplication.class,args);</span><br><span class="line">        log.info(<span class="string">&quot;项目启动成功...&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="CachePut注解"><a href="#CachePut注解" class="headerlink" title="@CachePut注解"></a><strong>@CachePut注解</strong></h4><p><strong>@CachePut 说明：</strong> </p>
+<p>​        作用: 将方法返回值，放入缓存</p>
+<p>​        value: 缓存的名称, 每个缓存名称下面可以有很多key</p>
+<p>​        key: 缓存的key  ———-&gt; 支持Spring的表达式语言SPEL语法</p>
+<p><strong>在save方法上加注解@CachePut</strong></p>
+<p>当前UserController的save方法是用来保存用户信息的，我们希望在该用户信息保存到数据库的同时，也往缓存中缓存一份数据，我们可以在save方法上加上注解 @CachePut，用法如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * CachePut：将方法返回值放入缓存</span></span><br><span class="line"><span class="comment"> * value：缓存的名称，每个缓存名称下面可以有多个key</span></span><br><span class="line"><span class="comment"> * key：缓存的key</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@PostMapping</span></span><br><span class="line"><span class="meta">@CachePut(value = &quot;userCache&quot;, key = &quot;#user.id&quot;)</span><span class="comment">//key的生成：userCache::1</span></span><br><span class="line"><span class="keyword">public</span> User <span class="title function_">save</span><span class="params">(<span class="meta">@RequestBody</span> User user)</span>&#123;</span><br><span class="line">    userMapper.insert(user);</span><br><span class="line">    <span class="keyword">return</span> user;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>说明：</strong>key的写法如下</p>
+<p><code>#user.id</code> : #user指的是方法形参的名称, id指的是user的id属性 , 也就是使用user的id属性作为key ;</p>
+<p><code>#result.id</code> : #result代表方法返回值，该表达式 代表以返回对象的id属性作为key ；</p>
+<p><code>#p0.id</code>：#p0指的是方法中的第一个参数，id指的是第一个参数的id属性,也就是使用第一个参数的id属性作为key ;</p>
+<p><code>#a0.id</code>：#a0指的是方法中的第一个参数，id指的是第一个参数的id属性,也就是使用第一个参数的id属性作为key ;</p>
+<p><code>#root.args[0].id</code>:<code>#root.args[0]</code>指的是方法中的第一个参数，id指的是第一个参数的id属性,也就是使用第一个参数</p>
+<p>的id属性作为key ;</p>
+<p><strong>启动服务,通过swagger接口文档测试，访问UserController的save()方法</strong></p>
+<p>因为id是自增，所以不需要设置id属性</p>
+<h4 id="Cacheable注解"><a href="#Cacheable注解" class="headerlink" title="@Cacheable注解"></a><strong>@Cacheable注解</strong></h4><p><strong>@Cacheable 说明:</strong></p>
+<p>​        作用: 在方法执行前，spring先查看缓存中是否有数据，如果有数据，则直接返回缓存数据；若没有数据，调用方法并将方法返回值放到缓存中</p>
+<p>​        <code>value</code>: 缓存的名称，每个缓存名称下面可以有多个key</p>
+<p>​        <code>key</code>: 缓存的key  ———-&gt; 支持Spring的表达式语言SPEL语法</p>
+<p> <strong>在getById上加注解@Cacheable</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">  *Cacheable：在方法执行前spring先查看缓存中是否有数据，如果有数据，则直接返回缓存数据；若没有数据，调用方法并将方法返回值放到缓存中</span></span><br><span class="line"><span class="comment">  * value：缓存的名称，每个缓存名称下面可以有多个key</span></span><br><span class="line"><span class="comment">  * key：缓存的key</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">   <span class="meta">@GetMapping</span></span><br><span class="line">   <span class="meta">@Cacheable(cacheNames = &quot;userCache&quot;,key=&quot;#id&quot;)</span></span><br><span class="line">   <span class="keyword">public</span> User <span class="title function_">getById</span><span class="params">(Long id)</span>&#123;</span><br><span class="line">       <span class="type">User</span> <span class="variable">user</span> <span class="operator">=</span> userMapper.getById(id);</span><br><span class="line">       <span class="keyword">return</span> user; </span><br></pre></td></tr></table></figure>
+
+<h4 id="CacheEvict注解"><a href="#CacheEvict注解" class="headerlink" title="@CacheEvict注解"></a><strong>@CacheEvict注解</strong></h4><p><strong>@CacheEvict 说明：</strong> </p>
+<p>​        作用: 清理指定缓存</p>
+<p>​        value: 缓存的名称，每个缓存名称下面可以有多个key</p>
+<p>​        key: 缓存的key  ———-&gt; 支持Spring的表达式语言SPEL语法</p>
+<p><strong>在 delete 方法上加注解@CacheEvict</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@DeleteMapping</span></span><br><span class="line">    <span class="meta">@CacheEvict(cacheNames = &quot;userCache&quot;,key = &quot;#id&quot;)</span><span class="comment">//删除某个key对应的缓存数据</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">deleteById</span><span class="params">(Long id)</span>&#123;</span><br><span class="line">        userMapper.deleteById(id);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@DeleteMapping(&quot;/delAll&quot;)</span></span><br><span class="line">    <span class="meta">@CacheEvict(cacheNames = &quot;userCache&quot;,allEntries = true)</span><span class="comment">//删除userCache下所有的缓存数据</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">deleteAll</span><span class="params">()</span>&#123;</span><br><span class="line">        userMapper.deleteAll();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="雪花算法"><a href="#雪花算法" class="headerlink" title="雪花算法"></a>雪花算法</h3><p><strong>雪花算法</strong>生成64位Long型唯一ID，结构如下：</p>
+<ul>
+<li><strong>1位</strong>：符号位，固定为0（ID为正数）。</li>
+<li><strong>41位</strong>：毫秒级时间戳，可用约 <strong>69年</strong>。</li>
+<li><strong>10位</strong>：机器码（通常5位机房+5位机器），支持最多 <strong>1024个</strong>节点。</li>
+<li><strong>12位</strong>：序列号，同一毫秒内每节点可生成 <strong>4096个</strong>不重复ID。</li>
+</ul>
+<p>特点：全局唯一、趋势递增、高性能。通常作为独立服务部署，启动时分配10位机器码即可。</p>
+<h2 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h2></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://xuxcode.github.io">XuX</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://xuxcode.github.io/2026/08/14/Java/Java%E9%A1%B9%E7%9B%AE/%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96/%E3%80%90%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96%E9%A1%B9%E7%9B%AE%E6%97%A5%E8%AE%B0%E3%80%91Day4/">https://xuxcode.github.io/2026/08/14/Java/Java%E9%A1%B9%E7%9B%AE/%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96/%E3%80%90%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96%E9%A1%B9%E7%9B%AE%E6%97%A5%E8%AE%B0%E3%80%91Day4/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://xuxcode.github.io" target="_blank">XuX的博客</a>！</span></div></div><div class="tag_share"><div class="post-share"><div class="social-share" data-image="/img/avatar.webp" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://lib.baomitu.com/butterfly-extsrc/1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://lib.baomitu.com/butterfly-extsrc/1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2026/08/28/Java/Java%E9%A1%B9%E7%9B%AE/%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96/%E3%80%90%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96%E9%A1%B9%E7%9B%AE%E6%97%A5%E8%AE%B0%E3%80%91Day5/" title="【苍穹外卖项目日记】Day5"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">【苍穹外卖项目日记】Day5</div></div><div class="info-2"><div class="info-item-1">【苍穹外卖|项目日记】Day5今日完成的任务1、了解学习了Spring Task的用法 2、运用Spring Task完成了订单状态定时处理的业务功能 3、了解学习WebSocket的使用 4、来单提醒功能的开发 5、客户催单功能的开发 今日收获1、订单状态定时处理代码实现 通过定时任务每分钟检查一次是否存在支付超时订单（下单后超过15分钟仍未支付则判定为支付超时订单），如果存在则修改订单状态为”已取消“ 123456789101112131415161718192021222324252627/** * 定时任务类，定时处理订单状态 */@Component@Slf4jpublic class MyTask &#123;    @Autowired    private OrderMapper orderMapper;    /**     * 处理超时订单的方法     */    @Scheduled(cron = &quot;0 * * * * *&quot;)    public void processTimeoutOrder()&#123;        log.i...</div></div></div></a><a class="pagination-related" href="/2026/08/08/Java/Java%E9%A1%B9%E7%9B%AE/%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96/%E3%80%90%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96%E9%A1%B9%E7%9B%AE%E6%97%A5%E8%AE%B0%E3%80%91Day3/" title="【苍穹外卖项目日记】Day3"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">【苍穹外卖项目日记】Day3</div></div><div class="info-2"><div class="info-item-1">【苍穹外卖|项目日记】Day3今日完成的任务：1、学习了Redis基础知识点并配置 2、实现了店铺营业状态设置接口功能 3、微信小程序登录功能接口实现 今日收获：1、学习了Redis的部分语法字符串操作命令Redis字符串类型常用命令：  SET ket value 设置指定key的值 GET key 获取指定key的值 SETEX key seconds value 设置指定key的值，并将key的过期时间设为seconds秒 SETN key value 只有在key不存在时设置key的值  哈希操作命令 Redis hash 是一个string类型 的field 和 value的映射表，hash特别适合用于存储对象，常用命令：  HSET key field value 将哈希表key中的字段field的值设为value HGET key field 获取存储在哈希表中指定字段的值 HDEL key field 删除存储在哈希表中的指定字段 HKEYS key 获取哈希表中所有字段 HVALS key 获取哈希表中所有值  列表操作命令Redis列表时简单的字符串列表，按照...</div></div></div></a></nav><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="utterances-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/avatar.webp" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">XuX</div><div class="author-info-description">Stay hungry,stay foolish.</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">51</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">112</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">13</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/XuXcode"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/XuXcode" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:841130121@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到我的博客！</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E3%80%90%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96-%E9%A1%B9%E7%9B%AE%E6%97%A5%E8%AE%B0%E3%80%91Day4"><span class="toc-number">1.</span> <span class="toc-text">【苍穹外卖|项目日记】Day4</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8A%E6%97%A5%E5%AE%8C%E6%88%90%E7%9A%84%E4%BB%BB%E5%8A%A1"><span class="toc-number">1.1.</span> <span class="toc-text">今日完成的任务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8A%E6%97%A5%E6%94%B6%E8%8E%B7"><span class="toc-number">1.2.</span> <span class="toc-text">今日收获</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E5%AD%A6%E4%BC%9A%E4%BD%BF%E7%94%A8Redis%E7%BC%93%E5%AD%98%E6%95%B0%E6%8D%AE"><span class="toc-number">1.2.1.</span> <span class="toc-text">1、学会使用Redis缓存数据</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%8F%9C%E5%93%81%E7%BC%93%E5%AD%98"><span class="toc-number">1.2.1.1.</span> <span class="toc-text">菜品缓存</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E8%8F%9C%E5%93%81%E7%BC%93%E5%AD%98%E6%95%B0%E6%8D%AE"><span class="toc-number">1.2.1.2.</span> <span class="toc-text">删除菜品缓存数据</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E4%BD%BF%E7%94%A8Spring-Cache%E7%BC%93%E5%AD%98%E5%A5%97%E9%A4%90"><span class="toc-number">1.2.2.</span> <span class="toc-text">2、使用Spring Cache缓存套餐</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E6%80%9D%E8%B7%AF"><span class="toc-number">1.2.2.1.</span> <span class="toc-text">实现思路</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81%E6%B7%BB%E5%8A%A0%E8%B4%AD%E7%89%A9%E8%BD%A6%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.2.3.</span> <span class="toc-text">3、添加购物车功能实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E3%80%81%E5%AD%A6%E4%BC%9A%E4%BA%86%E5%A6%82%E4%BD%95%E8%AE%BE%E7%BD%AE%E9%BB%98%E8%AE%A4%E5%9C%B0%E5%9D%80"><span class="toc-number">1.2.4.</span> <span class="toc-text">4、学会了如何设置默认地址</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5%E3%80%81%E8%AE%A2%E5%8D%95%E7%BC%96%E5%8F%B7%E7%9A%84%E7%94%9F%E6%88%90"><span class="toc-number">1.2.5.</span> <span class="toc-text">5、订单编号的生成</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6%E3%80%81%E5%BE%AE%E4%BF%A1%E6%94%AF%E4%BB%98%E5%8A%9F%E8%83%BD"><span class="toc-number">1.2.6.</span> <span class="toc-text">6、微信支付功能</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%94%AF%E4%BB%98%E6%97%B6%E5%BA%8F%E5%9B%BE"><span class="toc-number">1.2.6.1.</span> <span class="toc-text">微信小程序支付时序图</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9D%82%E9%A1%B9%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="toc-number">1.3.</span> <span class="toc-text">杂项知识点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Spring-Cache"><span class="toc-number">1.3.1.</span> <span class="toc-text">Spring Cache</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3"><span class="toc-number">1.3.1.1.</span> <span class="toc-text">常用注解</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BC%95%E5%AF%BC%E7%B1%BB%E4%B8%8A%E5%8A%A0-EnableCaching"><span class="toc-number">1.3.1.2.</span> <span class="toc-text">引导类上加@EnableCaching:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#CachePut%E6%B3%A8%E8%A7%A3"><span class="toc-number">1.3.1.3.</span> <span class="toc-text">@CachePut注解</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Cacheable%E6%B3%A8%E8%A7%A3"><span class="toc-number">1.3.1.4.</span> <span class="toc-text">@Cacheable注解</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#CacheEvict%E6%B3%A8%E8%A7%A3"><span class="toc-number">1.3.1.5.</span> <span class="toc-text">@CacheEvict注解</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9B%AA%E8%8A%B1%E7%AE%97%E6%B3%95"><span class="toc-number">1.3.2.</span> <span class="toc-text">雪花算法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93%EF%BC%9A"><span class="toc-number">1.4.</span> <span class="toc-text">总结：</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/09/02/Java/Java%E9%A1%B9%E7%9B%AE/%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96/%E3%80%90%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96%E9%A1%B9%E7%9B%AE%E6%97%A5%E8%AE%B0%E3%80%91%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93/" title="【苍穹外卖项目日记】项目总结">【苍穹外卖项目日记】项目总结</a><time datetime="2026-09-01T16:00:00.000Z" title="发表于 2026-09-02 00:00:00">2026-09-02</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/09/01/Java/Java%E9%A1%B9%E7%9B%AE/%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96/%E3%80%90%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96%E9%A1%B9%E7%9B%AE%E6%97%A5%E8%AE%B0%E3%80%91Day6/" title="【苍穹外卖项目日记】Day6">【苍穹外卖项目日记】Day6</a><time datetime="2026-08-31T16:00:00.000Z" title="发表于 2026-09-01 00:00:00">2026-09-01</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/08/28/Java/Java%E9%A1%B9%E7%9B%AE/%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96/%E3%80%90%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96%E9%A1%B9%E7%9B%AE%E6%97%A5%E8%AE%B0%E3%80%91Day5/" title="【苍穹外卖项目日记】Day5">【苍穹外卖项目日记】Day5</a><time datetime="2026-08-27T16:00:00.000Z" title="发表于 2026-08-28 00:00:00">2026-08-28</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/08/14/Java/Java%E9%A1%B9%E7%9B%AE/%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96/%E3%80%90%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96%E9%A1%B9%E7%9B%AE%E6%97%A5%E8%AE%B0%E3%80%91Day4/" title="【苍穹外卖项目日记】Day4">【苍穹外卖项目日记】Day4</a><time datetime="2026-08-13T16:00:00.000Z" title="发表于 2026-08-14 00:00:00">2026-08-14</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/08/08/Java/Java%E9%A1%B9%E7%9B%AE/%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96/%E3%80%90%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96%E9%A1%B9%E7%9B%AE%E6%97%A5%E8%AE%B0%E3%80%91Day3/" title="【苍穹外卖项目日记】Day3">【苍穹外卖项目日记】Day3</a><time datetime="2026-08-07T16:00:00.000Z" title="发表于 2026-08-08 00:00:00">2026-08-08</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By XuX</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.3</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="前往评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://lib.baomitu.com/medium-zoom/1.1.0/medium-zoom.min.js"></script><script src="https://lib.baomitu.com/instant.page/5.2.0/instantpage.min.js" type="module"></script><script src="https://lib.baomitu.com/vanilla-lazyload/19.1.3/lazyload.iife.min.js"></script><div class="js-pjax"><script>(() => {
+  const isShuoshuo = GLOBAL_CONFIG_SITE.pageType === 'shuoshuo'
+  const option = null
+  const getUtterancesTheme = theme => theme === 'dark' ? 'photon-dark' : 'github-light'
+
+  const loadUtterances = (el = document, key) => {
+    if (isShuoshuo) {
+      window.shuoshuoComment.destroyUtterances = () => {
+        if (el.children.length) {
+          el.innerHTML = ''
+          el.classList.add('no-comment')
+        }
+      }
+    }
+
+    const config = {
+      src: 'https://utteranc.es/client.js',
+      repo: 'XuXcode/XuXcode.github.io',
+      theme: getUtterancesTheme(document.documentElement.getAttribute('data-theme')),
+      crossorigin: 'anonymous',
+      async: true,
+      ...option,
+      'issue-term': isShuoshuo ? key : (option && option['issue-term']) || 'pathname'
+    }
+
+    const ele = document.createElement('script')
+    Object.entries(config).forEach(([key, value]) => ele.setAttribute(key, value))
+    el.querySelector('#utterances-wrap').appendChild(ele)
+  }
+
+  const changeUtterancesTheme = theme => {
+    const iframe = document.querySelector('#utterances-wrap iframe')
+    if (iframe) {
+      const message = {
+        type: 'set-theme',
+        theme: getUtterancesTheme(theme)
+      };
+      iframe.contentWindow.postMessage(message, 'https://utteranc.es')
+    }
+  }
+
+  btf.addGlobalFn('themeChange', changeUtterancesTheme, 'utterances')
+
+  if (isShuoshuo) {
+    'Utterances' === 'Utterances'
+      ? window.shuoshuoComment = { loadComment: loadUtterances }
+      : window.loadOtherComment = loadUtterances
+    return
+  }
+  
+  if ('Utterances' === 'Utterances' || !false) {
+    if (false) btf.loadComment(document.getElementById('utterances-wrap'), loadUtterances)
+    else loadUtterances()
+  } else {
+    window.loadOtherComment = loadUtterances
+  }
+})()</script></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden="hidden"></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="local-search-input"><input placeholder="搜索文章..." type="text"/></div><hr/><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none;"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>
