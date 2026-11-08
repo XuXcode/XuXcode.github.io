@@ -10,7 +10,7 @@ tags:
   - GUI
   - Swing
 ---
-# GUI界面编程（了解）
+## GUI界面编程（了解）
 
 ## Swing
 
