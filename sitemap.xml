@@ -2,7 +2,61 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://xuxcode.github.io/2026/08/06/Java/Java%E9%A1%B9%E7%9B%AE/%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96/HttpClient/</loc>
+    <loc>https://xuxcode.github.io/2025/11/07/%E7%AE%97%E6%B3%95/CPP/dfs%E6%A8%A1%E6%9D%BF/</loc>
+    
+    <lastmod>2026-11-08</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://xuxcode.github.io/2025/11/07/%E7%AE%97%E6%B3%95/CPP/bfs/</loc>
+    
+    <lastmod>2026-11-08</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://xuxcode.github.io/2026/09/02/Java/Java%E9%A1%B9%E7%9B%AE/%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96/%E3%80%90%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96%E9%A1%B9%E7%9B%AE%E6%97%A5%E8%AE%B0%E3%80%91%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93/</loc>
+    
+    <lastmod>2026-11-08</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://xuxcode.github.io/2026/09/01/Java/Java%E9%A1%B9%E7%9B%AE/%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96/%E3%80%90%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96%E9%A1%B9%E7%9B%AE%E6%97%A5%E8%AE%B0%E3%80%91Day6/</loc>
+    
+    <lastmod>2026-11-08</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://xuxcode.github.io/2026/08/28/Java/Java%E9%A1%B9%E7%9B%AE/%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96/%E3%80%90%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96%E9%A1%B9%E7%9B%AE%E6%97%A5%E8%AE%B0%E3%80%91Day5/</loc>
+    
+    <lastmod>2026-11-08</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://xuxcode.github.io/2026/08/14/Java/Java%E9%A1%B9%E7%9B%AE/%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96/%E3%80%90%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96%E9%A1%B9%E7%9B%AE%E6%97%A5%E8%AE%B0%E3%80%91Day4/</loc>
+    
+    <lastmod>2026-11-08</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://xuxcode.github.io/2026/08/08/Java/Java%E9%A1%B9%E7%9B%AE/%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96/%E3%80%90%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96%E9%A1%B9%E7%9B%AE%E6%97%A5%E8%AE%B0%E3%80%91Day3/</loc>
     
     <lastmod>2026-11-08</lastmod>
     
@@ -20,7 +74,7 @@
   </url>
   
   <url>
-    <loc>https://xuxcode.github.io/2025/12/19/Java/Javaweb/Maven/</loc>
+    <loc>https://xuxcode.github.io/2026/07/03/Java/Java%E9%A1%B9%E7%9B%AE/%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96/%E3%80%90%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96%E9%A1%B9%E7%9B%AE%E6%97%A5%E8%AE%B0%E3%80%91Day1/</loc>
     
     <lastmod>2026-11-08</lastmod>
     
@@ -29,7 +83,7 @@
   </url>
   
   <url>
-    <loc>https://xuxcode.github.io/2026/05/13/Python/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/Python%E5%BC%82%E5%B8%B8/</loc>
+    <loc>https://xuxcode.github.io/2025/12/19/Java/Javase/GUI%E7%95%8C%E9%9D%A2%E7%BC%96%E7%A8%8B/</loc>
     
     <lastmod>2026-11-08</lastmod>
     
@@ -38,7 +92,43 @@
   </url>
   
   <url>
-    <loc>https://xuxcode.github.io/2026/11/07/Java/Javaweb/Spring%20AOP%20%E5%8E%9F%E7%90%86%E5%89%96%E6%9E%90%EF%BC%9A%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%80%E4%B8%AA%E6%B3%A8%E8%A7%A3%E5%B0%B1%E8%83%BD%E5%AE%9E%E7%8E%B0%E5%85%AC%E5%85%B1%E5%AD%97%E6%AE%B5%E8%87%AA%E5%8A%A8%E5%A1%AB%E5%85%85%EF%BC%9F/</loc>
+    <loc>https://xuxcode.github.io/2025/12/19/Java/Javase/API(%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F)/</loc>
+    
+    <lastmod>2026-11-08</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://xuxcode.github.io/music/index.html</loc>
+    
+    <lastmod>2026-11-08</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://xuxcode.github.io/movies/index.html</loc>
+    
+    <lastmod>2026-11-08</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://xuxcode.github.io/photos/index.html</loc>
+    
+    <lastmod>2026-11-08</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://xuxcode.github.io/comment/index.html</loc>
     
     <lastmod>2026-11-08</lastmod>
     
@@ -56,99 +146,27 @@
   </url>
   
   <url>
-    <loc>https://xuxcode.github.io/2026/10/25/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/CSS3%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF/</loc>
+    <loc>https://xuxcode.github.io/2026/11/07/Java/Javaweb/Spring%20AOP%20%E5%8E%9F%E7%90%86%E5%89%96%E6%9E%90%EF%BC%9A%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%80%E4%B8%AA%E6%B3%A8%E8%A7%A3%E5%B0%B1%E8%83%BD%E5%AE%9E%E7%8E%B0%E5%85%AC%E5%85%B1%E5%AD%97%E6%AE%B5%E8%87%AA%E5%8A%A8%E5%A1%AB%E5%85%85%EF%BC%9F/</loc>
     
-    <lastmod>2026-10-25</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://xuxcode.github.io/2026/09/12/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/HTML%E8%AF%AD%E4%B9%89%E6%A0%87%E7%AD%BE/</loc>
-    
-    <lastmod>2026-09-23</lastmod>
+    <lastmod>2026-11-08</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://xuxcode.github.io/2026/09/02/Java/Java%E9%A1%B9%E7%9B%AE/%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96/%E3%80%90%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96%E9%A1%B9%E7%9B%AE%E6%97%A5%E8%AE%B0%E3%80%91%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93/</loc>
+    <loc>https://xuxcode.github.io/projects/index.html</loc>
     
-    <lastmod>2026-09-08</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://xuxcode.github.io/2026/08/06/Java/Java%E9%A1%B9%E7%9B%AE/%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96/Redis/</loc>
-    
-    <lastmod>2026-09-08</lastmod>
+    <lastmod>2026-11-08</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://xuxcode.github.io/2026/09/01/Java/Java%E9%A1%B9%E7%9B%AE/%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96/%E3%80%90%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96%E9%A1%B9%E7%9B%AE%E6%97%A5%E8%AE%B0%E3%80%91Day6/</loc>
+    <loc>https://xuxcode.github.io/about/index.html</loc>
     
-    <lastmod>2026-09-08</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://xuxcode.github.io/2026/08/28/Java/Java%E9%A1%B9%E7%9B%AE/%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96/%E3%80%90%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96%E9%A1%B9%E7%9B%AE%E6%97%A5%E8%AE%B0%E3%80%91Day5/</loc>
-    
-    <lastmod>2026-09-08</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://xuxcode.github.io/2026/08/14/Java/Java%E9%A1%B9%E7%9B%AE/%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96/%E3%80%90%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96%E9%A1%B9%E7%9B%AE%E6%97%A5%E8%AE%B0%E3%80%91Day4/</loc>
-    
-    <lastmod>2026-09-08</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://xuxcode.github.io/2026/08/08/Java/Java%E9%A1%B9%E7%9B%AE/%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96/%E3%80%90%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96%E9%A1%B9%E7%9B%AE%E6%97%A5%E8%AE%B0%E3%80%91Day3/</loc>
-    
-    <lastmod>2026-09-08</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://xuxcode.github.io/2026/07/03/Java/Java%E9%A1%B9%E7%9B%AE/%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96/%E3%80%90%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96%E9%A1%B9%E7%9B%AE%E6%97%A5%E8%AE%B0%E3%80%91Day1/</loc>
-    
-    <lastmod>2026-09-08</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://xuxcode.github.io/2025/11/27/%E7%AE%97%E6%B3%95/CPP/%E6%8E%92%E5%BA%8F/</loc>
-    
-    <lastmod>2026-07-09</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://xuxcode.github.io/2025/11/27/%E7%AE%97%E6%B3%95/CPP/%E5%BF%AB%E9%80%9F%E5%B9%82%E6%A8%A1%E6%9D%BF/</loc>
-    
-    <lastmod>2026-07-09</lastmod>
+    <lastmod>2026-11-08</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -157,16 +175,7 @@
   <url>
     <loc>https://xuxcode.github.io/2025/11/08/%E7%AE%97%E6%B3%95/CPP/P1162%20%E5%A1%AB%E6%B6%82%E9%A2%9C%E8%89%B2/</loc>
     
-    <lastmod>2026-07-09</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://xuxcode.github.io/2025/11/07/%E7%AE%97%E6%B3%95/CPP/dfs%E6%A8%A1%E6%9D%BF/</loc>
-    
-    <lastmod>2026-07-09</lastmod>
+    <lastmod>2026-11-08</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -175,16 +184,43 @@
   <url>
     <loc>https://xuxcode.github.io/2025/11/20/%E7%AE%97%E6%B3%95/CPP/cpp%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E4%BC%98%E5%8C%96/</loc>
     
-    <lastmod>2026-07-09</lastmod>
+    <lastmod>2026-11-08</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://xuxcode.github.io/2025/11/07/%E7%AE%97%E6%B3%95/CPP/bfs/</loc>
+    <loc>https://xuxcode.github.io/2025/11/27/%E7%AE%97%E6%B3%95/CPP/%E5%BF%AB%E9%80%9F%E5%B9%82%E6%A8%A1%E6%9D%BF/</loc>
     
-    <lastmod>2026-07-09</lastmod>
+    <lastmod>2026-11-08</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://xuxcode.github.io/2025/11/27/%E7%AE%97%E6%B3%95/CPP/%E6%8E%92%E5%BA%8F/</loc>
+    
+    <lastmod>2026-11-08</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://xuxcode.github.io/2026/09/12/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/HTML%E8%AF%AD%E4%B9%89%E6%A0%87%E7%AD%BE/</loc>
+    
+    <lastmod>2026-11-08</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://xuxcode.github.io/2026/10/25/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/CSS3%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF/</loc>
+    
+    <lastmod>2026-11-08</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -193,34 +229,7 @@
   <url>
     <loc>https://xuxcode.github.io/2025/12/19/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/Java/%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/</loc>
     
-    <lastmod>2026-07-09</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://xuxcode.github.io/2026/06/21/Python/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/%E6%95%B0%E6%8D%AE%E7%9A%84%E5%8F%AF%E8%A7%86%E5%8C%96/</loc>
-    
-    <lastmod>2026-07-09</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://xuxcode.github.io/2026/06/21/Python/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/Pandas/</loc>
-    
-    <lastmod>2026-07-09</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://xuxcode.github.io/2026/06/21/Python/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/Numpy/</loc>
-    
-    <lastmod>2026-07-09</lastmod>
+    <lastmod>2026-11-08</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -229,7 +238,7 @@
   <url>
     <loc>https://xuxcode.github.io/2026/06/21/Python/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/Jupyter%E7%AC%94%E8%AE%B0%E6%9C%AC%E7%9A%84%E4%BD%BF%E7%94%A8/</loc>
     
-    <lastmod>2026-07-09</lastmod>
+    <lastmod>2026-11-08</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -238,7 +247,25 @@
   <url>
     <loc>https://xuxcode.github.io/2026/04/21/Python/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/</loc>
     
-    <lastmod>2026-07-09</lastmod>
+    <lastmod>2026-11-08</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://xuxcode.github.io/2026/06/21/Python/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/Numpy/</loc>
+    
+    <lastmod>2026-11-08</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://xuxcode.github.io/2026/06/21/Python/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/Pandas/</loc>
+    
+    <lastmod>2026-11-08</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -247,16 +274,16 @@
   <url>
     <loc>https://xuxcode.github.io/2026/04/16/Python/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/%E6%95%B0%E6%8D%AE%E5%AE%B9%E5%99%A8/</loc>
     
-    <lastmod>2026-07-09</lastmod>
+    <lastmod>2026-11-08</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://xuxcode.github.io/2026/04/17/Python/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/%E5%87%BD%E6%95%B0/</loc>
+    <loc>https://xuxcode.github.io/2026/06/21/Python/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/%E6%95%B0%E6%8D%AE%E7%9A%84%E5%8F%AF%E8%A7%86%E5%8C%96/</loc>
     
-    <lastmod>2026-07-09</lastmod>
+    <lastmod>2026-11-08</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -265,7 +292,43 @@
   <url>
     <loc>https://xuxcode.github.io/2026/04/18/Python/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/Python%E6%A8%A1%E5%9D%97/</loc>
     
-    <lastmod>2026-07-09</lastmod>
+    <lastmod>2026-11-08</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://xuxcode.github.io/2026/05/13/Python/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/Python%E5%BC%82%E5%B8%B8/</loc>
+    
+    <lastmod>2026-11-08</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://xuxcode.github.io/2026/04/17/Python/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/%E5%87%BD%E6%95%B0/</loc>
+    
+    <lastmod>2026-11-08</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://xuxcode.github.io/2026/08/06/Java/Java%E9%A1%B9%E7%9B%AE/%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96/Redis/</loc>
+    
+    <lastmod>2026-11-08</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://xuxcode.github.io/2026/08/06/Java/Java%E9%A1%B9%E7%9B%AE/%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96/HttpClient/</loc>
+    
+    <lastmod>2026-11-08</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -274,7 +337,7 @@
   <url>
     <loc>https://xuxcode.github.io/2025/12/19/Java/Javaweb/Web%E5%9F%BA%E7%A1%80/</loc>
     
-    <lastmod>2026-07-09</lastmod>
+    <lastmod>2026-11-08</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -283,7 +346,7 @@
   <url>
     <loc>https://xuxcode.github.io/2025/12/19/Java/Javaweb/Web%E5%90%8E%E7%AB%AF%E5%AE%9E%E6%88%98/</loc>
     
-    <lastmod>2026-07-09</lastmod>
+    <lastmod>2026-11-08</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -292,7 +355,7 @@
   <url>
     <loc>https://xuxcode.github.io/2025/12/19/Java/Javaweb/SpringBoot%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/</loc>
     
-    <lastmod>2026-07-09</lastmod>
+    <lastmod>2026-11-08</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -301,7 +364,7 @@
   <url>
     <loc>https://xuxcode.github.io/2025/12/19/Java/Javaweb/SpringBoot%E5%8E%9F%E7%90%86/</loc>
     
-    <lastmod>2026-07-09</lastmod>
+    <lastmod>2026-11-08</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -310,7 +373,7 @@
   <url>
     <loc>https://xuxcode.github.io/2025/12/19/Java/Javaweb/Spring%20AOP/</loc>
     
-    <lastmod>2026-07-09</lastmod>
+    <lastmod>2026-11-08</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -319,7 +382,7 @@
   <url>
     <loc>https://xuxcode.github.io/2025/12/19/Java/Javaweb/MySQL/</loc>
     
-    <lastmod>2026-07-09</lastmod>
+    <lastmod>2026-11-08</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -328,7 +391,7 @@
   <url>
     <loc>https://xuxcode.github.io/2025/12/19/Java/Javaweb/Mybatis/</loc>
     
-    <lastmod>2026-07-09</lastmod>
+    <lastmod>2026-11-08</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -337,7 +400,16 @@
   <url>
     <loc>https://xuxcode.github.io/2025/12/19/Java/Javaweb/Maven%E9%AB%98%E7%BA%A7/</loc>
     
-    <lastmod>2026-07-09</lastmod>
+    <lastmod>2026-11-08</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://xuxcode.github.io/2025/12/19/Java/Javaweb/Maven/</loc>
+    
+    <lastmod>2026-11-08</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -346,7 +418,7 @@
   <url>
     <loc>https://xuxcode.github.io/2025/12/19/Java/Javaweb/Linux/</loc>
     
-    <lastmod>2026-07-09</lastmod>
+    <lastmod>2026-11-08</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -355,7 +427,7 @@
   <url>
     <loc>https://xuxcode.github.io/2025/12/19/Java/Javase/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E9%AB%98%E7%BA%A72/</loc>
     
-    <lastmod>2026-07-09</lastmod>
+    <lastmod>2026-11-08</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -364,7 +436,7 @@
   <url>
     <loc>https://xuxcode.github.io/2025/12/19/Java/Javase/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E9%AB%98%E7%BA%A71/</loc>
     
-    <lastmod>2026-07-09</lastmod>
+    <lastmod>2026-11-08</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -373,7 +445,7 @@
   <url>
     <loc>https://xuxcode.github.io/2025/12/19/Java/Javase/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/</loc>
     
-    <lastmod>2026-07-09</lastmod>
+    <lastmod>2026-11-08</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -382,7 +454,7 @@
   <url>
     <loc>https://xuxcode.github.io/2025/12/19/Java/Javase/%E7%BB%A7%E6%89%BF/</loc>
     
-    <lastmod>2026-07-09</lastmod>
+    <lastmod>2026-11-08</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -391,7 +463,7 @@
   <url>
     <loc>https://xuxcode.github.io/2025/12/19/Java/Javase/%E7%B1%BB%E7%9A%84%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/</loc>
     
-    <lastmod>2026-07-09</lastmod>
+    <lastmod>2026-11-08</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -400,7 +472,7 @@
   <url>
     <loc>https://xuxcode.github.io/2025/12/19/Java/Javase/%E5%B8%B8%E7%94%A8%E7%9A%84API/</loc>
     
-    <lastmod>2026-07-09</lastmod>
+    <lastmod>2026-11-08</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -409,7 +481,7 @@
   <url>
     <loc>https://xuxcode.github.io/2025/12/19/Java/Javase/%E5%AD%98%E5%82%A8&%E8%AF%BB%E5%86%99%E6%95%B0%E6%8D%AE%E7%9A%84%E6%96%B9%E6%A1%88/</loc>
     
-    <lastmod>2026-07-09</lastmod>
+    <lastmod>2026-11-08</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -418,7 +490,7 @@
   <url>
     <loc>https://xuxcode.github.io/2025/12/19/Java/Javase/%E5%A4%9A%E7%BA%BF%E7%A8%8B&JUC/</loc>
     
-    <lastmod>2026-07-09</lastmod>
+    <lastmod>2026-11-08</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -427,7 +499,7 @@
   <url>
     <loc>https://xuxcode.github.io/2025/12/19/Java/Javase/%E5%A4%9A%E6%80%81/</loc>
     
-    <lastmod>2026-07-09</lastmod>
+    <lastmod>2026-11-08</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -436,7 +508,7 @@
   <url>
     <loc>https://xuxcode.github.io/2025/12/19/Java/Javase/%E5%8F%8D%E5%B0%84/</loc>
     
-    <lastmod>2026-07-09</lastmod>
+    <lastmod>2026-11-08</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -445,16 +517,7 @@
   <url>
     <loc>https://xuxcode.github.io/2025/12/19/Java/Javase/%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/</loc>
     
-    <lastmod>2026-07-09</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://xuxcode.github.io/2025/12/19/Java/Javase/Java%E5%8A%A0%E5%BC%BA01/</loc>
-    
-    <lastmod>2026-07-09</lastmod>
+    <lastmod>2026-11-08</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -463,25 +526,16 @@
   <url>
     <loc>https://xuxcode.github.io/2025/12/19/Java/Javase/Java%E5%8A%A0%E5%BC%BA02%E2%80%94%E2%80%94%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6/</loc>
     
-    <lastmod>2026-07-09</lastmod>
+    <lastmod>2026-11-08</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://xuxcode.github.io/2025/12/19/Java/Javase/GUI%E7%95%8C%E9%9D%A2%E7%BC%96%E7%A8%8B/</loc>
+    <loc>https://xuxcode.github.io/2025/12/19/Java/Javase/Java%E5%8A%A0%E5%BC%BA01/</loc>
     
-    <lastmod>2026-07-09</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://xuxcode.github.io/2025/12/19/Java/Javase/API(%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F)/</loc>
-    
-    <lastmod>2026-07-09</lastmod>
+    <lastmod>2026-11-08</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -490,43 +544,7 @@
   <url>
     <loc>https://xuxcode.github.io/2025/12/19/Java/Java%20AI/Spring%20AI/</loc>
     
-    <lastmod>2026-07-09</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://xuxcode.github.io/movies/index.html</loc>
-    
-    <lastmod>2026-07-05</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://xuxcode.github.io/music/index.html</loc>
-    
-    <lastmod>2026-07-05</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://xuxcode.github.io/photos/index.html</loc>
-    
-    <lastmod>2026-07-05</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://xuxcode.github.io/comment/index.html</loc>
-    
-    <lastmod>2026-07-05</lastmod>
+    <lastmod>2026-11-08</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -534,15 +552,6 @@
   
   <url>
     <loc>https://xuxcode.github.io/links/index.html</loc>
-    
-    <lastmod>2026-07-05</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://xuxcode.github.io/about/index.html</loc>
     
     <lastmod>2026-07-05</lastmod>
     
@@ -576,48 +585,6 @@
     <priority>1.0</priority>
   </url>
 
-  
-  <url>
-    <loc>https://xuxcode.github.io/tags/css-basic/</loc>
-    <lastmod>2026-11-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://xuxcode.github.io/tags/css-%E9%80%89%E6%8B%A9%E5%99%A8/</loc>
-    <lastmod>2026-11-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://xuxcode.github.io/tags/CSS3/</loc>
-    <lastmod>2026-11-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://xuxcode.github.io/tags/%E7%9B%92%E6%A8%A1%E5%9E%8B/</loc>
-    <lastmod>2026-11-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://xuxcode.github.io/tags/%E6%96%87%E6%9C%AC%E6%A0%B7%E5%BC%8F/</loc>
-    <lastmod>2026-11-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://xuxcode.github.io/tags/%E6%A0%B7%E5%BC%8F%E5%88%9D%E5%A7%8B%E5%8C%96/</loc>
-    <lastmod>2026-11-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
   
   <url>
     <loc>https://xuxcode.github.io/tags/html-basic/</loc>
@@ -656,41 +623,6 @@
   
   <url>
     <loc>https://xuxcode.github.io/tags/%E8%A1%A8%E6%A0%BC/</loc>
-    <lastmod>2026-11-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://xuxcode.github.io/tags/ai-spring-ai/</loc>
-    <lastmod>2026-11-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://xuxcode.github.io/tags/Spring-AI/</loc>
-    <lastmod>2026-11-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://xuxcode.github.io/tags/ChatClient/</loc>
-    <lastmod>2026-11-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://xuxcode.github.io/tags/RAG/</loc>
-    <lastmod>2026-11-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://xuxcode.github.io/tags/Agent/</loc>
     <lastmod>2026-11-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -746,21 +678,35 @@
   </url>
   
   <url>
-    <loc>https://xuxcode.github.io/tags/web-linux/</loc>
+    <loc>https://xuxcode.github.io/tags/ai-spring-ai/</loc>
     <lastmod>2026-11-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://xuxcode.github.io/tags/Linux/</loc>
+    <loc>https://xuxcode.github.io/tags/Spring-AI/</loc>
     <lastmod>2026-11-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://xuxcode.github.io/tags/JDK%E9%83%A8%E7%BD%B2/</loc>
+    <loc>https://xuxcode.github.io/tags/ChatClient/</loc>
+    <lastmod>2026-11-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://xuxcode.github.io/tags/RAG/</loc>
+    <lastmod>2026-11-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://xuxcode.github.io/tags/Agent/</loc>
     <lastmod>2026-11-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -782,6 +728,97 @@
   
   <url>
     <loc>https://xuxcode.github.io/tags/JUnit/</loc>
+    <lastmod>2026-11-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://xuxcode.github.io/tags/web-mysql/</loc>
+    <lastmod>2026-11-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://xuxcode.github.io/tags/MySQL/</loc>
+    <lastmod>2026-11-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://xuxcode.github.io/tags/SQL/</loc>
+    <lastmod>2026-11-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://xuxcode.github.io/tags/%E4%BA%8B%E5%8A%A1/</loc>
+    <lastmod>2026-11-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://xuxcode.github.io/tags/web-linux/</loc>
+    <lastmod>2026-11-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://xuxcode.github.io/tags/Linux/</loc>
+    <lastmod>2026-11-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://xuxcode.github.io/tags/JDK%E9%83%A8%E7%BD%B2/</loc>
+    <lastmod>2026-11-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://xuxcode.github.io/tags/css-basic/</loc>
+    <lastmod>2026-11-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://xuxcode.github.io/tags/css-%E9%80%89%E6%8B%A9%E5%99%A8/</loc>
+    <lastmod>2026-11-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://xuxcode.github.io/tags/CSS3/</loc>
+    <lastmod>2026-11-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://xuxcode.github.io/tags/%E7%9B%92%E6%A8%A1%E5%9E%8B/</loc>
+    <lastmod>2026-11-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://xuxcode.github.io/tags/%E6%96%87%E6%9C%AC%E6%A0%B7%E5%BC%8F/</loc>
+    <lastmod>2026-11-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://xuxcode.github.io/tags/%E6%A0%B7%E5%BC%8F%E5%88%9D%E5%A7%8B%E5%8C%96/</loc>
     <lastmod>2026-11-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -851,6 +888,97 @@
   </url>
   
   <url>
+    <loc>https://xuxcode.github.io/tags/SpringBoot%E5%8E%9F%E7%90%86/</loc>
+    <lastmod>2026-11-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://xuxcode.github.io/tags/Bean%E4%BD%9C%E7%94%A8%E5%9F%9F/</loc>
+    <lastmod>2026-11-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://xuxcode.github.io/tags/SpringBoot%E9%85%8D%E7%BD%AE/</loc>
+    <lastmod>2026-11-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://xuxcode.github.io/tags/yml/</loc>
+    <lastmod>2026-11-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://xuxcode.github.io/tags/properties/</loc>
+    <lastmod>2026-11-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://xuxcode.github.io/tags/web-project/</loc>
+    <lastmod>2026-11-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://xuxcode.github.io/tags/Tlias/</loc>
+    <lastmod>2026-11-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://xuxcode.github.io/tags/Restful/</loc>
+    <lastmod>2026-11-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://xuxcode.github.io/tags/web-http/</loc>
+    <lastmod>2026-11-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://xuxcode.github.io/tags/Web%E5%9F%BA%E7%A1%80/</loc>
+    <lastmod>2026-11-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://xuxcode.github.io/tags/HTTP/</loc>
+    <lastmod>2026-11-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://xuxcode.github.io/tags/IOC/</loc>
+    <lastmod>2026-11-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://xuxcode.github.io/tags/DI/</loc>
+    <lastmod>2026-11-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://xuxcode.github.io/tags/AOP/</loc>
     <lastmod>2026-11-08</lastmod>
     <changefreq>weekly</changefreq>
@@ -893,118 +1021,6 @@
   </url>
   
   <url>
-    <loc>https://xuxcode.github.io/tags/web-mysql/</loc>
-    <lastmod>2026-11-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://xuxcode.github.io/tags/MySQL/</loc>
-    <lastmod>2026-11-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://xuxcode.github.io/tags/SQL/</loc>
-    <lastmod>2026-11-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://xuxcode.github.io/tags/%E4%BA%8B%E5%8A%A1/</loc>
-    <lastmod>2026-11-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://xuxcode.github.io/tags/%E5%88%87%E9%9D%A2/</loc>
-    <lastmod>2026-11-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://xuxcode.github.io/tags/%E5%88%87%E5%85%A5%E7%82%B9/</loc>
-    <lastmod>2026-11-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://xuxcode.github.io/tags/SpringBoot%E5%8E%9F%E7%90%86/</loc>
-    <lastmod>2026-11-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://xuxcode.github.io/tags/Bean%E4%BD%9C%E7%94%A8%E5%9F%9F/</loc>
-    <lastmod>2026-11-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://xuxcode.github.io/tags/SpringBoot%E9%85%8D%E7%BD%AE/</loc>
-    <lastmod>2026-11-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://xuxcode.github.io/tags/yml/</loc>
-    <lastmod>2026-11-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://xuxcode.github.io/tags/properties/</loc>
-    <lastmod>2026-11-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://xuxcode.github.io/tags/web-http/</loc>
-    <lastmod>2026-11-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://xuxcode.github.io/tags/Web%E5%9F%BA%E7%A1%80/</loc>
-    <lastmod>2026-11-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://xuxcode.github.io/tags/HTTP/</loc>
-    <lastmod>2026-11-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://xuxcode.github.io/tags/IOC/</loc>
-    <lastmod>2026-11-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://xuxcode.github.io/tags/DI/</loc>
-    <lastmod>2026-11-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://xuxcode.github.io/tags/java-api/</loc>
     <lastmod>2026-11-08</lastmod>
     <changefreq>weekly</changefreq>
@@ -1013,48 +1029,6 @@
   
   <url>
     <loc>https://xuxcode.github.io/tags/regex/</loc>
-    <lastmod>2026-11-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://xuxcode.github.io/tags/web-project/</loc>
-    <lastmod>2026-11-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://xuxcode.github.io/tags/Tlias/</loc>
-    <lastmod>2026-11-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://xuxcode.github.io/tags/Restful/</loc>
-    <lastmod>2026-11-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://xuxcode.github.io/tags/java-basic/</loc>
-    <lastmod>2026-11-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://xuxcode.github.io/tags/GUI/</loc>
-    <lastmod>2026-11-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://xuxcode.github.io/tags/Swing/</loc>
     <lastmod>2026-11-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1187,6 +1161,41 @@
   </url>
   
   <url>
+    <loc>https://xuxcode.github.io/tags/java-io/</loc>
+    <lastmod>2026-11-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://xuxcode.github.io/tags/File/</loc>
+    <lastmod>2026-11-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://xuxcode.github.io/tags/IO%E6%B5%81/</loc>
+    <lastmod>2026-11-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://xuxcode.github.io/tags/%E5%BA%8F%E5%88%97%E5%8C%96/</loc>
+    <lastmod>2026-11-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://xuxcode.github.io/tags/java-basic/</loc>
+    <lastmod>2026-11-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://xuxcode.github.io/tags/java-oop/</loc>
     <lastmod>2026-11-08</lastmod>
     <changefreq>weekly</changefreq>
@@ -1202,6 +1211,20 @@
   
   <url>
     <loc>https://xuxcode.github.io/tags/instanceof/</loc>
+    <lastmod>2026-11-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://xuxcode.github.io/tags/%E5%88%87%E9%9D%A2/</loc>
+    <lastmod>2026-11-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://xuxcode.github.io/tags/%E5%88%87%E5%85%A5%E7%82%B9/</loc>
     <lastmod>2026-11-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1278,63 +1301,35 @@
   </url>
   
   <url>
-    <loc>https://xuxcode.github.io/tags/java-io/</loc>
+    <loc>https://xuxcode.github.io/tags/GUI/</loc>
     <lastmod>2026-11-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://xuxcode.github.io/tags/File/</loc>
+    <loc>https://xuxcode.github.io/tags/Swing/</loc>
     <lastmod>2026-11-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://xuxcode.github.io/tags/IO%E6%B5%81/</loc>
+    <loc>https://xuxcode.github.io/tags/%E5%86%85%E9%83%A8%E7%B1%BB/</loc>
     <lastmod>2026-11-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://xuxcode.github.io/tags/%E5%BA%8F%E5%88%97%E5%8C%96/</loc>
+    <loc>https://xuxcode.github.io/tags/Lambda/</loc>
     <lastmod>2026-11-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://xuxcode.github.io/tags/extends/</loc>
-    <lastmod>2026-11-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://xuxcode.github.io/tags/super/</loc>
-    <lastmod>2026-11-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://xuxcode.github.io/tags/TCP/</loc>
-    <lastmod>2026-11-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://xuxcode.github.io/tags/UDP/</loc>
-    <lastmod>2026-11-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://xuxcode.github.io/tags/Socket/</loc>
+    <loc>https://xuxcode.github.io/tags/%E4%BB%A3%E7%A0%81%E5%9D%97/</loc>
     <lastmod>2026-11-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1369,21 +1364,14 @@
   </url>
   
   <url>
-    <loc>https://xuxcode.github.io/tags/%E5%86%85%E9%83%A8%E7%B1%BB/</loc>
+    <loc>https://xuxcode.github.io/tags/extends/</loc>
     <lastmod>2026-11-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://xuxcode.github.io/tags/Lambda/</loc>
-    <lastmod>2026-11-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://xuxcode.github.io/tags/%E4%BB%A3%E7%A0%81%E5%9D%97/</loc>
+    <loc>https://xuxcode.github.io/tags/super/</loc>
     <lastmod>2026-11-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1397,14 +1385,14 @@
   </url>
   
   <url>
-    <loc>https://xuxcode.github.io/tags/%E5%87%BD%E6%95%B0/</loc>
+    <loc>https://xuxcode.github.io/tags/%E6%A8%A1%E5%9D%97/</loc>
     <lastmod>2026-11-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://xuxcode.github.io/tags/%E6%A8%A1%E5%9D%97/</loc>
+    <loc>https://xuxcode.github.io/tags/%E5%87%BD%E6%95%B0/</loc>
     <lastmod>2026-11-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1418,42 +1406,28 @@
   </url>
   
   <url>
+    <loc>https://xuxcode.github.io/tags/TCP/</loc>
+    <lastmod>2026-11-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://xuxcode.github.io/tags/UDP/</loc>
+    <lastmod>2026-11-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://xuxcode.github.io/tags/Socket/</loc>
+    <lastmod>2026-11-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://xuxcode.github.io/tags/NumPy/</loc>
-    <lastmod>2026-11-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://xuxcode.github.io/tags/Pandas/</loc>
-    <lastmod>2026-11-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://xuxcode.github.io/tags/%E5%8F%AF%E8%A7%86%E5%8C%96/</loc>
-    <lastmod>2026-11-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://xuxcode.github.io/tags/Matplotlib/</loc>
-    <lastmod>2026-11-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://xuxcode.github.io/tags/algorithm/</loc>
-    <lastmod>2026-11-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://xuxcode.github.io/tags/%E5%A4%A7O/</loc>
     <lastmod>2026-11-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1481,14 +1455,21 @@
   </url>
   
   <url>
-    <loc>https://xuxcode.github.io/tags/OI/</loc>
+    <loc>https://xuxcode.github.io/tags/ACM/</loc>
     <lastmod>2026-11-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://xuxcode.github.io/tags/ACM/</loc>
+    <loc>https://xuxcode.github.io/tags/Pandas/</loc>
+    <lastmod>2026-11-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://xuxcode.github.io/tags/OI/</loc>
     <lastmod>2026-11-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1509,7 +1490,35 @@
   </url>
   
   <url>
+    <loc>https://xuxcode.github.io/tags/%E5%8F%AF%E8%A7%86%E5%8C%96/</loc>
+    <lastmod>2026-11-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://xuxcode.github.io/tags/Matplotlib/</loc>
+    <lastmod>2026-11-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://xuxcode.github.io/tags/%E6%8E%92%E5%BA%8F/</loc>
+    <lastmod>2026-11-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://xuxcode.github.io/tags/algorithm/</loc>
+    <lastmod>2026-11-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://xuxcode.github.io/tags/%E5%A4%A7O/</loc>
     <lastmod>2026-11-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1560,13 +1569,6 @@
   </url>
   
   <url>
-    <loc>https://xuxcode.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/</loc>
-    <lastmod>2026-11-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://xuxcode.github.io/categories/%E7%AE%97%E6%B3%95/</loc>
     <lastmod>2026-11-08</lastmod>
     <changefreq>weekly</changefreq>
@@ -1575,6 +1577,13 @@
   
   <url>
     <loc>https://xuxcode.github.io/categories/Java/Java%E9%A1%B9%E7%9B%AE/</loc>
+    <lastmod>2026-11-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://xuxcode.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/</loc>
     <lastmod>2026-11-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1595,13 +1604,6 @@
   </url>
   
   <url>
-    <loc>https://xuxcode.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/Java/</loc>
-    <lastmod>2026-11-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://xuxcode.github.io/categories/%E7%AE%97%E6%B3%95/CPP/</loc>
     <lastmod>2026-11-08</lastmod>
     <changefreq>weekly</changefreq>
@@ -1610,6 +1612,13 @@
   
   <url>
     <loc>https://xuxcode.github.io/categories/Java/Java%E9%A1%B9%E7%9B%AE/%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96/</loc>
+    <lastmod>2026-11-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://xuxcode.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/Java/</loc>
     <lastmod>2026-11-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
