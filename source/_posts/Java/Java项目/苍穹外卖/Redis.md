@@ -7,8 +7,6 @@ categories:
   - Java项目
   - 苍穹外卖
 ---
-# Redis
-
 ## Redis入门
 
 Redis是一个基于内存的`key-value`结构数据库

@@ -13,8 +13,6 @@ tags:
   - Date
   - BigDecimal
 ---
-# 常用的API
-
 ## 1、Math类
 
 + Math类包含执行基本数字运算的方法，我们可以使用Math类完成基本的数学运算

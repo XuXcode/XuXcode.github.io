@@ -12,8 +12,6 @@ tags:
   - RAG
   - Agent
 ---
-# Spring AI
-
 ## AI应用开发技术架构
 
 | Category                                | Sub-category                                                 |

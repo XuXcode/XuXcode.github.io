@@ -11,8 +11,6 @@ tags:
   - yml
   - properties
 ---
-# SpringBoot配置文件
-
 ## 配置文件格式
 
 + SpringBoot项目提供了多种属性配置方式(properties、yaml、yml)

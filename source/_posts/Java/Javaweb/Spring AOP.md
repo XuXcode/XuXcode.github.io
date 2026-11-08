@@ -12,8 +12,6 @@ tags:
   - 切入点
   - ThreadLocal
 ---
-# Spring AOP
-
 ## 什么是AOP
 
 + **AOP**：面向切面编程/面向方面编程，可简单理解为就是面向特定方法编程

@@ -10,8 +10,6 @@ tags:
   - Jupyter
 
 ---
-# Jupyter笔记本的使用
-
 ## Jupyter快捷键
 
 | 快捷键      | 功能                            |

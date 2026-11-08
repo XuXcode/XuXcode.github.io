@@ -10,8 +10,6 @@ tags:
   - Linux
   - JDK部署
 ---
-# Linux
-
 ## 系统安装
 
 + 虚拟网络编辑器，NAT模式，ziwangIP设置为：192.168.100.0

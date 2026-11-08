@@ -11,8 +11,6 @@ tags:
   - ACM
 
 ---
-# cpp输入输出优化
-
 ```cpp
 ios::sync_with_stdio(false); //取消C语言输入输出缓冲区的同步
 cin.tie(0); //取消了cin和cout的绑定

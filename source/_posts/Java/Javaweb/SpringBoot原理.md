@@ -10,8 +10,6 @@ tags:
   - SpringBoot原理
   - Bean作用域
 ---
-# SpringBoot原理
-
 ## 配置优先级
 
 + 支持三种格式的配置文件：

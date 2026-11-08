@@ -5,8 +5,8 @@
 # Site
 title: XuX的博客
 subtitle: '欢迎来到我的博客'
-description: 'Stay hungry,stay foolish.'
-keywords: Java,Python,算法,数据结构,Spring,编程,博客,XuX
+description: '记录 Java 后端开发、AI Agent 应用与数据分析的技术博客，包含技术原理剖析、项目复盘与学习总结。'
+keywords: Java,Python,算法,数据结构,Spring,SpringBoot,MyBatis,Redis,MySQL,AI Agent,大模型,RAG,编程,博客,XuX
 author: XuX
 language: zh-CN
 timezone: 'Asia/Shanghai'

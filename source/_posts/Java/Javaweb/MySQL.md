@@ -11,8 +11,6 @@ tags:
   - SQL
   - 事务
 ---
-# MySQL
-
 ## 概述
 
 ###  MySQL连接

@@ -1,6 +1,7 @@
 ---
 title: Spring AOP 原理剖析：为什么一个注解就能实现公共字段自动填充？
 date: 2026-11-07
+sticky: 3
 description: 从苍穹外卖项目的公共字段自动填充入手，剖析 Spring AOP 的切面、切点与通知，Spring AOP 与 MyBatis 的双层动态代理、ThreadLocal 的数据来源以及反射赋值原理。
 categories:
   - Java
@@ -14,8 +15,6 @@ tags:
   - 反射
   - 苍穹外卖
 ---
-# Spring AOP 原理剖析：为什么一个注解就能实现公共字段自动填充？
-
 在学习苍穹外卖项目时，我接触到了一个挺实用的功能——**公共字段自动填充**。原本需要在 Service 层手动设置的创建时间、修改时间等字段，可以通过 **Spring AOP** 统一处理。
 
 > **为什么只需要在 Mapper 方法上添加一个注解，就能在执行 SQL 之前自动填充实体对象中的字段？**

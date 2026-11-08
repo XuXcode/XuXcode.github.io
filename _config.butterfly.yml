@@ -4,14 +4,15 @@ menu:
     分类: /categories/ || fa fa-archive
     标签: /tags/ || fa fa-tags
     归档: /archives/ || fa fa-folder-open
-  生活 || fas fa-list:
-    相册: /photos/ || fa fa-camera-retro
-    音乐: /music/ || fa fa-music
-    影视: /movies/ || fas fa-video
+  项目: /projects/ || fas fa-code-branch
   友链: /links/ || fa fa-link
   留言板: /comment/ || fa fa-paper-plane
-  关于笔者: /about/ || fas fa-heart
+  关于我: /about/ || fas fa-user
   RSS: /atom.xml || fas fa-rss
+
+# 说明：相册(/photos/)、音乐(/music/)、影视(/movies/) 三个独立页面目前仍为
+# “即将更新”占位内容，暂从导航栏隐藏。页面文件与资源均保留在 source/ 下，
+# 待内容填充后把对应菜单项加回上面的 menu 即可重新启用。
 
 
 avatar:
@@ -171,7 +172,9 @@ post_meta:
 # 站点信息的位置，例如: 300px/300em/300rem/10%
 index_site_info_top:
 # 头图的高度，例如: 300px/300em/300rem
-index_top_img_height:
+# 留空时为整屏高度，会导致首屏看不到任何文章卡片，
+# 这里限制为 60vh，让访客一进首页就能看到文章列表。
+index_top_img_height: 60vh
 
 # 首页的副标题设置
 subtitle:
@@ -192,8 +195,9 @@ subtitle:
   source: false
   # 如果关闭打字机效果，副标题将仅显示 sub 的第一行内容
   sub: 
-    - 今日事&#44;今日毕
-    - Never put off till tomorrow what you can do today
+    - Java 后端开发
+    - AI Agent 与大模型应用
+    - 技术原理剖析与项目复盘
 
 # 首页文章佈局
 # 1: 行佈局
@@ -205,10 +209,12 @@ index_layout: 1
 # 2: 两者（如果存在描述，将显示描述，否则显示自动摘要）
 # 3: 自动摘要（默认）
 # false: 不显示文章简介
+# 采用 2：优先使用文章自带的 description，缺失时才回退到自动摘要，
+# 避免首页卡片截取到正文中的大段代码。
 index_post_content:
-  method: 3
+  method: 2
   # 如果设置 method 为 2 或 3，需要配置长度
-  length: 500
+  length: 200
 
 # --------------------------------------
 # 文章设置
@@ -350,7 +356,7 @@ aside:
     # 是否显示公告卡片
     enable: true
     # 公告内容
-    content: 欢迎来到我的博客！
+    content: 关注 Java 后端、AI Agent 与工程实践。这里记录技术原理剖析、项目复盘和学习总结，欢迎交流。
   card_recent_post:
     # 是否显示最近文章卡片
     enable: true

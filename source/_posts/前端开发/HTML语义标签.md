@@ -12,8 +12,6 @@ tags:
   - 表单
   - 表格
 ---
-# HTML5语义标签
-
 ## Web标准
 
 + **Web标准**也称**网页标准**，由一系列的标准组成，大部分由W3C（World Wide Web Consortium，万维网联盟）负责制定。

@@ -11,8 +11,6 @@ tags:
   - 持久层
   - 动态SQL
 ---
-# Mybatis
-
 + MyBatis 是一款优秀的 持久层(dao) 框架，用于 简化JDBC 的开发
 
 ## 入门程序—使用Mybatis查询所有用户数据

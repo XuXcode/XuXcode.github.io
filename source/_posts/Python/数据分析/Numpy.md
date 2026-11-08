@@ -10,8 +10,6 @@ tags:
   - NumPy
 
 ---
-# Numpy
-
 ## Numpy介绍
 
 numpy是Python中科学计算的基础包。
