@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://xuxcode.github.io/2026/08/06/Java/Java%E9%A1%B9%E7%9B%AE/%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96/HttpClient/</loc>
+    <lastmod>2026-11-08</lastmod>
+  </url>
+  <url>
+    <loc>https://xuxcode.github.io/2026/07/03/Java/Java%E9%A1%B9%E7%9B%AE/%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96/%E3%80%90%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96%E9%A1%B9%E7%9B%AE%E6%97%A5%E8%AE%B0%E3%80%91Day2/</loc>
+    <lastmod>2026-11-08</lastmod>
+  </url>
+  <url>
+    <loc>https://xuxcode.github.io/2025/12/19/Java/Javaweb/Maven/</loc>
+    <lastmod>2026-11-08</lastmod>
+  </url>
+  <url>
+    <loc>https://xuxcode.github.io/2026/05/13/Python/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/Python%E5%BC%82%E5%B8%B8/</loc>
+    <lastmod>2026-11-08</lastmod>
+  </url>
+  <url>
     <loc>https://xuxcode.github.io/2026/11/07/Java/Javaweb/Spring%20AOP%20%E5%8E%9F%E7%90%86%E5%89%96%E6%9E%90%EF%BC%9A%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%80%E4%B8%AA%E6%B3%A8%E8%A7%A3%E5%B0%B1%E8%83%BD%E5%AE%9E%E7%8E%B0%E5%85%AC%E5%85%B1%E5%AD%97%E6%AE%B5%E8%87%AA%E5%8A%A8%E5%A1%AB%E5%85%85%EF%BC%9F/</loc>
     <lastmod>2026-11-08</lastmod>
   </url>
@@ -21,10 +37,6 @@
     <lastmod>2026-09-08</lastmod>
   </url>
   <url>
-    <loc>https://xuxcode.github.io/2026/08/06/Java/Java%E9%A1%B9%E7%9B%AE/%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96/HttpClient/</loc>
-    <lastmod>2026-09-08</lastmod>
-  </url>
-  <url>
     <loc>https://xuxcode.github.io/2026/08/06/Java/Java%E9%A1%B9%E7%9B%AE/%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96/Redis/</loc>
     <lastmod>2026-09-08</lastmod>
   </url>
@@ -42,10 +54,6 @@
   </url>
   <url>
     <loc>https://xuxcode.github.io/2026/08/08/Java/Java%E9%A1%B9%E7%9B%AE/%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96/%E3%80%90%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96%E9%A1%B9%E7%9B%AE%E6%97%A5%E8%AE%B0%E3%80%91Day3/</loc>
-    <lastmod>2026-09-08</lastmod>
-  </url>
-  <url>
-    <loc>https://xuxcode.github.io/2026/07/03/Java/Java%E9%A1%B9%E7%9B%AE/%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96/%E3%80%90%E8%8B%8D%E7%A9%B9%E5%A4%96%E5%8D%96%E9%A1%B9%E7%9B%AE%E6%97%A5%E8%AE%B0%E3%80%91Day2/</loc>
     <lastmod>2026-09-08</lastmod>
   </url>
   <url>
@@ -113,10 +121,6 @@
     <lastmod>2026-07-09</lastmod>
   </url>
   <url>
-    <loc>https://xuxcode.github.io/2026/05/13/Python/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/Python%E5%BC%82%E5%B8%B8/</loc>
-    <lastmod>2026-07-09</lastmod>
-  </url>
-  <url>
     <loc>https://xuxcode.github.io/2025/12/19/Java/Javaweb/Web%E5%9F%BA%E7%A1%80/</loc>
     <lastmod>2026-07-09</lastmod>
   </url>
@@ -146,10 +150,6 @@
   </url>
   <url>
     <loc>https://xuxcode.github.io/2025/12/19/Java/Javaweb/Maven%E9%AB%98%E7%BA%A7/</loc>
-    <lastmod>2026-07-09</lastmod>
-  </url>
-  <url>
-    <loc>https://xuxcode.github.io/2025/12/19/Java/Javaweb/Maven/</loc>
     <lastmod>2026-07-09</lastmod>
   </url>
   <url>
