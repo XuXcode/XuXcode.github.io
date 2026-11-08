@@ -53,7 +53,7 @@ HttpClient 是Apache Jakarta Common 下的子项目，可以用来提供高效�
 
 上述依赖的底层已经包含了HttpClient相关依赖。
 
-![img](https://aigz8jy30yo.feishu.cn/space/api/box/stream/download/asynccode/?code=ZjE0NzMzOTZhMWJhODc2Yzg1OTdhZDg5Njk1YzBmNzBfRG16aFhvRThPMDdva2V3SVdRTGpac0o0cGQyUE84bGVfVG9rZW46Qks0NmJPTXJBb0g0QlZ4NEFsVmNNVEtubjdjXzE3ODYwMTE1OTA6MTc4NjAxNTE5MF9WNA&add_watermark=true&scene_type=CCM)
+> 📷 原测试结果截图已失效（图床链接已过期），此处省略。
 
 故选择导入或者不导入均可。
 
@@ -115,7 +115,7 @@ public class HttpClientTest {
 
 **测试结果：**
 
-![img](https://aigz8jy30yo.feishu.cn/space/api/box/stream/download/asynccode/?code=NTYwMzhjOTdlNTU0MWY4NzQ4MWQ1NGIxNWNlZjFkZDZfbXhwdDVTemhQc1BxYlhGUHI2M1hhTldKbDh5WWVoWjZfVG9rZW46TFJ6NmI0cWRJb0huN2F4dlNudmNRVlpVbnBiXzE3ODYwMTE1OTA6MTc4NjAxNTE5MF9WNA&add_watermark=true&scene_type=CCM)
+> 📷 原测试结果截图已失效（图床链接已过期），此处省略。
 
 ### POST方式请求
 
@@ -171,4 +171,4 @@ public class HttpClientTest {
 
 **测试结果：**
 
-![img](https://aigz8jy30yo.feishu.cn/space/api/box/stream/download/asynccode/?code=YjNhNjk3N2ZlOTE5ZjBiYzE0M2MwMDUwODhlYTQzZDFfN1RZUjBwdldxclF4ZWdKYjkxdGk1MTR3dG5JQ0VkQnJfVG9rZW46UDFmZ2J6cDBxb3RCZFd4VWdaQWN5VDhDbkNnXzE3ODYwMTE1OTA6MTc4NjAxNTE5MF9WNA&add_watermark=true&scene_type=CCM)
+> 📷 原测试结果截图已失效（图床链接已过期），此处省略。

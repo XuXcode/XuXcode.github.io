@@ -56,7 +56,7 @@ public Employee getById(Long id) {
 
 #### 实现思路(枚举、注解、AOP、反射)
 
-+ 自定义注解 `AutoFill`，用于标识需要进行公共字段字段填充的方法
++ 自定义注解 `AutoFill`，用于标识需要进行公共字段填充的方法
 
   - 进入到sky-server模块，创建com.sky.annotation包。
 

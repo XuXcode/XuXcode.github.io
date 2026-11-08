@@ -5,7 +5,6 @@ menu:
     标签: /tags/ || fa fa-tags
     归档: /archives/ || fa fa-folder-open
   生活 || fas fa-list:
-    分享: /shuoshuo/ || fa fa-comments-o
     相册: /photos/ || fa fa-camera-retro
     音乐: /music/ || fa fa-music
     影视: /movies/ || fas fa-video

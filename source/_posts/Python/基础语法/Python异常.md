@@ -50,4 +50,4 @@ finally:
 
 异常的传递就是异常在函数调用中层层上报的过程，知道有人处理它，或者程序崩溃。
 
-![image-20260513223321574](C:\Users\84113\AppData\Roaming\Typora\typora-user-images\image-20260513223321574.png)
+![Python 异常传递示意图](/img/Python/exception-propagation.png)
