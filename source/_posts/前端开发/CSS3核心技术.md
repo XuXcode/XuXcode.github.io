@@ -5,12 +5,7 @@ description: 本文讲解 CSS3 核心技术，涵盖样式引入方式、各类�
 categories:
   - 前端开发
 tags:
-  - css/basic
-  - css/选择器
-  - CSS3
-  - 盒模型
-  - 文本样式
-  - 样式初始化
+  - CSS
 ---
 ## CSS简介
 

@@ -6,12 +6,7 @@ categories:
   - Java
   - Javase
 tags:
-  - java/api
-  - Math
-  - System
-  - Object
-  - Date
-  - BigDecimal
+  - Java基础
 ---
 ## 1、Math类
 

@@ -6,10 +6,8 @@ categories:
   - Java
   - Javaweb
 tags:
-  - web/springboot
-  - AOP
-  - 切面
-  - 切入点
+  - Spring Boot
+  - Spring
   - ThreadLocal
 ---
 ## 什么是AOP

@@ -7,8 +7,6 @@ categories:
   - 基础语法
 tags:
   - Python
-  - 模块
-
 ---
 + 介绍：Python模块(module)：一个.py文件就是一个模块，模块是Python程序的基本组成单位。在模块中可以定义变量、函数、类以及可执行的代码。
 

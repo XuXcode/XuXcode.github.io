@@ -6,7 +6,6 @@ categories:
   - Java
   - Java AI
 tags:
-  - ai/spring-ai
   - Spring AI
   - ChatClient
   - RAG

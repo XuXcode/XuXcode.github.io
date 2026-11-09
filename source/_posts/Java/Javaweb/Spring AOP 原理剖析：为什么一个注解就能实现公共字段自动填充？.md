@@ -7,13 +7,12 @@ categories:
   - Java
   - Javaweb
 tags:
-  - web/springboot
-  - AOP
-  - 动态代理
-  - 注解
+  - Spring Boot
+  - Spring
+  - 代理
   - ThreadLocal
   - 反射
-  - 苍穹外卖
+  - 项目实践
 ---
 在学习苍穹外卖项目时，我接触到了一个挺实用的功能——**公共字段自动填充**。原本需要在 Service 层手动设置的创建时间、修改时间等字段，可以通过 **Spring AOP** 统一处理。
 

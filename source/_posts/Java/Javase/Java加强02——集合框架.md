@@ -6,13 +6,8 @@ categories:
   - Java
   - Javase
 tags:
-  - java/collection
-  - java/api
-  - Collection
-  - List
-  - Set
-  - Map
-  - Stream
+  - Java进阶
+  - Java基础
 ---
 ## 认识集合
 

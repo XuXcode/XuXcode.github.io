@@ -6,12 +6,10 @@ categories:
   - Java
   - Javaweb
 tags:
-  - web/springboot
-  - web/http
-  - Web基础
+  - Spring Boot
   - HTTP
-  - IOC
-  - DI
+  - 后端开发
+  - Spring
 ---
 ## SpringBootWeb入门程序
 

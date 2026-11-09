@@ -6,9 +6,7 @@ categories:
   - Java
   - Javase
 tags:
-  - java/basic
-  - GUI
-  - Swing
+  - Java基础
 ---
 ## GUI界面编程（了解）
 

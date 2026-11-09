@@ -287,7 +287,7 @@ post_pagination: 1
 # 显示文章过期通知
 noticeOutdate:
   # 是否启用过期通知
-  enable: false
+  enable: true
   # 样式: simple / flat
   style: flat
   # 多少天后显示通知
@@ -493,9 +493,9 @@ rightside_config_animation: true
 # 锚点设置
 anchor:
   # 滚动时，URL 将根据标题 ID 更新
-  auto_update: false
+  auto_update: true
   # 点击标题滚动并更新锚点
-  click_to_scroll: false
+  click_to_scroll: true
 
 # 图片标题
 photofigcaption: false
@@ -524,11 +524,11 @@ wordcount:
 # 不蒜子 PV / UV 统计
 busuanzi:
   # 网站 UV 统计
-  site_uv: false
+  site_uv: true
   # 网站 PV 统计
-  site_pv: false
+  site_pv: true
   # 页面 PV 统计
-  page_pv: false
+  page_pv: true
 
 # --------------------------------------
 # 数学公式设置
@@ -1067,7 +1067,7 @@ lightbox: medium_zoom
 # 系列
 series:
   # 是否启用系列
-  enable: false
+  enable: true
   # 按标题或日期排序
   orderBy: 'title'
   # 排序方式。1, asc 为升序; -1, desc 为降序
@@ -1087,9 +1087,9 @@ abcjs:
 # https://github.com/mermaid-js/mermaid
 mermaid:
   # 是否启用 Mermaid
-  enable: false
+  enable: true
   # 使用代码块编写 Mermaid 图表
-  code_write: false
+  code_write: true
   # 内置主题: default / forest / dark / neutral
   theme:
     light: default
@@ -1098,7 +1098,7 @@ mermaid:
 # chartjs
 # 参见 https://www.chartjs.org/docs/latest/
 chartjs:
-  enable: false
+  enable: true
   # 除非你瞭解它们的工作原理，否则不要修改。
   # 默认设置仅在未指定 MD 语法时使用。
   # 图表的字体颜色

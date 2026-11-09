@@ -6,11 +6,7 @@ categories:
   - Java
   - Javaweb
 tags:
-  - web/maven
-  - Maven高级
-  - 分模块
-  - 聚合
-  - 私服
+  - Maven
 ---
 ## 分模块设计与开发
 

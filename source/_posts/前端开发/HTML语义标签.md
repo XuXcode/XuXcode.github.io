@@ -5,12 +5,7 @@ description: 本文讲解 HTML5 语义化标签，涵盖 Web 标准、文档结�
 categories:
   - 前端开发
 tags:
-  - html/basic
-  - html/语义标签
-  - HTML5
-  - Web标准
-  - 表单
-  - 表格
+  - HTML
 ---
 ## Web标准
 

@@ -6,10 +6,7 @@ categories:
   - Java
   - Javaweb
 tags:
-  - web/mysql
   - MySQL
-  - SQL
-  - 事务
 ---
 ## 概述
 

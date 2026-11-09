@@ -6,11 +6,10 @@ categories:
   - Java
   - Javaweb
 tags:
-  - web/project
-  - web/springboot
-  - web/mybatis
-  - Tlias
-  - Restful
+  - Spring Boot
+  - MyBatis
+  - 项目实践
+  - 后端开发
 ---
 > Tlias智能学习辅助系统
 

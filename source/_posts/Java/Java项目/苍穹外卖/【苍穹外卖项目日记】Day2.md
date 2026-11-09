@@ -1,11 +1,13 @@
 ---
 title: 【苍穹外卖项目日记】Day2
+series: 苍穹外卖项目实践
 date: 2026-07-03
 description: 苍穹外卖项目实战日记第二天，记录核心功能模块的开发与实现。
 categories:
   - Java
   - Java项目
   - 苍穹外卖
+
 ---
 ## 【苍穹外卖|项目日记】Day2
 

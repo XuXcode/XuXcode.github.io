@@ -6,9 +6,7 @@ categories:
   - Java
   - Javaweb
 tags:
-  - web/linux
   - Linux
-  - JDK部署
 ---
 ## 系统安装
 

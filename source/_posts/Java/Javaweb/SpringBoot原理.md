@@ -6,9 +6,7 @@ categories:
   - Java
   - Javaweb
 tags:
-  - web/springboot
-  - SpringBoot原理
-  - Bean作用域
+  - Spring Boot
 ---
 ## 配置优先级
 

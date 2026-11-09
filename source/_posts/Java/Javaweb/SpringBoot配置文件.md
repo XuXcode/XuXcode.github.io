@@ -6,10 +6,7 @@ categories:
   - Java
   - Javaweb
 tags:
-  - web/springboot
-  - SpringBoot配置
-  - yml
-  - properties
+  - Spring Boot
 ---
 ## 配置文件格式
 
