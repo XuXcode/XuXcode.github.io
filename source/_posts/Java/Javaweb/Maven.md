@@ -6,9 +6,8 @@ categories:
   - Java
   - Javaweb
 tags:
-  - web/maven
   - Maven
-  - JUnit
+  - 测试
 ---
 ## 认识Maven
 

@@ -1,11 +1,13 @@
 ---
 title: 【苍穹外卖项目日记】Day6
+series: 苍穹外卖项目实践
 date: 2026-09-01
 description: 苍穹外卖项目实战日记第六天，基于 ECharts 完成营业额、用户、订单统计与销量 TOP10 功能开发。
 categories:
   - Java
   - Java项目
   - 苍穹外卖
+
 ---
 ## 【苍穹外卖|项目日记】Day6
 

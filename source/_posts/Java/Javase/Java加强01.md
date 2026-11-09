@@ -6,10 +6,8 @@ categories:
   - Java
   - Javase
 tags:
-  - java/advanced
-  - 异常
-  - 泛型
-  - 包装类
+  - Java进阶
+  - Java基础
 ---
 ## 异常
 

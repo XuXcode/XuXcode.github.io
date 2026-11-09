@@ -7,8 +7,6 @@ categories:
   - 数据分析
 tags:
   - Python
-  - Jupyter
-
 ---
 ## Jupyter快捷键
 

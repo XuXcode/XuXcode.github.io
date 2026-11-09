@@ -6,10 +6,7 @@ categories:
   - Java
   - Javaweb
 tags:
-  - web/mybatis
-  - Mybatis
-  - 持久层
-  - 动态SQL
+  - MyBatis
 ---
 + MyBatis 是一款优秀的 持久层(dao) 框架，用于 简化JDBC 的开发
 

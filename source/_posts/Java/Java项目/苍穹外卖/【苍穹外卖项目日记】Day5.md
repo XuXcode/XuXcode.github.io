@@ -1,11 +1,13 @@
 ---
 title: 【苍穹外卖项目日记】Day5
+series: 苍穹外卖项目实践
 date: 2026-08-28
 description: 苍穹外卖项目实战日记第五天，使用 Spring Task 定时处理订单状态，并基于 WebSocket 实现来单提醒与客户催单。
 categories:
   - Java
   - Java项目
   - 苍穹外卖
+
 ---
 ## 【苍穹外卖|项目日记】Day5
 

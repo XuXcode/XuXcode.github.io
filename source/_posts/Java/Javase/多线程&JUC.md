@@ -6,11 +6,7 @@ categories:
   - Java
   - Javase
 tags:
-  - java/concurrency
-  - java/advanced
-  - 多线程
-  - JUC
-  - 线程池
+  - Java进阶
   - 并发
 ---
 ## 认识多线程

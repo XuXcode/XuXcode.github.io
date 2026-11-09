@@ -1,11 +1,13 @@
 ---
 title: 【苍穹外卖项目日记】Day4
+series: 苍穹外卖项目实践
 date: 2026-08-14
 description: 苍穹外卖项目实战日记第四天，使用 Redis 缓存菜品与套餐数据，并实现添加购物车功能。
 categories:
   - Java
   - Java项目
   - 苍穹外卖
+
 ---
 ## 【苍穹外卖|项目日记】Day4
 
